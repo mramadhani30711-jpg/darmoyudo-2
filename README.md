@@ -1,2 +1,1761 @@
 # darmoyudo-2
 website sejarah mbah darmoyudo 2 dan warisan sejarah kota pasuruan
+Catatan: data gambar/video yang tertanam (base64) diganti dengan teks BASE64_DIHAPUS agar kode bisa dibaca dan disalin. Ganti dengan file gambar/video Anda sendiri.
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mbah Darmoyudo II – Website Edukasi Sejarah Kelas 9B</title>
+<meta name="description" content="Website edukasi sejarah Mbah Darmoyudo II (Kyai Ageng Dermoyudo II), Bupati Pasuruan ke-2 (1645–1657), karya siswa kelas 9B.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   1. WARNA & UKURAN DASAR
+      Desain mengikuti versi pertama website Darmoyudo:
+      latar gelap, aksen emas, huruf Georgia.
+   ========================================================= */
+:root{
+  --gold:#d6b56d;        /* emas utama */
+  --gold-terang:#f0d99e; /* emas saat disorot */
+  --gold-tua:#75613a;    /* garis emas redup */
+  --dark:#10110f;        /* latar utama */
+  --dark-2:#151612;      /* latar bagian selang-seling */
+  --kartu:#191a16;       /* latar kartu */
+  --garis:#51452d;       /* garis kartu */
+  --cream:#f4eddd;       /* teks utama */
+  --redup:#c9c2b4;       /* teks isi */
+  --redup-2:#a9a191;     /* teks kecil */
+  --hijau:#2f6b48;       /* hijau makam (aksen kecil) */
+  --ok:#6CC79B; --ok-bg:#1D3A2E; --no:#E58080; --no-bg:#3E2226;
+  --jarak:clamp(60px,9vw,80px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--dark);color:var(--cream);font-family:Georgia,"Times New Roman",serif;line-height:1.7;font-size:17px}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+body.ar{font-family:"Amiri","Noto Naskh Arabic",Georgia,serif;font-size:19px;line-height:1.9}
+body.ar .section-label,body.ar .eyebrow{letter-spacing:0}
+
+/* =========================================================
+   2. KOMPONEN UMUM
+   ========================================================= */
+.wrap{padding:0 9%}
+section{padding:var(--jarak) 0;position:relative}
+.alt{background:var(--dark-2)}
+.section-label{color:var(--gold);letter-spacing:3px;font-size:12px;text-transform:uppercase}
+h1,h2,h3{font-weight:bold;line-height:1.2}
+h2{font-size:clamp(30px,5vw,45px);margin:12px 0 22px;color:var(--cream)}
+h1 span,h2 span{color:var(--gold)}
+h3{font-size:clamp(19px,2.3vw,23px);color:var(--gold);margin-bottom:10px}
+.lead{max-width:750px;color:var(--redup);margin-bottom:26px}
+p+p{margin-top:14px}
+.tengah{text-align:center}
+.tengah .lead{margin-left:auto;margin-right:auto}
+.ornamen,.daun{display:none}
+.btn{display:inline-block;padding:12px 22px;background:var(--gold);color:#17140d;border:1px solid var(--gold);text-decoration:none;font-family:inherit;font-weight:bold;cursor:pointer;transition:.3s}
+.btn:hover{transform:translateY(-3px);background:var(--gold-terang)}
+.btn.isi{background:var(--gold);color:#17140d}
+.btn.garis{background:transparent;color:var(--gold);margin-inline-start:10px}
+.btn.garis:hover{background:rgba(214,181,109,.12)}
+.note{color:#bcb4a5;font-size:13px;margin-top:15px}
+
+/* Kartu gelap untuk area bacaan */
+.kertas{background:var(--kartu);border:1px solid var(--garis);padding:clamp(20px,3vw,32px);color:var(--redup)}
+.kertas h3{color:var(--gold)}
+
+/* Label sumber */
+.lbl{display:inline-block;font-size:12px;letter-spacing:1px;padding:3px 10px;border:1px solid;vertical-align:middle;margin:0 6px 8px 0}
+.lbl.fakta{color:var(--ok);border-color:#3f7a5c;background:rgba(108,199,155,.08)}
+.lbl.tutur{color:var(--gold);border-color:var(--gold-tua);background:rgba(214,181,109,.08)}
+body.ar .lbl{margin:0 0 8px 6px;letter-spacing:0}
+
+/* Tabel */
+.tabel{overflow-x:auto;margin:16px 0 10px;border:1px solid var(--garis);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+th,td{padding:10px 14px;text-align:start;vertical-align:top;border-bottom:1px solid #3a3324}
+th{color:var(--gold);font-weight:bold;background:#1f1d17;font-size:14px}
+td{color:var(--redup)}
+td:first-child{color:var(--cream)}
+tr:last-child td{border-bottom:0}
+.peringatan{display:flex;gap:12px;border:1px solid var(--gold);background:rgba(214,181,109,.06);padding:14px 16px;margin:18px 0;font-size:15px;color:var(--cream)}
+.peringatan strong{color:var(--gold)}
+
+/* Animasi muncul */
+.muncul{opacity:0;transform:translateY(25px);transition:.8s}
+.muncul.tampil{opacity:1;transform:none}
+@keyframes muncul{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .muncul{opacity:1;transform:none;transition:none}
+  .hero-content{animation:none}
+  .slide{transition:none!important}
+}
+
+/* =========================================================
+   3. NAVIGASI
+   ========================================================= */
+.nav{position:sticky;top:0;z-index:50;background:rgba(16,17,15,.96);border-bottom:1px solid var(--gold-tua)}
+.nav-in{display:flex;align-items:center;gap:14px;min-height:62px;padding-top:8px;padding-bottom:8px}
+.wrap.nav-in{padding-left:7%;padding-right:7%}
+.logo{color:var(--gold);font-size:23px;font-weight:bold;text-decoration:none;white-space:nowrap}
+.logo svg{display:none}
+.nav-links{display:flex;gap:16px;margin-inline-start:auto;list-style:none}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:14px;white-space:nowrap}
+.nav-links a:hover,.nav-links a.aktif{color:var(--gold)}
+.bahasa{display:flex;border:1px solid var(--garis);flex:none}
+.bahasa button{background:none;border:0;color:var(--redup);font-size:12px;padding:6px 10px}
+.bahasa button[aria-pressed="true"]{background:var(--gold);color:#17140d;font-weight:bold}
+.bahasa button:nth-child(4){font-family:"Amiri",serif;font-size:14px;padding:3px 10px}
+.burger{display:none;background:none;border:1px solid var(--garis);color:var(--gold);width:42px;height:38px;flex:none}
+.burger svg{width:22px;height:22px;margin:auto}
+@media (max-width:1250px){
+  .burger{display:grid;place-items:center;margin-inline-start:auto}
+  .nav-links{position:absolute;top:100%;inset-inline:0;flex-direction:column;gap:0;background:var(--dark);border-bottom:1px solid var(--gold-tua);padding:6px 7% 14px;display:none;max-height:calc(100vh - 62px);overflow:auto}
+  .nav-links.buka{display:flex}
+  .nav-links a{padding:10px 0;font-size:15px;border-bottom:1px solid #26241d}
+}
+@media (max-width:480px){.logo{font-size:19px}}
+.ke-atas{position:fixed;inset-inline-end:18px;bottom:18px;z-index:40;width:46px;height:46px;border:1px solid var(--gold);background:var(--dark);color:var(--gold);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.ke-atas.tampil{opacity:1;pointer-events:auto}
+.ke-atas svg{width:22px;height:22px}
+
+/* =========================================================
+   4. [1] HERO / BANNER
+   ========================================================= */
+.hero{min-height:82vh;display:flex;align-items:center;padding:75px 9%;
+  background:linear-gradient(90deg,rgba(10,11,9,.96),rgba(10,11,9,.5)),url("data:image/jpeg;base64,BASE64_DIHAPUS") center/cover,#1a1a17}
+body.ar .hero{background:linear-gradient(270deg,rgba(10,11,9,.96),rgba(10,11,9,.5)),url("data:image/jpeg;base64,BASE64_DIHAPUS") center/cover,#1a1a17}
+.hero-content{max-width:700px;animation:muncul 1.2s ease}
+.eyebrow{color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(42px,8vw,78px);line-height:1.12;margin:20px 0}
+.hero-sub{color:var(--gold);font-size:15px;margin-bottom:12px}
+.hero-desc{max-width:560px;color:#e0d8c7;margin-bottom:28px}
+@media (max-width:700px){.hero{min-height:75vh;padding:55px 7%}}
+
+/* =========================================================
+   5. [2] SAMBUTAN (tata letak seperti "Tentang" versi awal)
+   ========================================================= */
+.sambutan-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.sambutan-teks{color:var(--redup)}
+.salam{color:var(--cream);font-size:19px;margin-bottom:12px}
+body.ar .salam{font-size:23px}
+.ttd{margin-top:20px;color:#bcb4a5;font-size:14px;font-style:italic}
+.sambutan-foto button{display:block;width:100%;border:1px solid #6d5832;background:#000;padding:0}
+.sambutan-foto img{width:100%;aspect-ratio:2/1;object-fit:contain;cursor:zoom-in}
+.sambutan-foto figcaption{color:#bcb4a5;font-size:13px;margin-top:10px}
+@media (max-width:820px){.sambutan-grid{grid-template-columns:1fr}}
+
+/* =========================================================
+   6. [3] SOROTAN (SLIDESHOW)
+   ========================================================= */
+.slider{position:relative;overflow:hidden;background:#000;aspect-ratio:16/9;border:1px solid var(--garis)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+.slide.aktif{opacity:1}
+.slide .blur{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(28px) brightness(.5);transform:scale(1.1)}
+.slide img{position:relative;width:100%;height:100%;object-fit:contain}
+.slide-info{position:absolute;inset-inline:0;bottom:0;padding:46px clamp(16px,3vw,28px) 16px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff;font-size:15px}
+.slide-info small{display:block;color:var(--gold);letter-spacing:2px;font-size:12px;margin-bottom:2px}
+.fakta-kotak{margin-top:18px;display:flex;gap:14px;align-items:flex-start;background:var(--kartu);border:1px solid var(--garis);border-inline-start:3px solid var(--gold);padding:16px 20px;min-height:80px;color:var(--redup)}
+.fakta-kotak .ikon{flex:none;width:34px;height:34px;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-weight:bold}
+.fakta-kotak b{display:block;color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+body.ar .fakta-kotak b{letter-spacing:0;font-size:15px}
+.slide-ctrl{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid var(--gold-tua);background:rgba(16,17,15,.75);color:var(--gold);display:grid;place-items:center;z-index:3}
+.slide-ctrl svg{width:22px;height:22px}
+.slide-ctrl.prev{inset-inline-start:12px}
+.slide-ctrl.next{inset-inline-end:12px}
+body.ar .slide-ctrl svg{transform:scaleX(-1)}
+.titik{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.titik button{width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);background:transparent;padding:0}
+.titik button[aria-current="true"]{background:var(--gold)}
+@media (max-width:600px){.slider{aspect-ratio:4/5}.slide-ctrl{width:38px;height:38px}}
+
+/* =========================================================
+   7. [4] INFORMASI SEJARAH
+   ========================================================= */
+.tab-daftar{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px}
+.tab-daftar button{flex:none;background:transparent;color:var(--redup);border:1px solid var(--garis);padding:8px 14px;font-size:14px;white-space:nowrap}
+.tab-daftar button:hover{border-color:var(--gold);color:var(--cream)}
+.tab-daftar button[aria-selected="true"]{background:var(--gold);color:#17140d;border-color:var(--gold);font-weight:bold}
+.tab-panel h3{font-size:clamp(22px,2.8vw,28px)}
+.tab-panel h4{color:var(--gold);font-size:17px;margin:26px 0 8px}
+.tab-panel p{color:var(--redup)}
+/* Bagan pohon keluarga */
+.pohon{display:flex;flex-direction:column;align-items:center;margin:22px 0 10px}
+.simpul{background:var(--dark);border:1px solid var(--garis);padding:10px 16px;text-align:center;min-width:200px;max-width:280px}
+.simpul b{display:block;color:var(--cream);font-size:15px;line-height:1.3}
+.simpul span{display:block;font-size:13px;color:var(--redup-2);line-height:1.4;margin-top:3px}
+.simpul.utama{border-color:var(--gold);background:rgba(214,181,109,.1)}
+.simpul.utama b{color:var(--gold)}
+.garis-v{width:1px;height:24px;background:var(--gold)}
+.cabang{display:flex;gap:0;position:relative;padding-top:24px;justify-content:center}
+.cabang>div{display:flex;flex-direction:column;align-items:center;position:relative;padding:0 14px}
+.cabang>div::before{content:"";position:absolute;top:-24px;left:50%;width:1px;height:24px;background:var(--gold)}
+.cabang>div::after{content:"";position:absolute;top:-24px;height:1px;background:var(--gold)}
+.cabang>div:first-child::after{left:50%;right:0}
+.cabang>div:last-child::after{left:0;right:50%}
+@media (max-width:640px){.cabang{flex-direction:column;align-items:center;padding-top:0}.cabang>div{padding:0}.cabang>div::after{display:none}.cabang>div::before{position:static;display:block;margin:0 auto}.simpul{min-width:0;width:100%}}
+/* Kartu tiga ancaman */
+.ancaman{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:12px 0}
+.ancaman article{padding:22px;border:1px solid var(--garis);background:var(--dark);transition:.3s}
+.ancaman article:hover{transform:translateY(-6px);border-color:var(--gold)}
+.ancaman .arah{color:var(--redup-2);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+body.ar .ancaman .arah{letter-spacing:0;font-size:15px}
+.ancaman h5{color:var(--gold);font-size:18px;margin:4px 0 8px}
+.ancaman p{font-size:14.5px}
+@media (max-width:760px){.ancaman{grid-template-columns:1fr}}
+.dua-versi{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.dua-versi div{border:1px dashed var(--gold-tua);padding:14px;font-size:15px;color:var(--redup)}
+.dua-versi b{color:var(--gold);display:block;margin-bottom:4px}
+@media (max-width:640px){.dua-versi{grid-template-columns:1fr}}
+/* Linimasa (gaya versi awal) */
+.linimasa{list-style:none;border-inline-start:1px solid var(--gold);margin:30px 0 0 10px;padding-inline-start:28px}
+body.ar .linimasa{margin:30px 10px 0 0}
+.linimasa li{position:relative;padding:0 0 26px}
+.linimasa li::before{content:"";position:absolute;inset-inline-start:-34px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.linimasa .waktu{color:var(--gold);font-weight:bold;margin-bottom:4px}
+.linimasa li p{color:var(--redup);font-size:15.5px}
+.linimasa li.sorot{border:1px solid var(--gold);background:rgba(214,181,109,.08);padding:12px 16px;margin:0 0 26px}
+.linimasa li.sorot::before{inset-inline-start:-34px;top:21px;box-shadow:0 0 0 4px rgba(214,181,109,.3)}
+.fakta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;margin-top:20px}
+.fakta-grid div{padding:22px;border:1px solid var(--garis);background:var(--dark);font-size:15px;color:var(--redup);transition:.3s}
+.fakta-grid div:hover{transform:translateY(-6px);border-color:var(--gold)}
+.sumber-list{padding-inline-start:20px;font-size:15px;color:var(--redup)}
+.sumber-list li+li{margin-top:6px}
+
+/* =========================================================
+   8. [5] DRAMA & STORYTELLING
+   ========================================================= */
+.catatan-panggung{max-width:760px;margin:0 auto 26px;border:1px dashed var(--gold-tua);padding:14px 18px;color:var(--redup);font-style:italic;text-align:center}
+.pemeran{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 26px;max-width:820px}
+.tokoh{border:1px solid var(--garis);background:var(--kartu);padding:4px 12px;font-size:13px;color:var(--cream)}
+.dialog .tokoh{display:inline-block;background:none;border:0;padding:0;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+body.ar .dialog .tokoh{letter-spacing:0;font-size:15px}
+.t-narr{border-color:#6b6455}.dialog .t-narr{color:#a8915c}
+.t-darmo{border-color:var(--gold)}
+.babak{max-width:900px;margin:14px auto 0;border:1px solid var(--garis);background:var(--kartu)}
+.babak summary{cursor:pointer;padding:18px 22px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.babak summary::-webkit-details-marker{display:none}
+.babak .no{flex:none;width:34px;height:34px;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-weight:bold}
+.babak .jdl{flex:1}
+.babak .jdl b{display:block;color:var(--gold)}
+.babak .jdl small{color:var(--redup-2);font-style:italic}
+.babak .tanda{color:var(--gold);font-size:24px}
+.babak[open] .tanda{transform:rotate(45deg)}
+.babak .isi{padding:0 22px 20px}
+.dialog{padding:14px 0;border-top:1px dashed #3a3324}
+.dialog p{white-space:pre-line;color:#e0d8c7;margin-top:4px}
+.dialog.narr p{font-style:italic;color:var(--redup)}
+.cerita{max-width:760px;margin:46px auto 0;color:#d8d0bf;font-size:17px}
+.cerita h3{text-align:center;font-size:clamp(24px,3.5vw,34px);color:var(--cream);margin-bottom:22px}
+.cerita blockquote{border-inline-start:3px solid var(--gold);padding:6px 0;padding-inline-start:18px;margin:22px 0;color:var(--cream);font-style:italic;font-size:19px}
+.cerita p+p{margin-top:18px}
+.cerita .akhir{text-align:center;color:var(--gold);font-style:italic;margin-top:30px}
+
+/* =========================================================
+   9. [6] QUIZ
+   ========================================================= */
+.kuis{max-width:820px;margin:0 auto}
+.skor{position:sticky;top:62px;z-index:5;background:var(--dark-2);padding:12px 0;border-bottom:1px solid var(--garis);margin-bottom:20px}
+.skor-teks{display:flex;justify-content:space-between;font-size:14px;color:var(--redup);margin-bottom:6px}
+.skor-teks strong{color:var(--gold)}
+.bilah{height:6px;background:#2c2a22;overflow:hidden}
+.bilah-isi{height:100%;width:0;background:var(--gold);transition:width .3s}
+.soal{background:var(--kartu);border:1px solid var(--garis);border-inline-start:4px solid var(--garis);padding:20px;margin-bottom:14px}
+.soal.benar{border-inline-start-color:var(--ok)}
+.soal.salah{border-inline-start-color:var(--no)}
+.soal-meta{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--redup-2);margin-bottom:6px}
+.soal-no{font-weight:bold;color:var(--gold)}
+.jenis{border:1px solid var(--garis);padding:0 8px;font-size:12px}
+.soal-tanya{font-size:17.5px;color:var(--cream);margin-bottom:12px}
+.pilihan{display:grid;gap:8px}
+.pilihan button{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:start;color:var(--cream);background:transparent;border:1px solid var(--garis);padding:10px 13px;font-size:15.5px}
+.pilihan button:hover:not(:disabled){border-color:var(--gold)}
+.pilihan button:disabled{cursor:default}
+.huruf{font-weight:bold;color:var(--redup-2);min-width:1.2em}
+.pilihan .tepat{background:var(--ok-bg);border-color:var(--ok)}.pilihan .tepat .huruf{color:var(--ok)}
+.pilihan .keliru{background:var(--no-bg);border-color:var(--no)}.pilihan .keliru .huruf{color:var(--no)}
+.pilihan .redup{opacity:.5}
+.umpan{margin-top:12px;padding-top:12px;border-top:1px dashed #3a3324;font-size:15px;color:var(--redup)}
+.umpan b{display:block}
+.umpan.ok b{color:var(--ok)}.umpan.no b{color:var(--no)}
+.hasil{display:none;text-align:center;background:var(--kartu);border:1px solid var(--gold);padding:32px 20px;margin-top:20px}
+.hasil.tampil{display:block}
+.hasil-angka{font-weight:bold;font-size:56px;color:var(--gold);line-height:1}
+.hasil p{max-width:52ch;margin:14px auto 20px;color:var(--redup)}
+
+/* =========================================================
+   10. [7] TOUR MAKAM (video-box & galeri versi awal)
+   ========================================================= */
+.video-bingkai{background:#000;border:1px solid var(--garis);aspect-ratio:16/9}
+.video-bingkai video{width:100%;height:100%;object-fit:contain}
+.rute{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px;counter-reset:rute}
+.rute button{background:none;border:0;padding:0;text-align:start;color:var(--redup)}
+.rute img{width:100%;height:220px;object-fit:cover;border:1px solid var(--garis);transition:.3s;cursor:zoom-in}
+.rute button:hover img{transform:scale(1.02);filter:brightness(1.1)}
+.rute span{display:block;font-size:13px;margin-top:8px;line-height:1.5}
+.rute span::before{counter-increment:rute;content:counter(rute) ". ";color:var(--gold);font-weight:bold}
+@media (max-width:700px){.rute{grid-template-columns:1fr}}
+.info-lokasi{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+.info-lokasi ul{padding-inline-start:20px}
+@media (max-width:720px){.info-lokasi{grid-template-columns:1fr}}
+.kosong-info{margin-top:20px;padding:35px;text-align:center;background:var(--kartu);border:1px solid var(--garis);color:var(--redup)}
+
+/* Lightbox (gaya pop-up versi awal) */
+.lightbox{position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.92);display:none;justify-content:center;align-items:center;padding:60px 14px 20px}
+.lightbox.buka{display:flex}
+.lightbox figure{max-width:850px;width:100%;text-align:center}
+.lightbox img{max-height:75vh;margin:auto;object-fit:contain}
+.lightbox figcaption{color:var(--redup);margin-top:12px;font-size:15px}
+.lb-btn{position:absolute;background:transparent;border:0;color:#fff;width:46px;height:46px;display:grid;place-items:center}
+.lb-btn svg{width:28px;height:28px}
+.lb-btn:hover{color:var(--gold)}
+.lb-tutup{top:12px;inset-inline-end:12px}
+.lb-prev{inset-inline-start:10px;top:50%;transform:translateY(-50%)}
+.lb-next{inset-inline-end:10px;top:50%;transform:translateY(-50%)}
+body.ar .lb-prev svg,body.ar .lb-next svg{transform:scaleX(-1)}
+
+/* =========================================================
+   11. [8] FOTO BERSAMA KELAS 9B
+   ========================================================= */
+.kelas-grid{display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:18px;max-width:620px;margin:0 auto}
+.foto-utama button{border:1px solid #6d5832;padding:0;background:#000;display:block;width:100%}
+.foto-utama img{width:100%;aspect-ratio:9/16;object-fit:contain;cursor:zoom-in}
+.foto-utama figcaption{text-align:center;color:var(--gold);margin-top:12px}
+.foto-kecil{display:flex;flex-direction:column;gap:14px}
+.foto-kecil button{border:1px solid var(--garis);padding:0;overflow:hidden;background:#000;transition:.3s}
+.foto-kecil button[aria-pressed="true"]{border-color:var(--gold)}
+.foto-kecil img{aspect-ratio:9/16;object-fit:contain;width:100%}
+.petunjuk{text-align:center;color:#bcb4a5;font-size:13px;margin-top:14px}
+@media (max-width:560px){.kelas-grid{grid-template-columns:1fr}.foto-kecil{flex-direction:row}.foto-kecil button{flex:1}}
+
+/* =========================================================
+   12. [9] SIMPULAN & PESAN
+   ========================================================= */
+.simpulan-teks{max-width:760px;color:var(--redup);font-size:18px}
+.moral{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 40px;counter-reset:moral}
+.moral article{padding:25px;border:1px solid var(--garis);background:var(--kartu);transition:.3s}
+.moral article:hover{transform:translateY(-6px);border-color:var(--gold)}
+.moral article::before{counter-increment:moral;content:"0" counter(moral);display:block;font-size:30px;color:#6d5832;font-weight:bold;line-height:1;margin-bottom:8px}
+.moral h4{color:var(--gold);font-size:17px;line-height:1.3}
+.moral small{display:block;color:var(--redup-2);font-style:italic;margin:4px 0 8px;font-size:13px}
+.moral p{font-size:14.5px;color:var(--redup)}
+@media (max-width:900px){.moral{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.moral{grid-template-columns:1fr}}
+.kutipan-besar{margin:0 0 40px;padding:30px;border:1px solid var(--gold);background:rgba(214,181,109,.06);font-style:italic;color:var(--cream);font-size:clamp(19px,2.6vw,24px);line-height:1.6}
+.pesan{list-style:none;display:grid;gap:12px;max-width:820px}
+.pesan li{display:flex;gap:14px;align-items:flex-start;border-inline-start:2px solid var(--gold);padding:6px 0;padding-inline-start:16px;color:var(--redup)}
+
+/* =========================================================
+   13. [10] PENUTUPAN & [11] PEMBUAT
+   ========================================================= */
+.penutup-teks{max-width:720px;margin:0 auto;color:var(--redup);font-size:17.5px}
+.penutup-teks .salam{color:var(--gold)}
+.dev{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.dev article{padding:26px;border:1px solid var(--garis);background:var(--kartu);text-align:center;transition:.3s}
+.dev article:hover{transform:translateY(-6px);border-color:var(--gold)}
+.avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-weight:bold;font-size:26px;color:#fff;border:2px solid var(--gold)}
+.dev h3{font-size:18px;margin-bottom:2px}
+.dev .peran{color:var(--redup-2);font-size:14px;margin-bottom:14px}
+.dev ul{list-style:none;font-size:14px;margin-bottom:16px;color:var(--redup)}
+.dev li{word-break:break-word}
+.dev li a{color:var(--cream);text-decoration:none;border-bottom:1px dotted var(--redup-2)}
+.dev .wa{background:#1F8F4E;border-color:#1F8F4E;color:#fff}
+.dev .wa:hover{background:#25a85c}
+@media (max-width:860px){.dev{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
+footer{text-align:center;padding:30px 7%;border-top:1px solid var(--garis);color:#aaa18f;font-size:13px}
+footer b{color:var(--gold)}
+@media (max-width:700px){.wrap{padding:0 7%}}
+
+/* =========================================================
+   14. HIASAN BERNUANSA DAERAH (motif batik & wayang)
+   - Kawung  : pola batik empat kelopak, latar bagian selang-seling
+   - Parang  : pita motif lereng di atas setiap bagian
+   - Tumpal  : deret segitiga khas tepi kain batik
+   - Gunungan: siluet kayon wayang kulit
+   ========================================================= */
+.alt{background-color:var(--dark-2);background-image:linear-gradient(rgba(21,22,18,.93),rgba(21,22,18,.93)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1'%3E%3Cellipse cx='20' cy='20' rx='12' ry='6.5' transform='rotate(45 20 20)'/%3E%3Cellipse cx='44' cy='20' rx='12' ry='6.5' transform='rotate(-45 44 20)'/%3E%3Cellipse cx='20' cy='44' rx='12' ry='6.5' transform='rotate(-45 20 44)'/%3E%3Cellipse cx='44' cy='44' rx='12' ry='6.5' transform='rotate(45 44 44)'/%3E%3Ccircle cx='32' cy='32' r='2.2'/%3E%3Ccircle cx='0' cy='0' r='2.2'/%3E%3Ccircle cx='64' cy='0' r='2.2'/%3E%3Ccircle cx='0' cy='64' r='2.2'/%3E%3Ccircle cx='64' cy='64' r='2.2'/%3E%3C/g%3E%3C/svg%3E");background-size:auto,64px 64px}
+main>section::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18' viewBox='0 0 36 18'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.3'%3E%3Cpath d='M0 18 C9 18 9 0 18 0 M18 18 C27 18 27 0 36 0'/%3E%3Cpath d='M4 18 C11 16 12 6 18 4 M22 18 C29 16 30 6 36 4' opacity='.55'/%3E%3C/g%3E%3Ccircle cx='9' cy='4' r='1.3' fill='%23d6b56d'/%3E%3Ccircle cx='27' cy='4' r='1.3' fill='%23d6b56d'/%3E%3C/svg%3E") repeat-x center/36px 14px;opacity:.35;pointer-events:none}
+footer{position:relative;padding-top:42px}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='16' viewBox='0 0 28 16'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.1'%3E%3Cpath d='M0 16 L14 1 L28 16'/%3E%3Cpath d='M6 16 L14 7 L22 16' opacity='.6'/%3E%3C/g%3E%3Ccircle cx='14' cy='12' r='1.3' fill='%23d6b56d'/%3E%3C/svg%3E") repeat-x center/28px 16px;opacity:.55}
+.nav{box-shadow:0 1px 0 #75613a}
+.hero{position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1'%3E%3Cellipse cx='20' cy='20' rx='12' ry='6.5' transform='rotate(45 20 20)'/%3E%3Cellipse cx='44' cy='20' rx='12' ry='6.5' transform='rotate(-45 44 20)'/%3E%3Cellipse cx='20' cy='44' rx='12' ry='6.5' transform='rotate(-45 20 44)'/%3E%3Cellipse cx='44' cy='44' rx='12' ry='6.5' transform='rotate(45 44 44)'/%3E%3Ccircle cx='32' cy='32' r='2.2'/%3E%3Ccircle cx='0' cy='0' r='2.2'/%3E%3Ccircle cx='64' cy='0' r='2.2'/%3E%3Ccircle cx='0' cy='64' r='2.2'/%3E%3Ccircle cx='64' cy='64' r='2.2'/%3E%3C/g%3E%3C/svg%3E") 0 0/64px 64px;opacity:.07;pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.gunungan{position:absolute;color:var(--gold);pointer-events:none}
+.gunungan svg{width:100%;height:100%}
+.hero .gunungan{right:6%;bottom:-6%;width:clamp(180px,26vw,360px);height:clamp(234px,34vw,468px);opacity:.22;z-index:1}
+body.ar .hero .gunungan{right:auto;left:6%}
+#drama{overflow:hidden;background:radial-gradient(ellipse 70% 50% at 50% 0,rgba(214,181,109,.10),transparent 70%),var(--dark)}
+#drama .gunungan{top:60px;width:clamp(110px,14vw,190px);height:clamp(143px,18vw,247px);opacity:.14}
+#drama .gunungan.ki{left:2%} #drama .gunungan.ka{right:2%;transform:scaleX(-1)}
+@media (max-width:820px){#drama .gunungan{opacity:.07}}
+#penutupan .gunungan{position:relative;display:block;margin:0 auto 10px;width:70px;height:91px;opacity:.8}
+/* Bingkai sudut ala ukiran pada kartu baca */
+.kertas,.kutipan-besar,.sambutan-panel{position:relative}
+.kertas::before,.kertas::after,.sambutan-panel::before,.sambutan-panel::after{content:"";position:absolute;width:22px;height:22px;border:2px solid var(--gold);pointer-events:none}
+.kertas::before,.sambutan-panel::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.kertas::after,.sambutan-panel::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+/* Pemisah judul: pita tumpal kecil di bawah judul bagian */
+h2::after{content:"";display:block;width:112px;height:12px;margin-top:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='16' viewBox='0 0 28 16'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.1'%3E%3Cpath d='M0 16 L14 1 L28 16'/%3E%3Cpath d='M6 16 L14 7 L22 16' opacity='.6'/%3E%3C/g%3E%3Ccircle cx='14' cy='12' r='1.3' fill='%23d6b56d'/%3E%3C/svg%3E") repeat-x left/21px 12px;opacity:.8}
+.tengah h2::after{margin-left:auto;margin-right:auto}
+body.ar h2::after{background-position:right}
+
+/* =========================================================
+   15. [2] SAMBUTAN DENGAN LATAR FOTO BANNER
+   ========================================================= */
+.latar-banner{background-color:var(--dark);background-image:linear-gradient(180deg,rgba(16,17,15,.15) 0,rgba(16,17,15,.55) calc(50vw - 120px),var(--dark) calc(50vw + 40px)),url("data:image/jpeg;base64,BASE64_DIHAPUS");background-repeat:no-repeat;background-size:100% auto;background-position:top center;padding-top:calc(50vw - 70px)}
+@media (min-width:1500px){.latar-banner{background-size:1500px auto;padding-top:680px;background-image:linear-gradient(180deg,rgba(16,17,15,.15) 0,rgba(16,17,15,.55) 630px,var(--dark) 790px),url("data:image/jpeg;base64,BASE64_DIHAPUS")}}
+.sambutan-grid{display:block}
+.sambutan-panel{max-width:820px;margin:0 auto;background:rgba(16,17,15,.88);border:1px solid var(--garis);padding:clamp(22px,4vw,44px);backdrop-filter:blur(3px)}
+#sambutan:not(.latar-banner) .sambutan-panel{background:var(--kartu)}
+
+/* =========================================================
+   16. MOTIF BATIK KHAS KOTA PASURUAN (tambahan)
+   - Daun Suruh (sirih): motif batik khas Kota Pasuruan,
+     melambangkan kesuburan dan kemakmuran
+   - Ombak / air: Pasuruan sebagai kota pesisir
+   - Burung Podang (kepodang): ikon khas Kota Pasuruan
+   Motif digambar ulang sebagai SVG (bukan foto dari internet),
+   terinspirasi dari ragam batik Pasedahan Suropati / batik Kota Pasuruan.
+   ========================================================= */
+main>section:not(.alt):not(.latar-banner):not(#drama){background-image:linear-gradient(rgba(16,17,15,.86),rgba(16,17,15,.86)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M48 22 C40 12 24 16 24 30 C24 44 38 54 48 70 C58 54 72 44 72 30 C72 16 56 12 48 22 Z' fill='%232f6b48' fill-opacity='.35'/%3E%3Cpath d='M48 24 V66 M48 34 C42 32 36 29 31 25 M48 34 C54 32 60 29 65 25 M48 46 C43 44 38 40 34 36 M48 46 C53 44 58 40 62 36 M48 56 C45 54 42 51 40 48 M48 56 C51 54 54 51 56 48'/%3E%3Cpath d='M48 22 C48 16 50 12 54 9'/%3E%3C/g%3E%3Cg fill='%23d6b56d'%3E%3Ccircle cx='8' cy='8' r='1.4'/%3E%3Ccircle cx='88' cy='8' r='1.4'/%3E%3Ccircle cx='8' cy='88' r='1.4'/%3E%3Ccircle cx='88' cy='88' r='1.4'/%3E%3Ccircle cx='48' cy='84' r='1.1'/%3E%3Ccircle cx='14' cy='48' r='1.1'/%3E%3Ccircle cx='82' cy='48' r='1.1'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M48 22 C40 12 24 16 24 30 C24 44 38 54 48 70 C58 54 72 44 72 30 C72 16 56 12 48 22 Z' fill='%232f6b48' fill-opacity='.35'/%3E%3Cpath d='M48 24 V66 M48 34 C42 32 36 29 31 25 M48 34 C54 32 60 29 65 25 M48 46 C43 44 38 40 34 36 M48 46 C53 44 58 40 62 36 M48 56 C45 54 42 51 40 48 M48 56 C51 54 54 51 56 48'/%3E%3Cpath d='M48 22 C48 16 50 12 54 9'/%3E%3C/g%3E%3Cg fill='%23d6b56d'%3E%3Ccircle cx='8' cy='8' r='1.4'/%3E%3Ccircle cx='88' cy='8' r='1.4'/%3E%3Ccircle cx='8' cy='88' r='1.4'/%3E%3Ccircle cx='88' cy='88' r='1.4'/%3E%3Ccircle cx='48' cy='84' r='1.1'/%3E%3Ccircle cx='14' cy='48' r='1.1'/%3E%3Ccircle cx='82' cy='48' r='1.1'/%3E%3C/g%3E%3C/svg%3E");background-size:auto,96px 96px,96px 96px;background-position:0 0,0 0,48px 48px}
+main>section::after{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='18' viewBox='0 0 60 18'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M0 12 C8 2 18 2 22 9 C25 14 20 16 17 13 M30 12 C38 2 48 2 52 9 C55 14 50 16 47 13'/%3E%3Cpath d='M0 16 H60' opacity='.5'/%3E%3C/g%3E%3C/svg%3E") repeat-x center/60px 18px;opacity:.3;pointer-events:none}
+/* Latar khusus bagian Quiz: kain batik daun suruh */
+#quiz.batik-suruh{background-color:#101a14;background-image:radial-gradient(ellipse 80% 60% at 50% 0,rgba(214,181,109,.12),transparent 70%),linear-gradient(rgba(12,20,15,.72),rgba(12,20,15,.80)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M48 22 C40 12 24 16 24 30 C24 44 38 54 48 70 C58 54 72 44 72 30 C72 16 56 12 48 22 Z' fill='%232f6b48' fill-opacity='.35'/%3E%3Cpath d='M48 24 V66 M48 34 C42 32 36 29 31 25 M48 34 C54 32 60 29 65 25 M48 46 C43 44 38 40 34 36 M48 46 C53 44 58 40 62 36 M48 56 C45 54 42 51 40 48 M48 56 C51 54 54 51 56 48'/%3E%3Cpath d='M48 22 C48 16 50 12 54 9'/%3E%3C/g%3E%3Cg fill='%23d6b56d'%3E%3Ccircle cx='8' cy='8' r='1.4'/%3E%3Ccircle cx='88' cy='8' r='1.4'/%3E%3Ccircle cx='8' cy='88' r='1.4'/%3E%3Ccircle cx='88' cy='88' r='1.4'/%3E%3Ccircle cx='48' cy='84' r='1.1'/%3E%3Ccircle cx='14' cy='48' r='1.1'/%3E%3Ccircle cx='82' cy='48' r='1.1'/%3E%3C/g%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M48 22 C40 12 24 16 24 30 C24 44 38 54 48 70 C58 54 72 44 72 30 C72 16 56 12 48 22 Z' fill='%232f6b48' fill-opacity='.35'/%3E%3Cpath d='M48 24 V66 M48 34 C42 32 36 29 31 25 M48 34 C54 32 60 29 65 25 M48 46 C43 44 38 40 34 36 M48 46 C53 44 58 40 62 36 M48 56 C45 54 42 51 40 48 M48 56 C51 54 54 51 56 48'/%3E%3Cpath d='M48 22 C48 16 50 12 54 9'/%3E%3C/g%3E%3Cg fill='%23d6b56d'%3E%3Ccircle cx='8' cy='8' r='1.4'/%3E%3Ccircle cx='88' cy='8' r='1.4'/%3E%3Ccircle cx='8' cy='88' r='1.4'/%3E%3Ccircle cx='88' cy='88' r='1.4'/%3E%3Ccircle cx='48' cy='84' r='1.1'/%3E%3Ccircle cx='14' cy='48' r='1.1'/%3E%3Ccircle cx='82' cy='48' r='1.1'/%3E%3C/g%3E%3C/svg%3E");background-size:auto,auto,96px 96px,96px 96px;background-position:0 0,0 0,0 0,48px 48px;overflow:hidden}
+#quiz .skor{background:rgba(16,26,20,.96)}
+#quiz .soal{position:relative;background:rgba(25,26,22,.94)}
+#quiz .soal::after{content:"";position:absolute;top:10px;inset-inline-end:12px;width:30px;height:30px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23d6b56d' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M48 22 C40 12 24 16 24 30 C24 44 38 54 48 70 C58 54 72 44 72 30 C72 16 56 12 48 22 Z' fill='%232f6b48' fill-opacity='.35'/%3E%3Cpath d='M48 24 V66 M48 34 C42 32 36 29 31 25 M48 34 C54 32 60 29 65 25 M48 46 C43 44 38 40 34 36 M48 46 C53 44 58 40 62 36 M48 56 C45 54 42 51 40 48 M48 56 C51 54 54 51 56 48'/%3E%3Cpath d='M48 22 C48 16 50 12 54 9'/%3E%3C/g%3E%3Cg fill='%23d6b56d'%3E%3Ccircle cx='8' cy='8' r='1.4'/%3E%3Ccircle cx='88' cy='8' r='1.4'/%3E%3Ccircle cx='8' cy='88' r='1.4'/%3E%3Ccircle cx='88' cy='88' r='1.4'/%3E%3Ccircle cx='48' cy='84' r='1.1'/%3E%3Ccircle cx='14' cy='48' r='1.1'/%3E%3Ccircle cx='82' cy='48' r='1.1'/%3E%3C/g%3E%3C/svg%3E") center/60px 60px;opacity:.55;pointer-events:none}
+#quiz .hasil{background:rgba(25,26,22,.96);position:relative}
+.podang{position:absolute;top:70px;inset-inline-end:5%;width:clamp(110px,14vw,190px);height:clamp(74px,9.5vw,127px);color:var(--gold);opacity:.35;pointer-events:none}
+.podang svg{width:100%;height:100%}
+body.ar .podang{transform:scaleX(-1)}
+@media (max-width:700px){.podang{opacity:.18;top:40px}}
+/* Sorotan & Tour: bingkai tepi bermotif ombak */
+.slider,.video-bingkai{box-shadow:0 0 0 6px var(--dark),0 0 0 7px var(--gold-tua)}
+</style>
+</head>
+<body>
+
+<!-- Ikon daun garis tipis, dipakai ulang di beberapa bagian -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="daun" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 110 C 20 50, 60 15, 110 10 C 105 60, 70 100, 10 110 Z"/><path d="M10 110 L 95 25"/><path d="M35 85 L 30 60 M50 70 L 47 45 M65 55 L 64 32 M45 76 L 70 78 M60 62 L 85 62 M75 47 L 97 45"/></g></symbol>
+  <symbol id="podang" viewBox="0 0 120 80"><g stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M20 50 C30 30 60 24 80 30 C92 22 104 24 110 30 L100 35 C96 46 84 56 66 58 C50 60 36 58 20 50 Z" fill="currentColor" fill-opacity=".18"/>
+    <path d="M44 44 C56 32 76 32 88 40 C76 47 58 51 44 44 Z" fill="currentColor" fill-opacity=".35"/>
+    <path d="M50 42 C60 38 70 38 78 41 M56 46 C64 43 72 43 80 44" fill="none"/>
+    <path d="M22 50 L3 42 L8 51 L1 60 L23 54" fill="currentColor" fill-opacity=".25"/>
+    <path d="M110 30 L119 32 L109 35" fill="currentColor"/>
+    <circle cx="99" cy="30" r="2.2" fill="currentColor"/>
+    <path d="M60 58 L56 70 M70 57 L68 70 M52 70 H62 M64 70 H74" fill="none"/>
+  </g></symbol>
+  <symbol id="gunungan" viewBox="0 0 200 260"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M100 6 C82 30 52 70 38 110 C26 145 26 180 34 206 L166 206 C174 180 174 145 162 110 C148 70 118 30 100 6 Z"/>
+    <path d="M100 18 C86 40 62 74 50 110 C40 142 40 172 46 196 L154 196 C160 172 160 142 150 110 C138 74 114 40 100 18 Z" opacity=".5"/>
+    <path d="M100 196 V52"/>
+    <path d="M100 150 C82 142 70 128 64 112 M100 150 C118 142 130 128 136 112 M100 122 C86 114 80 102 78 88 M100 122 C114 114 120 102 122 88 M100 94 C92 88 90 78 90 68 M100 94 C108 88 110 78 110 68"/>
+    <circle cx="64" cy="108" r="4"/><circle cx="136" cy="108" r="4"/><circle cx="78" cy="84" r="3.5"/><circle cx="122" cy="84" r="3.5"/><circle cx="90" cy="64" r="3"/><circle cx="110" cy="64" r="3"/><circle cx="100" cy="46" r="3"/>
+    <path d="M80 196 V176 C80 164 120 164 120 176 V196"/><path d="M100 168 V196"/>
+    <rect x="70" y="206" width="60" height="16"/><rect x="56" y="222" width="88" height="14"/><rect x="42" y="236" width="116" height="14"/>
+  </g></symbol>
+</svg>
+
+<!-- =====================================================
+     NAVIGASI STICKY
+     ===================================================== -->
+<nav class="nav" aria-label="Navigasi utama">
+  <div class="wrap nav-in">
+    <a class="logo" href="#banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.8L21 9.5l-5.2 4.4L17.6 21 12 17.2 6.4 21l1.8-7.1L3 9.5l6.6-.7z"/></svg><span>DARMOYUDO.</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#banner" data-i18n="nav.banner"></a></li>
+      <li><a href="#sambutan" data-i18n="nav.sambutan"></a></li>
+      <li><a href="#sorotan" data-i18n="nav.sorotan"></a></li>
+      <li><a href="#sejarah" data-i18n="nav.sejarah"></a></li>
+      <li><a href="#drama" data-i18n="nav.drama"></a></li>
+      <li><a href="#quiz" data-i18n="nav.quiz"></a></li>
+      <li><a href="#tour" data-i18n="nav.tour"></a></li>
+      <li><a href="#kelas9b" data-i18n="nav.kelas"></a></li>
+      <li><a href="#simpulan" data-i18n="nav.simpulan"></a></li>
+      <li><a href="#penutupan" data-i18n="nav.penutupan"></a></li>
+      <li><a href="#pembuat" data-i18n="nav.pembuat"></a></li>
+    </ul>
+    <div class="bahasa" role="group" data-i18n-aria="nav.lang">
+      <button type="button" data-lang="id" aria-pressed="true">ID</button>
+      <button type="button" data-lang="jw" aria-pressed="false">JW</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button>
+    </div>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n-aria="nav.menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+<!-- =====================================================
+     [1] BANNER
+     ===================================================== -->
+<header class="hero" id="banner">
+  <div class="gunungan" aria-hidden="true"><svg><use href="#gunungan"/></svg></div>
+  <div class="hero-content">
+    <div class="eyebrow" data-i18n="hero.eyebrow"></div>
+    <h1 data-i18n="hero.h1"></h1>
+    <p class="hero-sub" data-i18n="hero.sub"></p>
+    <p class="hero-desc" data-i18n="hero.desc"></p>
+    <a class="btn isi" href="#sejarah" data-i18n="hero.start"></a>
+    <a class="btn garis" href="#quiz" data-i18n="hero.quiz"></a>
+  </div>
+</header>
+
+<!-- =====================================================
+     [2] SAMBUTAN
+     ===================================================== -->
+<section id="sambutan" class="latar-banner">
+  <div class="wrap muncul">
+    <div class="sambutan-panel">
+      <div class="section-label" data-i18n="lbl.sambutan"></div>
+      <h2 data-i18n="welcome.title"></h2>
+      <div class="sambutan-teks" id="sambutan-isi"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     [3] SOROTAN (SLIDESHOW 5 DETIK)
+     ===================================================== -->
+<section id="sorotan">
+  <div class="wrap muncul">
+    <div class="section-label" data-i18n="lbl.sorotan"></div>
+    <h2 data-i18n="slides.title"></h2>
+    <p class="lead" data-i18n="slides.intro"></p>
+    <div class="slider" id="slider" aria-roledescription="carousel" aria-live="off">
+      <!-- slide dibuat oleh JavaScript dari daftar FOTO_SOROTAN -->
+      <button class="slide-ctrl prev" type="button" id="slide-prev" data-i18n-aria="slides.prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="slide-ctrl next" type="button" id="slide-next" data-i18n-aria="slides.next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="titik" id="titik"></div>
+    <div class="fakta-kotak" aria-live="polite"><div class="ikon">?</div><div><b data-i18n="slides.fact"></b><span id="fakta-teks"></span></div></div>
+  </div>
+</section>
+
+<!-- =====================================================
+     [4] INFORMASI SEJARAH (isi dibuat dari objek T[bahasa].hist)
+     ===================================================== -->
+<section id="sejarah" class="alt">
+  <div class="wrap muncul">
+    <div class="section-label" data-i18n="lbl.sejarah"></div>
+    <h2 data-i18n="hist.title"></h2>
+    <p class="lead" id="hist-intro"></p>
+    <div class="tab-daftar" role="tablist" id="tab-daftar"></div>
+    <div class="kertas tab-panel" role="tabpanel" id="tab-panel" tabindex="0"></div>
+  </div>
+</section>
+
+<!-- =====================================================
+     [5] DRAMA & STORYTELLING
+     ===================================================== -->
+<section id="drama">
+  <div class="gunungan ki" aria-hidden="true"><svg><use href="#gunungan"/></svg></div>
+  <div class="gunungan ka" aria-hidden="true"><svg><use href="#gunungan"/></svg></div>
+  <div class="wrap muncul">
+    <div class="tengah">
+      <div class="section-label" data-i18n="lbl.drama"></div>
+    <h2 data-i18n="drama.title"></h2>
+    </div>
+    <p class="catatan-panggung" data-i18n="drama.note"></p>
+    <div class="pemeran" id="pemeran"></div>
+    <div id="babak-daftar"></div>
+    <article class="cerita" id="cerita"></article>
+  </div>
+</section>
+
+<!-- =====================================================
+     [6] QUIZ
+     ===================================================== -->
+<section id="quiz" class="alt batik-suruh">
+  <div class="podang" aria-hidden="true"><svg><use href="#podang"/></svg></div>
+  <div class="wrap">
+    <div class="kuis">
+      <div class="section-label" data-i18n="lbl.quiz"></div>
+    <h2 data-i18n="quiz.title"></h2>
+      <p class="lead" data-i18n="quiz.intro"></p>
+      <div class="skor" aria-live="polite">
+        <div class="skor-teks">
+          <span><span data-i18n="quiz.answered"></span> <strong id="jml-jawab">0</strong> <span data-i18n="quiz.of"></span> <span id="jml-soal">20</span></span>
+          <span><span data-i18n="quiz.correct"></span> <strong id="jml-benar">0</strong></span>
+        </div>
+        <div class="bilah"><div class="bilah-isi" id="bilah-isi"></div></div>
+      </div>
+      <div id="daftar-soal"></div>
+      <div class="hasil" id="hasil" aria-live="polite">
+        <div class="hasil-angka" id="hasil-angka">0/20</div>
+        <p id="hasil-pesan"></p>
+        <button class="btn isi" id="btn-ulang" type="button" data-i18n="quiz.retry"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     [7] TOUR MAKAM
+     ===================================================== -->
+<section id="tour">
+  <div class="wrap muncul">
+    <div class="section-label" data-i18n="lbl.tour"></div>
+    <h2 data-i18n="tour.title"></h2>
+    <p class="lead" data-i18n="tour.intro"></p>
+    <div class="video-bingkai" id="video-bingkai">
+      <video controls playsinline preload="metadata" poster="data:image/jpeg;base64,BASE64_DIHAPUS">
+        <source src="data:video/mp4;base64,BASE64_DIHAPUS" type="video/mp4">
+      </video>
+    </div>
+    <h3 style="margin-top:34px;color:var(--emas)" data-i18n="tour.route"></h3>
+    <div class="rute" id="rute"></div>
+    <div class="info-lokasi">
+      <div class="kertas"><h3 data-i18n="tour.locTitle"></h3><p data-i18n="tour.loc"></p></div>
+      <div class="kertas"><h3 data-i18n="tour.etTitle"></h3><ul id="etika"></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     [8] FOTO BERSAMA KELAS 9B
+     ===================================================== -->
+<section id="kelas9b" class="alt">
+  <div class="wrap muncul">
+    <div class="tengah">
+      <div class="section-label" data-i18n="lbl.kelas"></div>
+    <h2 data-i18n="kelas.title"></h2>
+      <p class="lead" data-i18n="kelas.intro"></p>
+    </div>
+    <div class="kelas-grid">
+      <figure class="foto-utama">
+        <button type="button" id="foto-utama-btn"><img id="foto-utama" src="data:image/jpeg;base64,BASE64_DIHAPUS" alt=""></button>
+        <figcaption data-i18n="kelas.caption"></figcaption>
+      </figure>
+      <div class="foto-kecil" id="foto-kecil">
+        <button type="button" data-i="0" aria-pressed="true"><img src="data:image/jpeg;base64,BASE64_DIHAPUS" alt="" loading="lazy"></button>
+        <button type="button" data-i="1" aria-pressed="false"><img src="data:image/jpeg;base64,BASE64_DIHAPUS" alt="" loading="lazy"></button>
+        <button type="button" data-i="2" aria-pressed="false"><img src="data:image/jpeg;base64,BASE64_DIHAPUS" alt="" loading="lazy"></button>
+      </div>
+    </div>
+    <p class="petunjuk" data-i18n="kelas.hint"></p>
+  </div>
+</section>
+
+<!-- =====================================================
+     [9] SIMPULAN & PESAN
+     ===================================================== -->
+<section id="simpulan">
+  <div class="wrap muncul">
+    <div class="section-label" data-i18n="lbl.simpulan"></div>
+    <h2 data-i18n="concl.title"></h2>
+    <p class="simpulan-teks" data-i18n="concl.summary"></p>
+    <h3 style="margin-top:44px;color:var(--emas)" data-i18n="concl.moralTitle"></h3>
+    <div class="moral" id="moral"></div>
+    <blockquote class="kutipan-besar" data-i18n="concl.reflect"></blockquote>
+    <h3 style="color:var(--emas)" data-i18n="concl.msgTitle"></h3>
+    <ul class="pesan" id="pesan"></ul>
+  </div>
+</section>
+
+<!-- =====================================================
+     [10] PENUTUPAN
+     ===================================================== -->
+<section id="penutupan" class="alt">
+  <div class="wrap muncul tengah">
+    <div class="gunungan" aria-hidden="true"><svg><use href="#gunungan"/></svg></div>
+    <div class="section-label" data-i18n="lbl.penutupan"></div>
+    <h2 data-i18n="closing.title"></h2>
+    <div class="penutup-teks" id="penutup-isi"></div>
+  </div>
+</section>
+
+<!-- =====================================================
+     [11] PEMBUAT / DEVELOPER
+     ===================================================== -->
+<section id="pembuat">
+  <div class="wrap muncul">
+    <div class="tengah">
+      <div class="section-label" data-i18n="lbl.pembuat"></div>
+    <h2 data-i18n="dev.title"></h2>
+      <p class="lead" data-i18n="dev.intro"></p>
+    </div>
+    <div class="dev" id="dev"></div>
+  </div>
+</section>
+</main>
+
+<footer><p data-i18n="dev.footer"></p></footer>
+
+<button class="ke-atas" id="ke-atas" type="button" data-i18n-aria="nav.top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 15l7-7 7 7"/></svg></button>
+
+<!-- Lightbox untuk galeri foto -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-btn lb-tutup" id="lb-tutup" type="button" data-i18n-aria="tour.close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-btn lb-prev" id="lb-prev" type="button" data-i18n-aria="slides.prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <figure><img id="lb-img" src="" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lb-btn lb-next" id="lb-next" type="button" data-i18n-aria="slides.next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+
+<script>
+/* =========================================================
+   A. TERJEMAHAN — semua teks website ada di objek T.
+      T.id = Indonesia, T.jw = Jawa, T.en = English, T.ar = Arab.
+      Untuk mengubah teks, cari kuncinya di bawah ini.
+   ========================================================= */
+const T = {};
+/* ---------- BAHASA INDONESIA ---------- */
+T.id = {
+meta:{title:"Mbah Darmoyudo II – Website Edukasi Sejarah Kelas 9B"},
+nav:{banner:"Beranda",sambutan:"Sambutan",sorotan:"Sorotan",sejarah:"Sejarah",drama:"Drama",quiz:"Quiz",tour:"Tour Makam",kelas:"Kelas 9B",simpulan:"Simpulan",penutupan:"Penutup",pembuat:"Pembuat",menu:"Buka menu",top:"Kembali ke atas",lang:"Pilih bahasa"},
+lbl:{sambutan:"Kelas 9B",sorotan:"Dokumentasi",sejarah:"Fakta Sejarah",drama:"Panggung",quiz:"Uji Pemahaman",tour:"Kunjungan",kelas:"Kenangan",simpulan:"Pelajaran",penutupan:"Terima Kasih",pembuat:"Tim Pengembang"},
+hero:{eyebrow:"Warisan Sejarah • Kota Pasuruan",h1:"Mbah <span>Darmoyudo</span> II",desc:"Mengenal Tumenggung setia Mataram yang menjaga kota pelabuhan Pasuruan dari serangan Blambangan dan Buleleng, karya siswa kelas 9B.",alt:"Banner bertuliskan Mbah Dharmo Yudho, Pasoeroean",sub:"Bupati Pasuruan ke-2 • 1645–1657 • Dukuh Porodeso, Kota Pasuruan",start:"Mulai Belajar",quiz:"Kerjakan Quiz"},
+welcome:{title:"Sambutan",
+ greet:"Assalamu’alaikum warahmatullahi wabarakatuh, dan salam sejahtera bagi kita semua.",
+ paras:[
+  "Puji syukur kami panjatkan ke hadirat Allah SWT, karena atas rahmat-Nya kami, siswa kelas 9B, dapat menyelesaikan website edukasi sejarah ini sebagai bagian dari pembelajaran sejarah berbasis STEM.",
+  "Website ini kami buat untuk mengenalkan Mbah Darmoyudo II (Kyai Ageng Dermoyudo II), Bupati Pasuruan ke-2 yang memerintah tahun 1645–1657, sebagai tokoh sejarah lokal Kota Pasuruan. Kami mengumpulkan informasi dari buku silsilah keluarga, papan makam, dan catatan sejarah, lalu menyajikannya dalam bentuk materi, drama, kuis, dan tour makam.",
+  "Terima kasih kepada bapak dan ibu guru pembimbing yang telah membimbing kami dengan sabar. Selamat menjelajah. Semoga website ini menambah pengetahuan dan rasa cinta kita pada sejarah daerah sendiri."],
+ sign:"Tim pembuat, siswa kelas 9B"},
+slides:{title:"Sorotan",intro:"Foto dokumenter dari dalam cungkup makam dan kegiatan kelas 9B. Foto berganti setiap 5 detik; arahkan kursor ke foto untuk berhenti.",prev:"Foto sebelumnya",next:"Foto berikutnya",go:"Ke foto",fact:"Tahukah kamu?",
+ caps:["Cungkup makam bernuansa hijau dengan papan kaligrafi Basmalah, syahadat, dan Ayat Kursi.","Nisan kayu berukir dan jirat berwarna emas, dengan jendela kayu berkawat di sisi kanan.","Papan kaligrafi Ayat Kursi dan jendela kayu berkawat di sisi kiri cungkup.","Jirat berlapis keramik hijau dengan nisan kayu berukir dan hiasan berwarna emas.","Jendela kayu berkawat yang menghadap halaman di sekitar cungkup.","Kelas 9B berfoto bersama di depan gedung sekolah.","Gaya bingkai jari bersama teman sekelas.","Kompak menunjuk ke tengah: keceriaan kelas 9B."]},
+hist:{title:"Informasi Sejarah Mbah Darmoyudo",
+ intro:"Bagian ini berisi fakta sejarah, bukan naskah drama. Label <span class=\"lbl fakta\">Fakta tercatat</span> menandai informasi dari catatan tertulis, sedangkan <span class=\"lbl tutur\">Tutur lisan / dramatisasi</span> menandai kisah yang bersumber dari cerita turun-temurun.",
+ badgeFact:"Fakta tercatat",badgeOral:"Tutur lisan / dramatisasi",
+ a:{tab:"Sekilas",title:"Sekilas",
+  paras:["Kyai Ageng Dermoyudo II memimpin Pasuruan selama sekitar 12 tahun (1645–1657) sebagai Tumenggung yang setia kepada Kesultanan Mataram. Di masa itu Pasuruan adalah kota pelabuhan yang ramai dan diperebutkan banyak pihak. Ia menghalau serangan dari Blambangan di timur dan Buleleng di Bali, sebelum gugur saat Pasuruan diserang dari arah Surabaya pada 1657.","Namanya kini melekat pada sebuah kampung di Kota Pasuruan: Kampung Dermoyudo, tempat ia dimakamkan."],
+  head:["Fakta","Keterangan"],
+  rows:[["Nama","Kyai Ageng Dermoyudo II"],["Dikenal sebagai","Mbah Darmoyudho, Ki Gede Dermoyudo II"],["Jabatan","Tumenggung dan penguasa wilayah Pasuruan, Bupati Pasuruan ke-2"],["Masa pemerintahan","1645–1657 (sebagian catatan silsilah menulis 1646–1657)"],["Sezaman dengan","Sunan Amangkurat I, raja Mataram (dimakamkan di Tegalarum)"],["Ayah","Kyai Ageng Dermoyudo I, bekas panglima perang Sultan Agung"],["Jasa utama","Menghalau serangan Raja Blambangan dan Raja Buleleng (Bali)"],["Makam","Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo, Kota Pasuruan"]],
+  spell:"Website ini memakai ejaan utama <b>Darmoyudo</b>, sesuai papan makam. Ejaan lain yang juga dipakai adalah Dermoyudo, Darmoyudho, dan Dharmo Yudho."},
+ b:{tab:"Asal-usul & Silsilah",title:"Asal-usul dan Silsilah",
+  intro:"Menurut buku silsilah keluarga, Dermoyudo II berasal dari trah (garis keturunan) Menak Werdati, dengan akar keluarga di Madura. Kakeknya lahir di Pegantenan, Pamekasan, lalu keluarga ini berkiprah di Mataram dan akhirnya berkuasa di Pasuruan.",
+  treeTitle:"Bagan pohon keluarga",
+  tree:[["Arya Pegantenan","Kakek • lahir di Pegantenan, Pamekasan"],["Kyai Ageng Dermoyudo I","Ayah • panglima perang Sultan Agung"],["Kyai Ageng Dermoyudo II","Tokoh utama • Tumenggung Pasuruan 1645–1657"],["Dermoyudo III (Mas Pekik)","Anak • penguasa Pasuruan 1657–1671"],["Kyai Tumenggung Mangkuyudo","Anak • Tumenggung masa Amangkurat I"],["Kyai Onggojoyo (Dermoyudo IV)","Cucu • penguasa Pasuruan 1671–1686"]],
+  genHead:["Generasi","Tokoh","Peran dan catatan"],
+  genRows:[["Kakek","Arya Pegantenan","Lahir di Pegantenan, Kabupaten Pamekasan, Madura. Dimakamkan di Sentono Gribig, Malang."],["Ayah","Kyai Ageng Dermoyudo I","Senopati atau panglima perang Sultan Agung dari Mataram (1613–1646) bergelar Raden Tumenggung. Menaklukkan Ki Gede Kapulungan, penguasa Pasuruan sebelumnya, lalu memerintah Pasuruan dengan gelar Ki Gede Dermoyudo I. Dimakamkan di Pesarean Mancilan, Pasuruan."],["Tokoh utama","Kyai Ageng Dermoyudo II","Tumenggung dan penguasa Pasuruan (1645/1646–1657)."],["Anak","Kyai Tumenggung Dermoyudo III (Mas Pekik)","Penguasa Pasuruan (1657–1671). Wafat di Kediri setelah mengikuti perlawanan Trunojoyo, dimakamkan di Sentono Betek, Kampung Pandean, Kota Kediri."],["Anak","Kyai Tumenggung Mangkuyudo","Bergelar Tumenggung pada masa Amangkurat I. Wafat 1677 saat mengikuti perlawanan Trunojoyo, dimakamkan di Sentono Betek, Kediri."],["Cucu","Ki Dermoyudo IV (Kyai Onggojoyo)","Penguasa Pasuruan (1671–1686). Dimakamkan di Desa Brebek, Nganjuk."]],
+  levelsTitle:"Mengenal 10 tingkatan keturunan dalam budaya Jawa",
+  levelsIntro:"Buku silsilah ini disusun mengikuti pakem Kasunanan Surakarta, yaitu Serat Piagem Sentana. Setiap generasi di bawah leluhur (disebut pancer) punya nama sendiri:",
+  levelsHead:["Tingkat","Sebutan"],
+  levels:["Anak (putra)","Cucu","Buyut","Canggah","Wareng","Udeg-udeg","Gantung siwur","Gropak senthe","Gedebog bosok","Galih asem"],
+  levelsNote:"Dengan sistem ini, Dermoyudo II tercatat sebagai tingkat ke-8 (gropak senthe) dari Menak Werdati, sekaligus tingkat ke-1 (putra) dari Kyai Ageng Dermoyudo I."},
+ c:{tab:"Masa Pemerintahan",title:"Masa Pemerintahan dan Perjuangan (1645–1657)",
+  intro:"Dermoyudo II naik takhta sebagai Tumenggung Pasuruan menggantikan ayahnya, dengan kedudukan yang menurut buku silsilah setara dengan masa Sunan Amangkurat I di Mataram. Selama 12 tahun ia menjaga Pasuruan dari tiga arah ancaman.",
+  whyTitle:"Mengapa Pasuruan diperebutkan?",
+  why:["Pasuruan sudah dikenal sebagai pelabuhan sejak zaman Airlangga dengan nama Paravan. Letaknya strategis sebagai pelabuhan transit dan pasar dagang antarpulau, bahkan antarnegara. Banyak bangsawan dan saudagar kaya menetap di sana, sehingga siapa pun yang menguasai Pasuruan menguasai jalur dagang di ujung timur Jawa.","Pasuruan juga punya sejarah panjang dengan Blambangan. Setelah ditaklukkan Sultan Trenggono dari Demak pada 1545, Pasuruan menjadi kekuatan Islam penting di timur Jawa dan berulang kali berperang dengan Blambangan. Pada 1601, Pasuruan bahkan berhasil merebut ibu kota Blambangan."],
+  threatsTitle:"Tiga ancaman yang dihadapi",
+  threats:[["Timur","Raja Blambangan","Berhasil dihalau. Tercatat sebagai jasa Dermoyudo II kepada Mataram."],["Seberang laut (Bali)","Raja Buleleng","Berhasil dihalau. Juga tercatat sebagai jasa kepada Mataram."],["Barat (1657)","Serangan dari arah Surabaya","Dermoyudo II gugur. Penguasa berikutnya, Mas Pekik, memerintah Pasuruan dengan gelar Kiai Dermoyudo hingga wafat pada 1671."]],
+  pekikTitle:"Siapa Mas Pekik? Ada dua versi",
+  pekikIntro:"Sumber-sumber berbeda pendapat. Website ini menampilkan keduanya tanpa memilih salah satu.",
+  vA:["Versi A: naskah drama dan sejarah kota","Mas Pekik adalah penguasa Surabaya yang menyerang Pasuruan pada 1657 dan menyebabkan Dermoyudo II gugur."],
+  vB:["Versi B: bagan silsilah keluarga","Mas Pekik adalah putra Dermoyudo II, bergelar Kyai Tumenggung Dermoyudo III."],
+  endTitle:"Akhir hayat",
+  end:"Dermoyudo II wafat pada 1657 dan dimakamkan di kampung yang kini memakai namanya, Kampung Dermoyudo, Kelurahan Purworejo, Kota Pasuruan. Papan di gerbang makamnya mencatat: Makam Darmoyudo, Bupati Pasuruan ke-II, 1645–1657, Dukuh Porodeso."},
+ d:{tab:"Para Penerus",title:"Para Penerus Trah Dermoyudo",
+  intro:"Setelah Dermoyudo II, gelar dan perjuangan keluarga ini berlanjut lewat beberapa generasi. Banyak di antara mereka melawan kekuasaan VOC (Belanda), sebagian sampai harus menyamar.",
+  blocks:[
+   {h:"Dermoyudo III dan Mangkuyudo: ikut perlawanan Trunojoyo",p:["Kyai Tumenggung Dermoyudo III (Mas Pekik) memerintah Pasuruan pada 1657–1671. Ia dan saudaranya, Kyai Tumenggung Mangkuyudo, ikut dalam perlawanan Raden Trunojoyo (1676–1679) terhadap Mataram dan VOC. Keduanya wafat dan dimakamkan di Sentono Betek, Kediri; Mangkuyudo tercatat wafat pada 1677."]},
+   {h:"Dermoyudo IV (Kyai Onggojoyo): Pasuruan dibumihanguskan",p:["Kyai Onggojoyo memerintah Pasuruan pada 1671–1686. Ia bersekutu dengan bangsawan Bugis-Makassar yang lari setelah kalah perang melawan VOC di Makassar, di antaranya Karaeng Galesong. Pada 1678, ketika VOC menyerang, Kota Pasuruan dibumihanguskan.","Untuk menghindari kejaran, Onggojoyo menyamar menjadi demang di Seroja, wilayah Sidoarjo. Ia kemudian menyerahkan kekuasaan Pasuruan kepada Untung Suropati."]},
+   {h:"Untung Suropati: dua puluh tahun melawan VOC",p:["Untung Suropati berasal dari Bali dan pernah menjadi budak, lalu berbalik melawan Belanda. Ia terkenal setelah menewaskan Kapten Tack di Kartasura. Pada 8 Februari 1686, atas perintah Pangeran Nerangkusuma dengan restu raja Mataram, ia berangkat ke Pasuruan dan menjadi adipati bergelar Raden Adipati Wironegoro.","Pemerintahannya (1686–1706) dipenuhi pertempuran melawan VOC, tetapi tetap berjalan baik dan membangkitkan semangat juang rakyat. VOC akhirnya bekerja sama dengan putra Onggojoyo untuk menyerangnya. Untung Suropati terluka berat dan wafat pada 1706. Putranya, Rakhmad, meneruskan perjuangan ke timur dan gugur pada 1707.","Letak makam Untung Suropati belum diketahui pasti. Namun di Pedukuhan Mancilan, Kota Pasuruan, ada petilasan berupa gua yang dipercaya sebagai tempat persembunyiannya."]}],
+  descTitle:"Dermoyudo V dan keturunan di Surabaya",
+  descIntro:"Generasi berikutnya menyebar ke Surabaya, Malang, Mojokerto, dan Lamongan. Beberapa tokoh yang tercatat:",
+  descHead:["Tokoh","Peran"],
+  descRows:[["Ki Dermoyudo V (Raden Ismail)","Patih di Surabaya. Memakai nama samaran Kromowidjoyo untuk mengelabui VOC, karena keturunan Dermoyudo dianggap pemberontak."],["Raden Tumenggung Kromodjoyodirono (Raden Bagus Glundung)","Bupati Surabaya 1819–1825, dijuluki Kanjeng Permen."],["Raden Bagus Anom Kromodjoyo Adinegoro II (Kanjeng Genteng)","Bupati Surabaya 1831–1859. Menjadi imam tetap salat Jumat di Masjid Sunan Ampel, wafat 1861."],["Raden Adipati Arya Kromodjoyo Adinegoro III (Raden Aersadan)","Bupati Lamongan 1863–1866, lalu Bupati Surabaya 1866–1894."]],
+  descNote:"Julukan Kanjeng Genteng berasal dari letak kediaman bupati di kawasan Genteng, Surabaya. Bangunan pendopo kabupatennya kini menjadi cagar budaya dan pusat kebudayaan Surabaya."},
+ e:{tab:"Linimasa Pasuruan",title:"Linimasa Sejarah Kota Pasuruan",
+  intro:"Pasuruan sudah berganti penguasa berkali-kali selama lebih dari seribu tahun, dari pelabuhan kuno Paravan sampai Kota Pasuruan dengan 34 kelurahan. Kisah Darmoyudo II (disorot hijau) hanyalah satu babak di dalamnya.",
+  rows:[["Masa Airlangga (abad ke-11)","Pasuruan dikenal sebagai pelabuhan bernama Paravan."],["Awal abad ke-16","Wilayah yang disebut Gembong atau Gamda dipimpin Pate Supetak, yang dalam Babad Pasuruan disebut pendiri ibu kota Pasuruan."],["1545","Ditaklukkan Sultan Trenggono dari Demak dan menjadi kekuatan Islam di timur Jawa."],["1601","Pasuruan merebut ibu kota Blambangan."],["1617–1645","Masa Kyai Gede Dermoyudo I."],["1645–1657","Masa Kyai Ageng Dermoyudo II."],["1657–1671","Masa Mas Pekik (Kiai Dermoyudo III)."],["1671–1686","Masa Kyai Onggojoyo (Dermoyudo IV). Pasuruan dibumihanguskan pada 1678."],["1686–1706","Untung Suropati memerintah sebagai Raden Adipati Wironegoro."],["1707","Onggojoyo (putra) menjadi Adipati Pasuruan."],["1743","Raden Ario Wironegoro berkuasa, lalu digulingkan patihnya, Kiai Ngabai Wongsonegoro, atas bujukan Belanda. Sejak itu Belanda memegang kekuasaan."],["Masa Belanda","Pasuruan menjadi ibu kota karesidenan yang membawahi Malang, Probolinggo, Lumajang, dan Bangil. Wongsonegoro diangkat menjadi bupati bergelar Tumenggung Nitinegoro."],["27 Juli 1751","Raden Groedo, baru berusia 11 tahun, menjadi bupati bergelar Kiai Adipati Nitiadiningrat. Ia memimpin 48 tahun dan mendirikan Masjid Agung Al Anwar bersama Kiai Hasan Sanusi (Mbah Slagah)."],["28 Februari 1800","Raden Beji Notokoesoemo menjadi bupati bergelar Tumenggung Nitiadiningrat II."],["1809","Raden Pandjie Brongtokoesoemo menjadi Raden Adipati Nitiadiningrat III (wafat 30 Januari 1833, dimakamkan di belakang Masjid Al Anwar)."],["Hingga 20 Juli 1887","Masa Raden Tumenggung Ario Nitiadiningrat IV. Nitiadiningrat I–IV dikenal masyarakat sebagai Mbah Surga-Surgi."],["1 Januari 1901","Terbentuk Residensi Pasuruan."],["20 Juni 1918","Terbentuk Stads Gemeente van Pasoeroean (Kotapraja) berdasarkan Staatsblad 1918 No. 320."],["14 Agustus 1950","Kotamadya Pasuruan menjadi daerah otonom."],["21 Desember 1982","Kotamadya diperluas menjadi 3 kecamatan."],["1999","Berdasarkan UU No. 22 Tahun 1999, sebutan Kotamadya Pasuruan berubah menjadi Kota Pasuruan."],["12 Januari 2002","Seluruh desa berubah status menjadi kelurahan (Perda No. 10 Tahun 2002), sehingga Kota Pasuruan terdiri dari 34 kelurahan."]]},
+ f:{tab:"Jejak Sejarah",title:"Jejak yang Bisa Dikunjungi",
+  intro:"Empat situs terkait trah Dermoyudo ada di Kota Pasuruan sendiri, sehingga bisa dijadikan rute jelajah sejarah dalam satu hari.",
+  head:["Situs","Lokasi","Kaitannya"],
+  rows:[["Makam Darmoyudo","Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo, Kota Pasuruan","Makam Kyai Ageng Dermoyudo II. Gerbangnya berpapan nama “Makam Darmoyudo, Bupati Pasuruan ke-II, 1645–1657”."],["Pesarean Mancilan","Mancilan, Kota Pasuruan","Makam Kyai Ageng Dermoyudo I, ayah Dermoyudo II."],["Petilasan Untung Suropati","Pedukuhan Mancilan, Kota Pasuruan","Gua yang dipercaya sebagai tempat persembunyian Untung Suropati dari kejaran Belanda."],["Masjid Agung Al Anwar","Pusat Kota Pasuruan","Didirikan Kiai Adipati Nitiadiningrat bersama Kiai Hasan Sanusi; di belakangnya dimakamkan Nitiadiningrat III."]],
+  outside:"Di luar Pasuruan, jejak keluarga ini juga ada di Sentono Betek, Kediri (makam Dermoyudo III dan Mangkuyudo), Desa Brebek, Nganjuk (makam Dermoyudo IV), dan Sentono Gribig, Malang (makam Arya Pegantenan).",
+  etiquette:"<strong>Etika ziarah:</strong> jaga sikap sopan, berpakaian rapi, dan minta izin kepada juru kunci sebelum memotret."},
+ g:{tab:"Catatan Domis 1830",title:"Pasuruan Sesudah Masa Darmoyudo: Catatan Residen Domis (1830)",
+  intro:"Sekitar 173 tahun setelah Darmoyudo II wafat, Residen Belanda H. J. Domis mencatat keadaan Pasuruan pada 1830. Catatan ini tidak bercerita tentang Darmoyudo, tetapi memperlihatkan apa yang terjadi pada wilayah yang dulu ia pertahankan: Pasuruan tetap menjadi pusat pertanian dan perdagangan, tetapi kini sepenuhnya di bawah kekuasaan Belanda.",
+  warnTitle:"Perhatian:",warn:"Domis adalah pejabat kolonial, jadi penilaiannya tentang sifat masyarakat tidak netral dan tidak boleh digeneralisasi ke seluruh orang Jawa, Madura, atau Pasuruan. Karena itu, semua isi di bawah ini ditulis “menurut catatan Domis”.",
+  t1Title:"Wilayah yang dipertahankan Darmoyudo, dua abad kemudian",
+  t1Head:["Menurut catatan Domis (1830)","Kaitannya dengan kisah Darmoyudo"],
+  t1Rows:[["Pada 1829 Pasuruan mengekspor sekitar 80.000 pikul kopi dan 17.000 pikul gula, serta tembakau. Ada pabrik gula milik C. Vos dan Han Kikko.","Menegaskan mengapa Pasuruan diperebutkan sejak abad ke-17. Kekayaan wilayah yang dulu dijaga Darmoyudo kini mengalir ke pemerintah kolonial."],["Pasuruan terhubung jalan dan jaringan dagang dengan Bangil dan Malang; hasil bumi dikirim ke berbagai wilayah Nusantara.","Peran Pasuruan sebagai simpul dagang, yang sudah ada sejak masa pelabuhan Paravan, terus bertahan."],["Penduduknya beragam: Jawa, Madura, Tionghoa, Arab, Melayu, Eropa, serta masyarakat Tengger.","Sejalan dengan Pasuruan sebagai kota pelabuhan majemuk. Leluhur trah Darmoyudo sendiri berasal dari Madura."],["Pasuruan dipimpin seorang Residen Belanda.","Kontras dengan sikap Darmoyudo yang menolak tunduk pada penguasa luar. Sejak 1743 kekuasaan sudah dipegang Belanda (lihat Linimasa)."]],
+  t2Title:"Nilai karakter: catatan Domis dan teladan Darmoyudo",
+  t2Intro:"Analisis atas catatan Domis memetik nilai terpuji dan tidak terpuji dari perilaku yang ia gambarkan. Nilai-nilai itu bisa disandingkan dengan teladan dari kisah Darmoyudo untuk bahan diskusi di kelas.",
+  t2Head:["Nilai","Menurut catatan Domis (1830)","Teladan dari kisah Darmoyudo"],
+  t2Rows:[["Cinta damai","Orang Jawa digambarkan tidak menyukai perang.","Berperang hanya untuk mempertahankan Pasuruan, bukan untuk menaklukkan wilayah lain."],["Taat dan setia","Disebut sebagai sifat yang terlihat pada sebagian masyarakat.","Setia pada amanah menjaga rakyat dan pada Mataram."],["Kerja keras dan tekun","Penduduk rajin bertani, menenun, dan membuat kerajinan emas, perak, tanah liat, dan batu.","Tidak menyerah walau diserang dari timur, Bali, dan barat."],["Dendam dan kekejaman (tidak terpuji)","Domis menilai dendam bisa mendorong tindakan kejam.","Dalam kisahnya ia bertahan, bukan membalas: “Pasuruan bukan untuk ditaklukkan, tetapi untuk dijaga.”"],["Perjudian dan pencurian (tidak terpuji)","Sabung ayam, judi, dan pencurian ternak dicatat sebagai persoalan sosial.","Mendahulukan keselamatan rakyat di atas kepentingan pribadi."]],
+  note:"Ingat juga: catatan 1830 menggambarkan Pasuruan dua abad setelah Darmoyudo, bukan keadaan pada masa hidupnya."},
+ h:{tab:"Tahukah Kamu?",title:"Tahukah Kamu?",intro:"Fakta-fakta singkat untuk membuka diskusi di kelas.",
+  facts:["Nama Dermoyudo bukan nama satu orang, melainkan gelar yang diwariskan. Tercatat setidaknya lima tokoh bergelar Dermoyudo, dari Dermoyudo I sampai Dermoyudo V.","Ayah Mbah Darmoyudo adalah panglima perang Sultan Agung, raja terbesar Mataram.","Leluhur keluarga ini berasal dari Pegantenan, sebuah kecamatan di Pamekasan, Pulau Madura.","Dua putra Dermoyudo II ikut perlawanan Trunojoyo, salah satu pemberontakan terbesar terhadap Mataram dan VOC pada abad ke-17.","Cucunya, Kyai Onggojoyo, bersekutu dengan pejuang Bugis-Makassar yang lari dari Makassar setelah kalah melawan VOC.","Salah satu keturunannya harus berganti nama menjadi Kromowidjoyo agar tidak dikenali VOC sebagai keturunan “pemberontak” Dermoyudo.","Bupati Pasuruan Kiai Adipati Nitiadiningrat diangkat saat baru berusia 11 tahun, lalu memimpin selama 48 tahun.","Orang Jawa punya nama untuk 10 tingkat keturunan. Keturunan ke-10 disebut galih asem.","Pada zaman Airlangga, Pasuruan disebut Paravan."]},
+ i:{tab:"Sumber & Versi",title:"Catatan Sumber dan Perbedaan Versi",
+  intro:"Ada empat titik di mana sumber-sumber saling berbeda. Keempatnya sebaiknya dicek ke juru kunci makam atau Dinas Kebudayaan Kota Pasuruan.",
+  head:["Topik","Versi A","Versi B","Sikap website"],
+  rows:[["Siapa Mas Pekik","Naskah drama dan bagian sejarah kota: penguasa Surabaya yang menyerang Pasuruan dan menyebabkan Dermoyudo II gugur (1657).","Bagan silsilah: putra Dermoyudo II, bergelar Kyai Tumenggung Dermoyudo III.","Menampilkan kedua versi tanpa memilih salah satu."],["Tahun mulai memerintah","Papan makam dan bagian sejarah kota: 1645.","Bagan silsilah: 1646.","Memakai 1645 (sesuai papan resmi) dengan catatan kecil."],["Siapa Dermoyudo I","Bagan silsilah: panglima Sultan Agung yang menaklukkan Ki Gede Kapulungan, dimakamkan di Pesarean Mancilan, Pasuruan.","Bagian sejarah kota: Ki Gede Kapulungan sendiri yang bergelar Dermoyudo I, lalu lari dan dimakamkan di Bibis, Surabaya.","Ditulis “menurut buku silsilah keluarga” sambil menunggu verifikasi."],["Ejaan nama","Darmoyudo, Darmoyudho, Dharmo Yudho","Dermoyudo, Dermoyudho","Ejaan utama Darmoyudo (sesuai papan makam)."]],
+  oral:"Kisah tiga serangan (Blambangan, Buleleng, Mas Pekik) sebagian besar bersumber dari catatan keluarga dan tutur lisan, sehingga diberi label tutur lisan.",
+  pekik:"<strong>Petunjuk tambahan soal Mas Pekik:</strong> tokoh terkenal Pangeran Pekik dari Surabaya tinggal di istana Mataram sejak 1633 dan dibunuh atas perintah Amangkurat I pada 1659. Karena sudah wafat pada 1659, ia tidak mungkin memerintah Pasuruan sampai 1671. Jadi Mas Pekik penguasa Pasuruan adalah orang lain. Hal ini membuat versi silsilah lebih masuk akal, tetapi tetap perlu dikonfirmasi.",
+  srcTitle:"Sumber yang dipakai",
+  sources:["Buku <i>Silsilah Keturunan dan Sejarah Kyai Ageng Dermoyudo II</i>, termasuk bagian “Sejarah Kota Pasuruan dan Perjuangan Untung Suropati dan Dermoyudo I dan II”.","Silsilah dasar yang dirujuk buku tersebut: susunan R. Tumenggung Arya Notoadikoesoemo dan Yayasan Sentono Boto Putih Surabaya, R. Bagus Yasin (10 Maret 1960), dan R. Panji Arya Makmoer (1 Agustus 1966).","Papan nama di gerbang Makam Darmoyudo, Dukuh Porodeso.","Naskah <i>Bilingual Drama Mbah Darmoyudo</i> (untuk bagian drama dan cerita).","Ratih Kirana Suryo Puteri dan Dian Soni Amellia (alih bahasa), <i>Pasuruan 1830: Catatan H. J. Domis</i>, Perpusnas Press, 2019/2020."]}
+},
+drama:{title:"Drama & Storytelling",
+ note:"Bagian ini adalah naskah drama berdasarkan tutur dan catatan keluarga, bukan catatan sejarah resmi.",
+ roles:{narr:"Narator",darmo:"Mbah Darmoyudo",rakyat:"Rakyat",ub:"Utusan Blambangan",ubl:"Utusan Buleleng",ump:"Utusan Mas Pekik",all:"Semua Pemeran"},
+ scenes:[
+  {t:"Kedatangan & Amanah",s:"Babak 1 • The Arrival and the Duty",lines:[["narr","Pada abad ke-17, Pasuruan merupakan wilayah strategis yang sering menjadi incaran.\nSeorang bangsawan bernama Mbah Darmoyudo datang dan mengabdikan dirinya untuk menjaga Pasuruan."],["darmo","Aku tidak datang untuk kemuliaan pribadi,\ntetapi untuk menjalankan amanah dan menjaga rakyat Pasuruan."]]},
+  {t:"Menjadi Tumenggung",s:"Babak 2 • The Leader of Pasuruan",lines:[["narr","Karena kebijaksanaan dan ketegasannya,\nMbah Darmoyudo dipercaya menjadi Tumenggung Pasuruan,\ndikenal pula sebagai Ki Gede Darmoyudo."],["rakyat","Kami merasa aman di bawah kepemimpinanmu, Mbah."]]},
+  {t:"Serangan Raja Blambangan",s:"Babak 3 • The Attack from Blambangan",lines:[["narr","Kedamaian Pasuruan terganggu ketika Raja Blambangan berusaha menyerang wilayah ini."],["ub","Serahkan Pasuruan kepada Raja Blambangan!"],["darmo","Pasuruan bukan untuk ditaklukkan,\ntetapi untuk dijaga."],["narr","Dengan strategi dan keberanian,\nMbah Darmoyudo berhasil menghalau serangan Raja Blambangan."]]},
+  {t:"Serangan Raja Buleleng",s:"Babak 4 • The Attack from Buleleng",lines:[["narr","Ancaman kembali datang dari timur.\nRaja Buleleng dari Bali mencoba menaklukkan Pasuruan."],["ubl","Pasuruan akan menjadi wilayah kami!"],["darmo","Selama rakyat masih berdiri bersamaku,\nPasuruan tidak akan jatuh."],["narr","Dengan kepemimpinan yang kuat,\nMbah Darmoyudo kembali menghalau serangan Raja Buleleng."]]},
+  {t:"Serangan dari Mas Pekik (Surabaya)",s:"Babak 5 • The Attack from Mas Pekik of Surabaya",lines:[["narr","Ancaman terbesar datang dari barat.\nPasuruan diserang oleh Mas Pekik dari Surabaya,\nseorang penguasa kuat yang ingin memperluas wilayahnya."],["ump","Mas Pekik menuntut Pasuruan tunduk kepada Surabaya!"],["darmo","Aku tidak akan menyerahkan Pasuruan,\nselama napas masih ada di tubuhku."],["narr","Peperangan besar pun terjadi.\nDalam serangan ini, Mbah Darmoyudo berjuang dengan seluruh kekuatannya\ndemi mempertahankan Pasuruan."]]},
+  {t:"Akhir Hayat & Warisan",s:"Babak 6 • The Legacy",lines:[["narr","Setelah perjuangan panjang menjaga Pasuruan,\nMbah Darmoyudo wafat dan dimakamkan di\nKampung Dermoyudo, Kelurahan Purworejo, Kota Pasuruan.\nJasanya dikenang sepanjang masa."],["all","Mbah Darmoyudo, penjaga Pasuruan.\nNamamu hidup dalam sejarah."]]}]},
+story:{title:"Storytelling: Sang Penjaga Pasuruan",
+ parts:[
+  ["p","Dahulu kala, pada abad ke-17, ada sebuah negeri damai bernama Pasuruan. Negeri itu penuh keindahan, harapan, dan kehidupan… tetapi juga terus diancam kerajaan-kerajaan kuat yang ingin menaklukkannya."],
+  ["p","Di masa yang penuh ketidakpastian itu, ketika rasa takut bisa dengan mudah menguasai, datanglah seorang lelaki. Ia bukan raja. Ia bukan penakluk. Ia sesuatu yang jauh lebih besar. Namanya Mbah Darmoyudo."],
+  ["p","Ia datang tanpa keinginan akan kekuasaan atau kemuliaan. Ia membawa satu tujuan sederhana di hatinya: melindungi."],
+  ["q","“Aku tidak datang untuk memerintah,” katanya suatu kali. “Aku datang untuk mengabdi dan menjaga negeri ini.”"],
+  ["p","Kebijaksanaan, keberanian, dan ketulusannya segera membuat rakyat percaya. Tak lama kemudian ia diangkat menjadi pemimpin Pasuruan dengan sebutan Tumenggung, dan orang-orang mulai memanggilnya Ki Gede Darmoyudo."],
+  ["p","Di bawah kepemimpinannya, Pasuruan berkembang. Rakyat merasa aman. Harapan tumbuh makin kuat setiap hari."],
+  ["p","Namun kedamaian… tidak pernah abadi."],
+  ["p","Dari timur datang ancaman besar pertama: Raja Blambangan yang perkasa. Dengan percaya diri dan penuh ambisi, ia mengirim pesan yang menuntut Pasuruan menyerah. Ketakutan menyebar di antara rakyat. Tetapi Mbah Darmoyudo tetap tenang dan teguh."],
+  ["q","“Pasuruan bukan untuk ditaklukkan,” serunya. “Pasuruan untuk dijaga.”"],
+  ["p","Dengan keberanian dan strategi yang cermat, ia memimpin rakyatnya ke medan perang. Dan meski tampak mustahil… mereka menang. Ancaman itu pun dikalahkan."],
+  ["p","Tak lama kemudian, musuh lain bangkit, kali ini dari Bali. Raja Buleleng melancarkan serangan, bertekad merebut Pasuruan untuk dirinya. Sekali lagi rakyat gemetar. Dan sekali lagi, Mbah Darmoyudo berdiri tegar."],
+  ["q","“Selama kita berdiri bersama,” katanya kepada mereka, “Pasuruan tidak akan pernah jatuh.”"],
+  ["p","Pertempuran berlangsung sengit. Namun persatuan dan keberanian mereka kembali membawa kemenangan. Pasuruan tetap tak terkalahkan."],
+  ["p","Tetapi tantangan terbesar masih akan datang. Dari barat muncul seorang penguasa kuat: Mas Pekik dari Surabaya, yang dikenal karena kekuatan, ambisi, dan keinginannya memperluas kekuasaan. Kali ini ancamannya lebih besar dari sebelumnya."],
+  ["q","“Pasuruan harus menyerah,” seru Mas Pekik. Namun Mbah Darmoyudo tidak ragu. “Aku tidak akan pernah menyerahkan negeri ini,” katanya, “selama aku masih bernapas.”"],
+  ["p","Maka dimulailah pertempuran terbesar. Itu bukan sekadar perebutan tanah. Itu perjuangan demi kebebasan… demi martabat… demi rakyat yang ia cintai. Mbah Darmoyudo berjuang dengan seluruh kekuatannya, bukan untuk dirinya, melainkan untuk setiap jiwa di Pasuruan."],
+  ["p","Setelah bertahun-tahun berjuang dan berkorban, waktunya pun tiba. Mbah Darmoyudo wafat. Tetapi kisahnya… tidak. Ia dimakamkan di Kampung Dermoyudo, Pasuruan, tanah yang ia lindungi dengan sepenuh hati."],
+  ["p","Meski ia telah tiada, semangatnya tetap hidup. Sebab Mbah Darmoyudo lebih dari sekadar pemimpin. Ia lambang keberanian. Lambang kesetiaan. Lambang pengabdian sejati."],
+  ["p","Kisahnya mengingatkan kita pada satu hal penting: pahlawan sejati bukanlah orang yang mencari kekuasaan… melainkan orang yang memilih melindungi sesama, apa pun taruhannya."]],
+ end:"✨ Namanya mungkin milik masa lalu… tetapi semangatnya hidup selamanya."},
+quiz:{title:"Seberapa kenal kamu dengan Mbah Darmoyudo II?",
+ intro:"Dua puluh soal pilihan ganda tentang Kyai Ageng Dermoyudo II, trah Dermoyudo, dan sejarah Kota Pasuruan. Pilih satu jawaban di setiap soal; penjelasannya langsung muncul.",
+ answered:"Terjawab",of:"dari",correct:"Benar",soal:"Soal",kinds:{P:"Pengetahuan",U:"Pemahaman"},right:"Tepat!",wrong:"Belum tepat. Jawabannya {x}.",retry:"Ulangi kuis",
+ msgs:["Luar biasa! Kamu sudah memahami kisah Mbah Darmoyudo II dan sejarah Pasuruan dengan sangat baik.","Bagus! Pemahamanmu sudah kuat. Baca lagi bagian yang tadi keliru agar makin mantap.","Cukup baik. Coba baca ulang bagian Silsilah dan Para Penerus Trah Dermoyudo, lalu ulangi kuisnya.","Ayo jelajahi lagi halaman sejarah Mbah Darmoyudo II, lalu coba kuis ini sekali lagi."],
+ qs:[
+  {q:"Menurut papan di gerbang makamnya, Kyai Ageng Dermoyudo II memimpin Pasuruan pada tahun…",o:["1617–1645","1645–1657","1657–1671","1686–1706"],why:"Papan makam mencatat 1645–1657. Sebagian catatan silsilah menulis 1646 sebagai tahun mulai memerintah."},
+  {q:"Sebagai Tumenggung, Dermoyudo II dikenal setia kepada kerajaan…",o:["Kesultanan Demak","Kerajaan Blambangan","Kesultanan Mataram","Kerajaan Buleleng"],why:"Dermoyudo II adalah Tumenggung yang setia kepada Kesultanan Mataram, sezaman dengan Sunan Amangkurat I."},
+  {q:"Ayah Mbah Darmoyudo II, Kyai Ageng Dermoyudo I, dikenal sebagai…",o:["Panglima perang Sultan Agung","Raja Blambangan","Saudagar dari Madura","Residen Belanda di Pasuruan"],why:"Menurut buku silsilah keluarga, Dermoyudo I adalah senopati atau panglima perang Sultan Agung dari Mataram."},
+  {q:"Leluhur keluarga Dermoyudo berakar di Pegantenan. Daerah ini terletak di…",o:["Kediri, Jawa Timur","Pamekasan, Madura","Buleleng, Bali","Nganjuk, Jawa Timur"],why:"Kakek Dermoyudo II, Arya Pegantenan, lahir di Pegantenan, Kabupaten Pamekasan, Pulau Madura."},
+  {q:"Di manakah Mbah Darmoyudo II dimakamkan?",o:["Sentono Betek, Kediri","Pesarean Mancilan, Pasuruan","Kampung Dermoyudo, Kelurahan Purworejo, Kota Pasuruan","Desa Brebek, Nganjuk"],why:"Makamnya ada di Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo. Pesarean Mancilan adalah makam ayahnya, Dermoyudo I."},
+  {q:"Pada masa Airlangga, Pasuruan sudah dikenal sebagai pelabuhan dengan nama…",o:["Paravan","Gamda","Bangil","Porodeso"],why:"Sejak zaman Airlangga (abad ke-11), Pasuruan dikenal sebagai pelabuhan bernama Paravan."},
+  {q:"Mengapa Pasuruan pada abad ke-17 diperebutkan banyak pihak?",o:["Karena Pasuruan adalah ibu kota Kesultanan Mataram","Karena Pasuruan pelabuhan strategis dan pasar dagang antarpulau, sehingga penguasanya mengendalikan jalur dagang di ujung timur Jawa","Karena Pasuruan memiliki tambang emas terbesar di Jawa","Karena Pasuruan tidak memiliki pemimpin sama sekali"],why:"Pasuruan adalah pelabuhan transit dan pasar dagang antarpulau, bahkan antarnegara. Menguasai Pasuruan berarti menguasai jalur dagang di timur Jawa."},
+  {q:"Serangan dari dua raja berikut berhasil dihalau oleh Dermoyudo II dan tercatat sebagai jasanya kepada Mataram, yaitu…",o:["Raja Demak dan Raja Surabaya","Raja Blambangan dan Raja Buleleng","Raja Makassar dan Raja Bali","Sultan Agung dan Amangkurat I"],why:"Dermoyudo II menghalau serangan Raja Blambangan dari timur dan Raja Buleleng dari Bali."},
+  {q:"Pada 1657 Dermoyudo II gugur ketika Pasuruan diserang dari arah…",o:["Blambangan di timur","Buleleng di Bali","Surabaya di barat","Laut Jawa di utara"],why:"Ancaman ketiga datang dari barat, yaitu dari arah Surabaya pada 1657, dan dalam serangan itu Dermoyudo II gugur."},
+  {q:"Pernyataan yang paling tepat tentang nama “Dermoyudo” adalah…",o:["Nama asli satu orang yang hidup sangat lama","Nama sebuah kerajaan di Pasuruan","Gelar yang diwariskan; tercatat setidaknya lima tokoh dari Dermoyudo I sampai V","Nama samaran untuk mengelabui VOC"],why:"Dermoyudo adalah gelar yang diwariskan turun-temurun. Tercatat setidaknya lima tokoh bergelar Dermoyudo."},
+  {q:"Dalam sebutan tingkatan keturunan Jawa (Serat Piagem Sentana), keturunan tingkat ke-10 disebut…",o:["Wareng","Gantung siwur","Gropak senthe","Galih asem"],why:"Urutannya: anak, cucu, buyut, canggah, wareng, udeg-udeg, gantung siwur, gropak senthe, gedebog bosok, dan galih asem."},
+  {q:"Dua putra Dermoyudo II, yaitu Dermoyudo III dan Mangkuyudo, ikut dalam perlawanan…",o:["Untung Suropati","Raden Trunojoyo","Pangeran Diponegoro","Karaeng Galesong"],why:"Keduanya ikut perlawanan Raden Trunojoyo (1676–1679) terhadap Mataram dan VOC, lalu dimakamkan di Sentono Betek, Kediri."},
+  {q:"Kyai Onggojoyo (Dermoyudo IV) bersekutu dengan bangsawan yang lari setelah kalah melawan VOC. Mereka berasal dari…",o:["Bugis-Makassar","Blambangan","Mataram","Madura"],why:"Onggojoyo bersekutu dengan bangsawan Bugis-Makassar, di antaranya Karaeng Galesong. Pada 1678, saat VOC menyerang, Kota Pasuruan dibumihanguskan."},
+  {q:"Setelah menjadi penguasa Pasuruan pada 1686, Untung Suropati bergelar…",o:["Kiai Adipati Nitiadiningrat","Tumenggung Nitinegoro","Raden Adipati Wironegoro","Kanjeng Genteng"],why:"Untung Suropati memerintah Pasuruan pada 1686–1706 dengan gelar Raden Adipati Wironegoro."},
+  {q:"Ki Dermoyudo V (Raden Ismail) memakai nama samaran Kromowidjoyo. Apa alasannya?",o:["Agar lebih mudah diangkat menjadi raja Mataram","Karena nama Dermoyudo sudah dipakai saudaranya","Untuk mengelabui VOC, karena keturunan Dermoyudo dianggap pemberontak","Karena diwajibkan oleh Residen Domis"],why:"Keluarga Dermoyudo banyak melawan VOC, sehingga keturunannya dicap pemberontak. Nama samaran dipakai agar tidak dikenali."},
+  {q:"Sejak tahun 1743, setelah Raden Ario Wironegoro digulingkan patihnya, kekuasaan di Pasuruan dipegang oleh…",o:["Kesultanan Mataram","Belanda","Kerajaan Blambangan","Keturunan Untung Suropati"],why:"Raden Ario Wironegoro digulingkan patihnya atas bujukan Belanda. Sejak itu Belanda memegang kekuasaan di Pasuruan."},
+  {q:"Catatan Residen Domis menyebut Pasuruan mengekspor sekitar 80.000 pikul kopi dan 17.000 pikul gula pada 1829. Apa kaitannya dengan kisah Darmoyudo?",o:["Membuktikan bahwa Darmoyudo II adalah pemilik pabrik gula","Menunjukkan kekayaan wilayah yang dulu dijaga Darmoyudo, yang kini mengalir ke pemerintah kolonial","Menunjukkan bahwa Pasuruan miskin setelah masa Darmoyudo","Tidak ada kaitannya sama sekali"],why:"Data itu menegaskan mengapa Pasuruan diperebutkan sejak abad ke-17. Dua abad kemudian, kekayaannya dinikmati pemerintah kolonial."},
+  {q:"Mengapa penilaian Domis tentang sifat masyarakat Pasuruan harus dibaca dengan hati-hati?",o:["Karena Domis hidup pada masa yang sama dengan Darmoyudo II","Karena catatannya ditulis dalam bahasa Jawa kuno","Karena Domis pejabat kolonial, sehingga penilaiannya tidak netral dan tidak boleh digeneralisasi","Karena Domis tidak pernah datang ke Pasuruan"],why:"Domis adalah pejabat Belanda. Penilaiannya bisa berat sebelah, jadi sebaiknya ditulis “menurut catatan Domis”. Catatannya juga menggambarkan 1830, bukan masa hidup Darmoyudo."},
+  {q:"Darmoyudo II berperang untuk mempertahankan Pasuruan, bukan untuk menaklukkan wilayah lain. Nilai teladan yang paling sesuai adalah…",o:["Haus kekuasaan","Cinta damai dan bertanggung jawab menjaga rakyat","Mementingkan diri sendiri","Suka membalas dendam"],why:"Ia bertahan, bukan menyerang balik. Sikap ini mencerminkan cinta damai dan tanggung jawab atas keselamatan rakyat."},
+  {q:"Sebagian sumber menyebut Mas Pekik sebagai penyerang dari Surabaya, sementara bagan silsilah menyebutnya putra Dermoyudo II. Sikap yang paling tepat dalam menulis sejarah adalah…",o:["Memilih versi yang paling menarik untuk diceritakan","Menghapus nama Mas Pekik dari cerita","Menampilkan kedua versi dan menunggu konfirmasi dari sumber terpercaya","Mengarang versi baru yang menggabungkan keduanya"],why:"Jika sumber berbeda, sejarawan menampilkan kedua versi apa adanya dan memverifikasinya, misalnya ke juru kunci makam atau Dinas Kebudayaan."}]},
+tour:{noVideo:"Video tour tidak dapat diputar. Pastikan file <b>tour-makam.mp4</b> ada di folder <b>aset</b>, lalu buka website dengan Chrome, Edge, atau Safari.",title:"Tour Makam",intro:"Ikuti video tour singkat di dalam cungkup Makam Darmoyudo, lalu lihat foto-foto rute kunjungan di bawahnya.",route:"Rute tour",close:"Tutup",
+ caps:["Cungkup makam bernuansa hijau dengan papan kaligrafi Basmalah, syahadat, dan Ayat Kursi.","Nisan kayu berukir dan jirat berwarna emas, dengan jendela kayu berkawat di sisi kanan.","Papan kaligrafi Ayat Kursi dan jendela kayu berkawat di sisi kiri cungkup.","Jirat berlapis keramik hijau dengan nisan kayu berukir dan hiasan berwarna emas.","Jendela kayu berkawat yang menghadap halaman di sekitar cungkup."],
+ locTitle:"Lokasi",loc:"Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo, Kota Pasuruan, Jawa Timur.",
+ etTitle:"Etika ziarah",et:["Bersikap sopan dan menjaga ketenangan.","Berpakaian rapi dan menutup aurat.","Minta izin kepada juru kunci sebelum memotret."]},
+kelas:{title:"Foto Bersama Kelas 9B",intro:"Kenangan tim kelas 9B selama mengerjakan proyek sejarah Mbah Darmoyudo II.",caption:"Kelas 9B – Belajar Sejarah Mbah Darmoyudo II",hint:"Klik foto kecil untuk menukar foto utama, atau klik foto utama untuk memperbesar.",
+ alt:["Kelas 9B berfoto bersama di depan gedung sekolah.","Kelas 9B berpose dengan gaya bingkai jari.","Kelas 9B kompak menunjuk ke tengah."]},
+concl:{title:"Simpulan & Pesan",
+ summary:"Darmoyudo II adalah Tumenggung setia Mataram yang menjaga Pasuruan, kota pelabuhan yang diperebutkan, dari serangan Blambangan dan Buleleng, lalu gugur pada 1657. Namanya kini menjadi nama kampung tempat ia dimakamkan: Kampung Dermoyudo, Kota Pasuruan.",
+ moralTitle:"Nilai moral dari kisah Mbah Darmoyudho",
+ morals:[["Leadership with Responsibility","Kepemimpinan yang bertanggung jawab","Mbah Darmoyudho mengajarkan bahwa pemimpin sejati bukanlah yang mencari kekuasaan, tetapi yang mau memikul tanggung jawab untuk melindungi rakyatnya."],["Courage in Defending Truth","Berani membela kebenaran","Keberanian Mbah Darmoyudho dalam menghadapi serangan dari Blambangan, Buleleng, dan Mas Pekik menunjukkan bahwa kebenaran harus diperjuangkan, meski penuh risiko."],["Loyalty to the Homeland","Setia kepada tanah air","Mbah Darmoyudho setia menjaga Pasuruan meskipun menghadapi banyak ancaman. Hal ini mengajarkan pentingnya cinta dan kesetiaan kepada tanah tempat kita mengabdi."],["Justice Above Personal Interest","Keadilan di atas kepentingan pribadi","Ia menolak menyerahkan Pasuruan demi kepentingan pribadi atau tekanan penguasa lain. Keadilan dan keselamatan rakyat menjadi prioritas utamanya."],["Perseverance and Never Giving Up","Tekun dan pantang menyerah","Meskipun serangan datang bertubi-tubi, Mbah Darmoyudho tidak menyerah. Sikap pantang menyerah ini penting untuk menghadapi tantangan hidup."],["Serving with Sincerity","Mengabdi dengan tulus","Pengabdian Mbah Darmoyudho dilakukan dengan ketulusan, bukan demi pujian atau kekuasaan."],["Legacy of Good Deeds","Warisan kebaikan","Mbah Darmoyudho dikenang bukan karena kekayaannya, tetapi karena jasanya. Ini mengajarkan bahwa kebaikan akan hidup lebih lama daripada harta."]],
+ reflect:"Dari kisah Mbah Darmoyudho, kita belajar bahwa keberanian, kejujuran, dan pengabdian adalah nilai luhur yang harus dijaga oleh setiap generasi.",
+ msgTitle:"Pesan untuk pelajar",
+ msgs:["Teladani nilai-nilai Mbah Darmoyudo: bertanggung jawab, berani, setia, adil, pantang menyerah, tulus, dan gemar berbuat baik.","Rawat situs sejarah lokal: kunjungi dengan sopan, jaga kebersihannya, dan kenalkan kepada teman serta keluarga.","Bersikap kritis terhadap sumber sejarah: bedakan fakta tercatat dari tutur lisan, bandingkan beberapa sumber, dan tanyakan kepada pihak yang berwenang bila ada perbedaan."]},
+closing:{title:"Penutupan",
+ paras:["Terima kasih kepada seluruh pengunjung yang telah menjelajahi website ini. Terima kasih kami sampaikan pula kepada bapak dan ibu guru pembimbing, serta kepada juru kunci dan warga sekitar Makam Darmoyudo yang telah menerima kami dengan ramah.","Kami menyadari website ini masih jauh dari sempurna. Mohon maaf atas segala kekurangan, dan kami terbuka terhadap saran untuk perbaikan."],
+ bye:"Wassalamu’alaikum warahmatullahi wabarakatuh."},
+dev:{title:"Pembuat Website",intro:"Website ini dirancang dan disusun oleh tiga siswa kelas 9B.",role:"Siswa Kelas 9B",email:"Email",phone:"Telepon",wa:"Chat WhatsApp",
+ footer:"© 2026 <b>Kelas 9B</b> • Website Edukasi Sejarah Mbah Darmoyudo II, Kota Pasuruan"}
+};
+
+/* ---------- BAHASA JAWA (krama alus kangge sambutan & panutup) ---------- */
+T.jw = {
+meta:{title:"Mbah Darmoyudo II – Website Pasinaon Sejarah Kelas 9B"},
+nav:{banner:"Ngajeng",sambutan:"Sesorah",sorotan:"Sorotan",sejarah:"Sejarah",drama:"Drama",quiz:"Kuis",tour:"Tour Makam",kelas:"Kelas 9B",simpulan:"Dudutan",penutupan:"Panutup",pembuat:"Ingkang Damel",menu:"Bukak menu",top:"Wangsul ing nginggil",lang:"Pilih basa"},
+lbl:{sambutan:"Kelas 9B",sorotan:"Dokumentasi",sejarah:"Kasunyatan Sejarah",drama:"Panggung",quiz:"Uji Pangertosan",tour:"Kunjungan",kelas:"Pengetan",simpulan:"Piwulang",penutupan:"Matur Nuwun",pembuat:"Tim Pangembang"},
+hero:{eyebrow:"Warisan Sejarah • Kutha Pasuruan",h1:"Mbah <span>Darmoyudo</span> II",desc:"Tepangan kaliyan Tumenggung ingkang setya dhateng Mataram ingkang njagi kutha pelabuhan Pasuruan saking serangan Blambangan saha Buleleng, karyanipun siswa kelas 9B.",alt:"Banner kanthi seratan Mbah Dharmo Yudho, Pasoeroean",sub:"Bupati Pasuruan kaping-2 • 1645–1657 • Dukuh Porodeso, Kutha Pasuruan",start:"Wiwit Sinau",quiz:"Garap Kuis"},
+welcome:{title:"Sesorah",
+ greet:"Assalamu’alaikum warahmatullahi wabarakatuh, saha rahayu wilujeng kagem kita sedaya.",
+ paras:[
+  "Puji syukur konjuk dhumateng ngarsanipun Allah SWT, amargi berkah rahmatipun kawula sedaya, para siswa kelas 9B, saged ngrampungaken website pasinaon sejarah punika minangka perangan saking pasinaon sejarah adhedhasar STEM.",
+  "Website punika kawula damel kangge ngenalaken Mbah Darmoyudo II (Kyai Ageng Dermoyudo II), Bupati Pasuruan kaping-2 ingkang ngasta pangwasa ing taun 1645–1657, minangka paraga sejarah lokal Kutha Pasuruan. Kawula nglempakaken pawartos saking buku silsilah kulawarga, papan makam, saha cathetan sejarah, lajeng kasuguhaken arupi materi, drama, kuis, saha tour makam.",
+  "Matur sembah nuwun dhumateng bapak saha ibu guru pembimbing ingkang sampun paring bimbingan kanthi sabar. Sugeng ndhudhah isinipun website punika. Mugi-mugi website punika saged nambahi kawruh saha raos tresna dhumateng sejarah tlatahipun piyambak."],
+ sign:"Tim ingkang damel, siswa kelas 9B"},
+slides:{title:"Sorotan",intro:"Foto dokumenter saking salebeting cungkup makam saha kegiatan kelas 9B. Foto gantos saben 5 detik; selehaken kursor ing foto supados mandheg.",prev:"Foto sakderengipun",next:"Foto salajengipun",go:"Dhateng foto",fact:"Apa sampeyan pirsa?",
+ caps:["Cungkup makam warni ijem kanthi papan kaligrafi Basmalah, syahadat, saha Ayat Kursi.","Maesan kajeng ukir saha jirat warni emas, kanthi cendhela kajeng kawat ing sisih tengen.","Papan kaligrafi Ayat Kursi saha cendhela kajeng kawat ing sisih kiwa cungkup.","Jirat keramik ijem kanthi maesan kajeng ukir saha rerenggan warni emas.","Cendhela kajeng kawat ingkang madhep plataran sakubengipun cungkup.","Kelas 9B foto sesarengan ing ngajeng gedhung sekolah.","Gaya bingkai driji sesarengan kanca sakelas.","Kompak nuding ing tengah: bungahipun kelas 9B."]},
+hist:{title:"Pawartos Sejarah Mbah Darmoyudo",
+ intro:"Perangan punika isinipun kasunyatan sejarah, sanes naskah drama. Label <span class=\"lbl fakta\">Kasunyatan kacathet</span> nandhani pawartos saking cathetan seratan, dene <span class=\"lbl tutur\">Tutur lisan / dramatisasi</span> nandhani cariyos ingkang tumurun saking tutur.",
+ badgeFact:"Kasunyatan kacathet",badgeOral:"Tutur lisan / dramatisasi",
+ a:{tab:"Sekilas",title:"Sekilas",
+  paras:["Kyai Ageng Dermoyudo II mimpin Pasuruan watawis 12 taun (1645–1657) minangka Tumenggung ingkang setya dhateng Kasultanan Mataram. Ing jaman punika Pasuruan dados kutha pelabuhan ingkang rame saha dados rebutan kathah pihak. Panjenenganipun nangkis serangan saking Blambangan ing sisih wetan saha Buleleng ing Bali, sakderengipun gugur nalika Pasuruan dipunserang saking arah Surabaya ing taun 1657.","Asmanipun samangke dados nami kampung ing Kutha Pasuruan: Kampung Dermoyudo, papan panjenenganipun kasarekaken."],
+  head:["Kasunyatan","Katrangan"],
+  rows:[["Asma","Kyai Ageng Dermoyudo II"],["Kawentar minangka","Mbah Darmoyudho, Ki Gede Dermoyudo II"],["Jabatan","Tumenggung saha panguwasa tlatah Pasuruan, Bupati Pasuruan kaping-2"],["Mangsa pamarentahan","1645–1657 (sawetawis cathetan silsilah nyerat 1646–1657)"],["Sajaman kaliyan","Sunan Amangkurat I, ratu Mataram (kasarekaken ing Tegalarum)"],["Rama","Kyai Ageng Dermoyudo I, tilas senopati perangipun Sultan Agung"],["Labuh labet utama","Nangkis serangan Raja Blambangan saha Raja Buleleng (Bali)"],["Makam","Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo, Kutha Pasuruan"]],
+  spell:"Website punika ngagem ejaan utama <b>Darmoyudo</b>, jumbuh kaliyan papan makam. Ejaan sanesipun inggih punika Dermoyudo, Darmoyudho, saha Dharmo Yudho."},
+ b:{tab:"Asal-usul & Silsilah",title:"Asal-usul saha Silsilah",
+  intro:"Miturut buku silsilah kulawarga, Dermoyudo II asalipun saking trah (garis turun) Menak Werdati, kanthi oyot kulawarga ing Madura. Eyangipun miyos ing Pegantenan, Pamekasan, lajeng kulawarga punika makarya ing Mataram saha pungkasanipun nguwaosi Pasuruan.",
+  treeTitle:"Bagan wit kulawarga",
+  tree:[["Arya Pegantenan","Eyang • miyos ing Pegantenan, Pamekasan"],["Kyai Ageng Dermoyudo I","Rama • senopati perang Sultan Agung"],["Kyai Ageng Dermoyudo II","Paraga utama • Tumenggung Pasuruan 1645–1657"],["Dermoyudo III (Mas Pekik)","Putra • panguwasa Pasuruan 1657–1671"],["Kyai Tumenggung Mangkuyudo","Putra • Tumenggung jaman Amangkurat I"],["Kyai Onggojoyo (Dermoyudo IV)","Wayah • panguwasa Pasuruan 1671–1686"]],
+  genHead:["Generasi","Paraga","Kalenggahan saha cathetan"],
+  genRows:[["Eyang","Arya Pegantenan","Miyos ing Pegantenan, Kabupaten Pamekasan, Madura. Kasarekaken ing Sentono Gribig, Malang."],["Rama","Kyai Ageng Dermoyudo I","Senopati utawi panglima perangipun Sultan Agung saking Mataram (1613–1646) kanthi gelar Raden Tumenggung. Ngasoraken Ki Gede Kapulungan, panguwasa Pasuruan sakderengipun, lajeng mrentah Pasuruan kanthi gelar Ki Gede Dermoyudo I. Kasarekaken ing Pesarean Mancilan, Pasuruan."],["Paraga utama","Kyai Ageng Dermoyudo II","Tumenggung saha panguwasa Pasuruan (1645/1646–1657)."],["Putra","Kyai Tumenggung Dermoyudo III (Mas Pekik)","Panguwasa Pasuruan (1657–1671). Seda ing Kediri sasampunipun tumut perlawanan Trunojoyo, kasarekaken ing Sentono Betek, Kampung Pandean, Kutha Kediri."],["Putra","Kyai Tumenggung Mangkuyudo","Gelar Tumenggung ing jaman Amangkurat I. Seda taun 1677 nalika tumut perlawanan Trunojoyo, kasarekaken ing Sentono Betek, Kediri."],["Wayah","Ki Dermoyudo IV (Kyai Onggojoyo)","Panguwasa Pasuruan (1671–1686). Kasarekaken ing Desa Brebek, Nganjuk."]],
+  levelsTitle:"Tepangan 10 undhak-undhakan turun ing budaya Jawi",
+  levelsIntro:"Buku silsilah punika kasusun miturut pakem Kasunanan Surakarta, inggih punika Serat Piagem Sentana. Saben generasi ing sangandhaping leluhur (ingkang dipunsebut pancer) gadhah nami piyambak:",
+  levelsHead:["Undhakan","Sebutan"],
+  levels:["Anak (putra)","Putu (wayah)","Buyut","Canggah","Wareng","Udeg-udeg","Gantung siwur","Gropak senthe","Gedebog bosok","Galih asem"],
+  levelsNote:"Kanthi sistem punika, Dermoyudo II kacathet minangka undhakan kaping-8 (gropak senthe) saking Menak Werdati, sarta undhakan kaping-1 (putra) saking Kyai Ageng Dermoyudo I."},
+ c:{tab:"Mangsa Pamarentahan",title:"Mangsa Pamarentahan saha Perjuangan (1645–1657)",
+  intro:"Dermoyudo II jumeneng Tumenggung Pasuruan nggentosi ramanipun, kanthi kalenggahan ingkang miturut buku silsilah sajaman kaliyan Sunan Amangkurat I ing Mataram. Sajroning 12 taun panjenenganipun njagi Pasuruan saking ancaman tigang arah.",
+  whyTitle:"Kenging menapa Pasuruan dados rebutan?",
+  why:["Pasuruan sampun kawentar minangka pelabuhan wiwit jaman Airlangga kanthi nami Paravan. Papanipun strategis minangka pelabuhan transit saha peken dagang antarpulo, malah antarnegari. Kathah bangsawan saha sudagar sugih ingkang manggen ing ngriku, satemah sinten kemawon ingkang nguwaosi Pasuruan ugi nguwaosi margi dagang ing pucuk wetan Jawi.","Pasuruan ugi gadhah sejarah ingkang dangu kaliyan Blambangan. Sasampunipun dipunkalahaken Sultan Trenggono saking Demak ing taun 1545, Pasuruan dados kekiyatan Islam ingkang wigati ing Jawi wetan saha bola-bali perang kaliyan Blambangan. Ing taun 1601, Pasuruan malah kasil ngrebut kutha praja Blambangan."],
+  threatsTitle:"Tigang ancaman ingkang dipunadhepi",
+  threats:[["Wetan","Raja Blambangan","Kasil dipuntangkis. Kacathet minangka labuh labetipun Dermoyudo II dhateng Mataram."],["Sabrang seganten (Bali)","Raja Buleleng","Kasil dipuntangkis. Ugi kacathet minangka labuh labet dhateng Mataram."],["Kilen (1657)","Serangan saking arah Surabaya","Dermoyudo II gugur. Panguwasa salajengipun, Mas Pekik, mrentah Pasuruan kanthi gelar Kiai Dermoyudo ngantos seda ing taun 1671."]],
+  pekikTitle:"Sinten Mas Pekik? Wonten kalih versi",
+  pekikIntro:"Sumber-sumberipun benten panemu. Website punika nampilaken kekalihipun tanpa milih salah satunggal.",
+  vA:["Versi A: naskah drama saha sejarah kutha","Mas Pekik punika panguwasa Surabaya ingkang nyerang Pasuruan ing taun 1657 satemah Dermoyudo II gugur."],
+  vB:["Versi B: bagan silsilah kulawarga","Mas Pekik punika putranipun Dermoyudo II, kanthi gelar Kyai Tumenggung Dermoyudo III."],
+  endTitle:"Pungkasaning yuswa",
+  end:"Dermoyudo II seda ing taun 1657 saha kasarekaken ing kampung ingkang samangke ngagem asmanipun, Kampung Dermoyudo, Kelurahan Purworejo, Kutha Pasuruan. Papan ing gapura makamipun nyathet: Makam Darmoyudo, Bupati Pasuruan ke-II, 1645–1657, Dukuh Porodeso."},
+ d:{tab:"Para Penerus",title:"Para Penerus Trah Dermoyudo",
+  intro:"Sasampunipun Dermoyudo II, gelar saha perjuanganipun kulawarga punika lumampah lumantar pinten-pinten generasi. Kathah ingkang nglawan panguwaosipun VOC (Walandi), sawetawis ngantos kedah nyamar.",
+  blocks:[
+   {h:"Dermoyudo III saha Mangkuyudo: tumut perlawanan Trunojoyo",p:["Kyai Tumenggung Dermoyudo III (Mas Pekik) mrentah Pasuruan ing taun 1657–1671. Panjenenganipun saha sadherekipun, Kyai Tumenggung Mangkuyudo, tumut perlawanan Raden Trunojoyo (1676–1679) dhateng Mataram saha VOC. Kekalihipun seda saha kasarekaken ing Sentono Betek, Kediri; Mangkuyudo kacathet seda ing taun 1677."]},
+   {h:"Dermoyudo IV (Kyai Onggojoyo): Pasuruan dipunobong",p:["Kyai Onggojoyo mrentah Pasuruan ing taun 1671–1686. Panjenenganipun sekuthon kaliyan bangsawan Bugis-Makassar ingkang lumajeng sasampunipun kawon perang nglawan VOC ing Makassar, ing antawisipun Karaeng Galesong. Ing taun 1678, nalika VOC nyerang, Kutha Pasuruan dipunobong ngantos telas.","Supados boten kecekel, Onggojoyo nyamar dados demang ing Seroja, tlatah Sidoarjo. Lajeng panjenenganipun masrahaken panguwaos Pasuruan dhateng Untung Suropati."]},
+   {h:"Untung Suropati: kalih dasa taun nglawan VOC",p:["Untung Suropati asalipun saking Bali saha naté dados batur tukon, lajeng mbalik nglawan Walandi. Panjenenganipun kawentar sasampunipun mejahi Kapten Tack ing Kartasura. Ing tanggal 8 Februari 1686, kanthi dhawuh Pangeran Nerangkusuma saha pangestunipun ratu Mataram, panjenenganipun tindak dhateng Pasuruan saha dados adipati kanthi gelar Raden Adipati Wironegoro.","Pamarentahanipun (1686–1706) kebak paperangan nglawan VOC, nanging tetep lumampah sae saha nuwuhaken semangat juang rakyat. VOC pungkasanipun sesarengan kaliyan putranipun Onggojoyo nyerang panjenenganipun. Untung Suropati tatu awrat saha seda ing taun 1706. Putranipun, Rakhmad, nglajengaken perjuangan dhateng wetan saha gugur ing taun 1707.","Papan makamipun Untung Suropati dereng dipunmangertosi kanthi pasthi. Nanging ing Pedukuhan Mancilan, Kutha Pasuruan, wonten petilasan arupi guwa ingkang dipunpitadosi minangka papan ndhelikipun."]}],
+  descTitle:"Dermoyudo V saha turunipun ing Surabaya",
+  descIntro:"Generasi salajengipun sumebar dhateng Surabaya, Malang, Mojokerto, saha Lamongan. Sawetawis paraga ingkang kacathet:",
+  descHead:["Paraga","Kalenggahan"],
+  descRows:[["Ki Dermoyudo V (Raden Ismail)","Patih ing Surabaya. Ngagem nami samaran Kromowidjoyo kangge ngapusi VOC, amargi turunipun Dermoyudo dipunanggep pemberontak."],["Raden Tumenggung Kromodjoyodirono (Raden Bagus Glundung)","Bupati Surabaya 1819–1825, dipunjuluki Kanjeng Permen."],["Raden Bagus Anom Kromodjoyo Adinegoro II (Kanjeng Genteng)","Bupati Surabaya 1831–1859. Dados imam tetep salat Jumat ing Masjid Sunan Ampel, seda taun 1861."],["Raden Adipati Arya Kromodjoyo Adinegoro III (Raden Aersadan)","Bupati Lamongan 1863–1866, lajeng Bupati Surabaya 1866–1894."]],
+  descNote:"Julukan Kanjeng Genteng asalipun saking papan dalemipun bupati ing tlatah Genteng, Surabaya. Pendhapa kabupatenipun samangke dados cagar budaya saha pusat kabudayan Surabaya."},
+ e:{tab:"Linimasa Pasuruan",title:"Linimasa Sejarah Kutha Pasuruan",
+  intro:"Pasuruan sampun bola-bali gantos panguwasa sajroning langkung saking sewu taun, wiwit pelabuhan kina Paravan ngantos Kutha Pasuruan kanthi 34 kelurahan. Cariyos Darmoyudo II (sorot ijem) namung setunggal babak ing salebetipun.",
+  rows:[["Jaman Airlangga (abad kaping-11)","Pasuruan kawentar minangka pelabuhan ingkang nami Paravan."],["Wiwitan abad kaping-16","Tlatah ingkang dipunsebut Gembong utawi Gamda dipunpimpin Pate Supetak, ingkang wonten ing Babad Pasuruan dipunsebut pendhiri kutha praja Pasuruan."],["1545","Dipunkalahaken Sultan Trenggono saking Demak saha dados kekiyatan Islam ing Jawi wetan."],["1601","Pasuruan ngrebut kutha praja Blambangan."],["1617–1645","Jamanipun Kyai Gede Dermoyudo I."],["1645–1657","Jamanipun Kyai Ageng Dermoyudo II."],["1657–1671","Jamanipun Mas Pekik (Kiai Dermoyudo III)."],["1671–1686","Jamanipun Kyai Onggojoyo (Dermoyudo IV). Pasuruan dipunobong ing taun 1678."],["1686–1706","Untung Suropati mrentah minangka Raden Adipati Wironegoro."],["1707","Onggojoyo (putra) dados Adipati Pasuruan."],["1743","Raden Ario Wironegoro nguwaosi, lajeng dipunlengseraken patihipun, Kiai Ngabai Wongsonegoro, amargi dipunbujuk Walandi. Wiwit punika Walandi ingkang nyekel panguwaos."],["Jaman Walandi","Pasuruan dados kutha praja karesidhenan ingkang ngereh Malang, Probolinggo, Lumajang, saha Bangil. Wongsonegoro dipunangkat dados bupati kanthi gelar Tumenggung Nitinegoro."],["27 Juli 1751","Raden Groedo, nembe yuswa 11 taun, dados bupati kanthi gelar Kiai Adipati Nitiadiningrat. Panjenenganipun mimpin 48 taun saha ngadegaken Masjid Agung Al Anwar sesarengan Kiai Hasan Sanusi (Mbah Slagah)."],["28 Februari 1800","Raden Beji Notokoesoemo dados bupati kanthi gelar Tumenggung Nitiadiningrat II."],["1809","Raden Pandjie Brongtokoesoemo dados Raden Adipati Nitiadiningrat III (seda 30 Januari 1833, kasarekaken ing wingking Masjid Al Anwar)."],["Ngantos 20 Juli 1887","Jamanipun Raden Tumenggung Ario Nitiadiningrat IV. Nitiadiningrat I–IV kawentar ing masyarakat minangka Mbah Surga-Surgi."],["1 Januari 1901","Kadegaken Residhensi Pasuruan."],["20 Juni 1918","Kadegaken Stads Gemeente van Pasoeroean (Kotapraja) adhedhasar Staatsblad 1918 No. 320."],["14 Agustus 1950","Kotamadya Pasuruan dados dhaerah otonom."],["21 Desember 1982","Kotamadya dipunjembaraken dados 3 kecamatan."],["1999","Adhedhasar UU No. 22 Taun 1999, sebutan Kotamadya Pasuruan gantos dados Kutha Pasuruan."],["12 Januari 2002","Sedaya desa gantos status dados kelurahan (Perda No. 10 Taun 2002), satemah Kutha Pasuruan dumados saking 34 kelurahan."]]},
+ f:{tab:"Petilasan Sejarah",title:"Petilasan ingkang Saged Dipunrawuhi",
+  intro:"Sekawan situs ingkang gegayutan kaliyan trah Dermoyudo wonten ing Kutha Pasuruan piyambak, satemah saged dados rute njlajah sejarah sajroning sedinten.",
+  head:["Situs","Papan","Gegayutanipun"],
+  rows:[["Makam Darmoyudo","Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo, Kutha Pasuruan","Makamipun Kyai Ageng Dermoyudo II. Gapuranipun wonten papan nami “Makam Darmoyudo, Bupati Pasuruan ke-II, 1645–1657”."],["Pesarean Mancilan","Mancilan, Kutha Pasuruan","Makamipun Kyai Ageng Dermoyudo I, ramanipun Dermoyudo II."],["Petilasan Untung Suropati","Pedukuhan Mancilan, Kutha Pasuruan","Guwa ingkang dipunpitadosi minangka papan ndhelikipun Untung Suropati saking oyakan Walandi."],["Masjid Agung Al Anwar","Tengah Kutha Pasuruan","Kadegaken Kiai Adipati Nitiadiningrat sesarengan Kiai Hasan Sanusi; ing wingkingipun kasarekaken Nitiadiningrat III."]],
+  outside:"Ing njawi Pasuruan, tilasipun kulawarga punika ugi wonten ing Sentono Betek, Kediri (makam Dermoyudo III saha Mangkuyudo), Desa Brebek, Nganjuk (makam Dermoyudo IV), saha Sentono Gribig, Malang (makam Arya Pegantenan).",
+  etiquette:"<strong>Tata krama ziarah:</strong> njagi sikep sopan, ngagem busana ingkang rapi, saha nyuwun pamit dhateng juru kunci sakderengipun motret."},
+ g:{tab:"Cathetan Domis 1830",title:"Pasuruan Sasampunipun Jaman Darmoyudo: Cathetan Residhen Domis (1830)",
+  intro:"Watawis 173 taun sasampunipun Darmoyudo II seda, Residhen Walandi H. J. Domis nyathet kawontenan Pasuruan ing taun 1830. Cathetan punika boten nyariosaken Darmoyudo, nanging nedahaken menapa ingkang kelampahan ing tlatah ingkang rumiyin panjenenganipun jagi: Pasuruan tetep dados pusat tetanen saha dagang, nanging samangke sampun sakabehipun wonten ing sangandhaping panguwaos Walandi.",
+  warnTitle:"Kawigatosan:",warn:"Domis punika pejabat kolonial, mila pambijinipun babagan watakipun masyarakat boten netral saha boten kenging dipunwradinaken dhateng sedaya tiyang Jawi, Madura, utawi Pasuruan. Pramila sedaya isi ing ngandhap punika kaserat “miturut cathetan Domis”.",
+  t1Title:"Tlatah ingkang dipunjagi Darmoyudo, kalih abad salajengipun",
+  t1Head:["Miturut cathetan Domis (1830)","Gegayutanipun kaliyan cariyos Darmoyudo"],
+  t1Rows:[["Ing taun 1829 Pasuruan ngirim dhateng manca watawis 80.000 pikul kopi saha 17.000 pikul gendhis, ugi bako. Wonten pabrik gendhis kagunganipun C. Vos saha Han Kikko.","Negesaken kenging menapa Pasuruan dados rebutan wiwit abad kaping-17. Kasugihan tlatah ingkang rumiyin dipunjagi Darmoyudo samangke mili dhateng pamarentah kolonial."],["Pasuruan kagandheng margi saha jaringan dagang kaliyan Bangil saha Malang; asil bumi dipunkirim dhateng mawarni-warni tlatah Nusantara.","Kalenggahan Pasuruan minangka simpul dagang, ingkang sampun wonten wiwit jaman pelabuhan Paravan, tetep lestari."],["Pendhudhukipun mawarni-warni: Jawi, Madura, Tionghoa, Arab, Melayu, Eropah, saha masyarakat Tengger.","Jumbuh kaliyan Pasuruan minangka kutha pelabuhan ingkang majemuk. Leluhur trah Darmoyudo piyambak asalipun saking Madura."],["Pasuruan dipunpimpin setunggal Residhen Walandi.","Kosok wangsul kaliyan sikepipun Darmoyudo ingkang boten purun tundhuk dhateng panguwasa manca. Wiwit taun 1743 panguwaos sampun dipuncekel Walandi (pirsani Linimasa)."]],
+  t2Title:"Pambiji watak: cathetan Domis saha patuladhan Darmoyudo",
+  t2Intro:"Analisis cathetan Domis mendhet pambiji sae saha awon saking tumindak ingkang dipungambaraken. Pambiji punika saged dipunjajaraken kaliyan patuladhan saking cariyos Darmoyudo kangge bahan rembagan ing kelas.",
+  t2Head:["Pambiji","Miturut cathetan Domis (1830)","Patuladhan saking cariyos Darmoyudo"],
+  t2Rows:[["Tresna tentrem","Tiyang Jawi dipungambaraken boten remen perang.","Perang namung kangge njagi Pasuruan, sanes kangge ngelar jajahan."],["Taat saha setya","Dipunsebut minangka watak ingkang katingal ing sawetawis masyarakat.","Setya dhateng amanah njagi rakyat saha dhateng Mataram."],["Sregep saha tekun","Pendhudhuk sregep tani, nenun, saha damel kerajinan emas, salaka, siti liat, saha sela.","Boten nyerah sanajan dipunserang saking wetan, Bali, saha kilen."],["Dendam saha kejem (awon)","Domis mbiji dendam saged nuwuhaken tumindak kejem.","Ing cariyosipun panjenenganipun njagi, sanes males: “Pasuruan sanes kangge dipunjajah, nanging kangge dipunjagi.”"],["Main saha nyolong (awon)","Adu jago, main, saha nyolong raja kaya kacathet minangka prekawis sosial.","Ngutamakaken kawilujenganipun rakyat tinimbang kepentingan pribadi."]],
+  note:"Kaenget ugi: cathetan taun 1830 nggambaraken Pasuruan kalih abad sasampunipun Darmoyudo, sanes kawontenan ing jaman sugengipun."},
+ h:{tab:"Apa Sampeyan Pirsa?",title:"Apa Sampeyan Pirsa?",intro:"Kasunyatan cekak kangge mbikak rembagan ing kelas.",
+  facts:["Nami Dermoyudo sanes namanipun tiyang setunggal, nanging gelar ingkang katurunaken. Kacathet sakirangipun gangsal paraga ingkang gelar Dermoyudo, saking Dermoyudo I ngantos Dermoyudo V.","Ramanipun Mbah Darmoyudo punika senopati perangipun Sultan Agung, ratu Mataram ingkang paling ageng.","Leluhur kulawarga punika asalipun saking Pegantenan, setunggal kecamatan ing Pamekasan, Pulo Madura.","Kalih putranipun Dermoyudo II tumut perlawanan Trunojoyo, salah satunggaling pambrontakan paling ageng dhateng Mataram saha VOC ing abad kaping-17.","Wayahipun, Kyai Onggojoyo, sekuthon kaliyan pejuang Bugis-Makassar ingkang lumajeng saking Makassar sasampunipun kawon nglawan VOC.","Salah satunggaling turunipun kedah gantos nami dados Kromowidjoyo supados boten dipuntepangi VOC minangka turunipun “pemberontak” Dermoyudo.","Bupati Pasuruan Kiai Adipati Nitiadiningrat dipunangkat nalika nembe yuswa 11 taun, lajeng mimpin ngantos 48 taun.","Tiyang Jawi gadhah nami kangge 10 undhakan turun. Turun kaping-10 dipunsebut galih asem.","Ing jaman Airlangga, Pasuruan dipunsebut Paravan."]},
+ i:{tab:"Sumber & Versi",title:"Cathetan Sumber saha Bentenipun Versi",
+  intro:"Wonten sekawan prekawis ingkang sumberipun benten. Sekawanipun prayogi dipuntitipriksa dhateng juru kunci makam utawi Dinas Kabudayan Kutha Pasuruan.",
+  head:["Prekawis","Versi A","Versi B","Sikep website"],
+  rows:[["Sinten Mas Pekik","Naskah drama saha sejarah kutha: panguwasa Surabaya ingkang nyerang Pasuruan satemah Dermoyudo II gugur (1657).","Bagan silsilah: putranipun Dermoyudo II, gelar Kyai Tumenggung Dermoyudo III.","Nampilaken kalih versi tanpa milih salah satunggal."],["Taun wiwit mrentah","Papan makam saha sejarah kutha: 1645.","Bagan silsilah: 1646.","Ngagem 1645 (jumbuh papan resmi) kanthi cathetan alit."],["Sinten Dermoyudo I","Bagan silsilah: senopatinipun Sultan Agung ingkang ngasoraken Ki Gede Kapulungan, kasarekaken ing Pesarean Mancilan, Pasuruan.","Sejarah kutha: Ki Gede Kapulungan piyambak ingkang gelar Dermoyudo I, lajeng lumajeng saha kasarekaken ing Bibis, Surabaya.","Kaserat “miturut buku silsilah kulawarga” ngentosi verifikasi."],["Ejaan nami","Darmoyudo, Darmoyudho, Dharmo Yudho","Dermoyudo, Dermoyudho","Ejaan utama Darmoyudo (jumbuh papan makam)."]],
+  oral:"Cariyos tigang serangan (Blambangan, Buleleng, Mas Pekik) kathah-kathahipun asalipun saking cathetan kulawarga saha tutur lisan, mila dipunparingi label tutur lisan.",
+  pekik:"<strong>Pitedah tambahan babagan Mas Pekik:</strong> paraga kawentar Pangeran Pekik saking Surabaya manggen ing kedhaton Mataram wiwit 1633 saha dipunsedani kanthi dhawuhipun Amangkurat I ing taun 1659. Amargi sampun seda ing taun 1659, panjenenganipun boten mungkin mrentah Pasuruan ngantos 1671. Dados Mas Pekik panguwasa Pasuruan punika tiyang sanes. Bab punika ndadosaken versi silsilah langkung mlebet nalar, nanging tetep prelu dipunkonfirmasi.",
+  srcTitle:"Sumber ingkang dipunagem",
+  sources:["Buku <i>Silsilah Keturunan dan Sejarah Kyai Ageng Dermoyudo II</i>, kalebet perangan “Sejarah Kota Pasuruan dan Perjuangan Untung Suropati dan Dermoyudo I dan II”.","Silsilah dhasar ingkang dipunrujuk buku punika: susunanipun R. Tumenggung Arya Notoadikoesoemo saha Yayasan Sentono Boto Putih Surabaya, R. Bagus Yasin (10 Maret 1960), saha R. Panji Arya Makmoer (1 Agustus 1966).","Papan nami ing gapura Makam Darmoyudo, Dukuh Porodeso.","Naskah <i>Bilingual Drama Mbah Darmoyudo</i> (kangge perangan drama saha cariyos).","Ratih Kirana Suryo Puteri saha Dian Soni Amellia (alih basa), <i>Pasuruan 1830: Catatan H. J. Domis</i>, Perpusnas Press, 2019/2020."]}
+},
+drama:{title:"Drama & Storytelling",
+ note:"Perangan punika naskah drama adhedhasar tutur saha cathetan kulawarga, sanes cathetan sejarah resmi.",
+ roles:{narr:"Narator",darmo:"Mbah Darmoyudo",rakyat:"Rakyat",ub:"Utusan Blambangan",ubl:"Utusan Buleleng",ump:"Utusan Mas Pekik",all:"Sedaya Paraga"},
+ scenes:[
+  {t:"Rawuh saha Amanah",s:"Babak 1 • The Arrival and the Duty",lines:[["narr","Ing abad kaping-17, Pasuruan dados tlatah strategis ingkang asring dados incaran.\nSetunggal bangsawan asma Mbah Darmoyudo rawuh saha ngabdekaken sarira kangge njagi Pasuruan."],["darmo","Kula boten rawuh kangge kamulyan pribadi,\nnanging kangge nindakaken amanah saha njagi rakyat Pasuruan."]]},
+  {t:"Dados Tumenggung",s:"Babak 2 • The Leader of Pasuruan",lines:[["narr","Amargi wicaksana saha tegesipun,\nMbah Darmoyudo dipunpitados dados Tumenggung Pasuruan,\nugi kawentar minangka Ki Gede Darmoyudo."],["rakyat","Kawula sedaya rumaos aman wonten ing sangandhaping pangayoman panjenengan, Mbah."]]},
+  {t:"Serangan Raja Blambangan",s:"Babak 3 • The Attack from Blambangan",lines:[["narr","Katentremanipun Pasuruan keganggu nalika Raja Blambangan ngupados nyerang tlatah punika."],["ub","Pasrahna Pasuruan marang Raja Blambangan!"],["darmo","Pasuruan sanes kangge dipunjajah,\nnanging kangge dipunjagi."],["narr","Kanthi siasat saha kendel,\nMbah Darmoyudo kasil nangkis serangan Raja Blambangan."]]},
+  {t:"Serangan Raja Buleleng",s:"Babak 4 • The Attack from Buleleng",lines:[["narr","Ancaman malih rawuh saking wetan.\nRaja Buleleng saking Bali nyobi ngasoraken Pasuruan."],["ubl","Pasuruan bakal dadi wewengkon kita!"],["darmo","Salaminipun rakyat taksih jumeneng sesarengan kula,\nPasuruan boten badhe dhawah."],["narr","Kanthi kepemimpinan ingkang kiyat,\nMbah Darmoyudo malih nangkis serangan Raja Buleleng."]]},
+  {t:"Serangan saking Mas Pekik (Surabaya)",s:"Babak 5 • The Attack from Mas Pekik of Surabaya",lines:[["narr","Ancaman paling ageng rawuh saking kilen.\nPasuruan dipunserang Mas Pekik saking Surabaya,\nsetunggal panguwasa kiyat ingkang kepengin njembaraken wewengkonipun."],["ump","Mas Pekik njaluk Pasuruan tundhuk marang Surabaya!"],["darmo","Kula boten badhe masrahaken Pasuruan,\nsalaminipun napas taksih wonten ing badan kula."],["narr","Paperangan ageng lajeng kelampahan.\nWonten ing serangan punika, Mbah Darmoyudo berjuang kanthi sedaya kekiyatanipun\nkangge njagi Pasuruan."]]},
+  {t:"Pungkasaning Yuswa saha Warisan",s:"Babak 6 • The Legacy",lines:[["narr","Sasampunipun perjuangan ingkang dangu njagi Pasuruan,\nMbah Darmoyudo seda saha kasarekaken ing\nKampung Dermoyudo, Kelurahan Purworejo, Kutha Pasuruan.\nLabuh labetipun kaenget salaminipun."],["all","Mbah Darmoyudo, pengayom Pasuruan.\nAsma panjenengan gesang ing sejarah."]]}]},
+story:{title:"Storytelling: Sang Pengayom Pasuruan",
+ parts:[
+  ["p","Ing jaman rumiyin, ing abad kaping-17, wonten setunggal nagari ingkang tentrem nami Pasuruan. Nagari punika kebak kaendahan, pangajab, saha panguripan… nanging ugi tansah dipunancam kerajaan-kerajaan kiyat ingkang kepengin ngasoraken."],
+  ["p","Ing jaman ingkang boten pesthi punika, nalika raos ajrih gampil nguwaosi, rawuh setunggal priya. Panjenenganipun sanes ratu. Sanes ingkang ngelar jajahan. Panjenenganipun langkung ageng tinimbang punika. Asmanipun Mbah Darmoyudo."],
+  ["p","Panjenenganipun rawuh tanpa pepenginan panguwaos utawi kamulyan. Ingkang kabekta namung setunggal ancas prasaja ing manah: ngayomi."],
+  ["q","“Kula boten rawuh kangge mrentah,” ngendikanipun ing satunggaling dinten. “Kula rawuh kangge ngabdi saha njagi nagari punika.”"],
+  ["p","Kawicaksanan, kakendelan, saha katulusanipun enggal ndadosaken rakyat pitados. Boten dangu panjenenganipun dipunangkat dados pemimpin Pasuruan kanthi sebutan Tumenggung, saha tiyang-tiyang wiwit nyebut Ki Gede Darmoyudo."],
+  ["p","Ing sangandhaping pangayomanipun, Pasuruan ngrembaka. Rakyat rumaos aman. Pangajab tuwuh saya kiyat saben dinten."],
+  ["p","Nanging katentreman… boten nate langgeng."],
+  ["p","Saking wetan rawuh ancaman ageng ingkang sepisan: Raja Blambangan ingkang prakosa. Kanthi pitados dhiri saha kebak pepenginan, piyambakipun ngintun pawartos ingkang njaluk Pasuruan nyerah. Raos ajrih sumebar ing antawisipun rakyat. Nanging Mbah Darmoyudo tetep tenang saha teguh."],
+  ["q","“Pasuruan sanes kangge dipunjajah,” ngendikanipun sora. “Pasuruan kangge dipunjagi.”"],
+  ["p","Kanthi kakendelan saha siasat ingkang tliti, panjenenganipun mimpin rakyatipun dhateng palagan. Saha sanajan ketingalipun mokal… sami menang. Ancaman punika kasil dipunkalahaken."],
+  ["p","Boten dangu, mengsah sanes jumedhul, samangke saking Bali. Raja Buleleng nyerang, tekad ngrebut Pasuruan kangge piyambakipun. Malih rakyat sami ndredheg. Saha malih, Mbah Darmoyudo jumeneng kukuh."],
+  ["q","“Salaminipun kita jumeneng sesarengan,” ngendikanipun, “Pasuruan boten badhe nate dhawah.”"],
+  ["p","Paperangan lumampah rame. Nanging manunggal saha kakendelanipun malih mbekta kamenangan. Pasuruan tetep boten kawon."],
+  ["p","Nanging pacoban paling ageng taksih badhe rawuh. Saking kilen jumedhul panguwasa kiyat: Mas Pekik saking Surabaya, ingkang kawentar amargi kekiyatan, pepenginan, saha kekajenganipun njembaraken panguwaos. Samangke ancamanipun langkung ageng tinimbang sakderengipun."],
+  ["q","“Pasuruan kudu nyerah,” pangucapipun Mas Pekik. Nanging Mbah Darmoyudo boten mangu-mangu. “Kula boten badhe masrahaken nagari punika,” ngendikanipun, “salaminipun kula taksih ambegan.”"],
+  ["p","Mila kawiwitan paperangan paling ageng. Punika sanes namung rebutan siti. Punika perjuangan kangge kamardikan… kangge kaurmatan… kangge rakyat ingkang panjenenganipun tresnani. Mbah Darmoyudo berjuang kanthi sedaya kekiyatan, sanes kangge piyambakipun, nanging kangge saben jiwa ing Pasuruan."],
+  ["p","Sasampunipun pinten-pinten taun berjuang saha mbelani, wekdalipun dumugi. Mbah Darmoyudo seda. Nanging cariyosipun… boten. Panjenenganipun kasarekaken ing Kampung Dermoyudo, Pasuruan, siti ingkang panjenenganipun ayomi kanthi sedaya manah."],
+  ["p","Sanajan sampun tilar donya, semangatipun tetep gesang. Amargi Mbah Darmoyudo langkung saking namung pemimpin. Panjenenganipun pralambang kakendelan. Pralambang kasetyan. Pralambang pangabdian sejati."],
+  ["p","Cariyosipun ngengetaken kita bab ingkang wigati: pahlawan sejati sanes tiyang ingkang madosi panguwaos… nanging tiyang ingkang milih ngayomi sesami, menapa kemawon taruhanipun."]],
+ end:"✨ Asmanipun saged kagungan jaman rumiyin… nanging semangatipun gesang salaminipun."},
+quiz:{title:"Sepinten tepangan panjenengan kaliyan Mbah Darmoyudo II?",
+ intro:"Kalih dasa pitakenan pilihan ganda babagan Kyai Ageng Dermoyudo II, trah Dermoyudo, saha sejarah Kutha Pasuruan. Pilih setunggal wangsulan ing saben pitakenan; andharanipun langsung medal.",
+ answered:"Kawangsulan",of:"saking",correct:"Leres",soal:"Pitakenan",kinds:{P:"Kawruh",U:"Pangertosan"},right:"Leres!",wrong:"Dereng leres. Wangsulanipun {x}.",retry:"Baleni kuis",
+ msgs:["Elok sanget! Panjenengan sampun mangertos cariyos Mbah Darmoyudo II saha sejarah Pasuruan kanthi sae sanget.","Sae! Pangertosan panjenengan sampun kiyat. Waos malih perangan ingkang wau klentu supados saya mantep.","Cekap sae. Cobi waos malih perangan Silsilah saha Para Penerus Trah Dermoyudo, lajeng baleni kuisipun.","Mangga jlajah malih kaca sejarah Mbah Darmoyudo II, lajeng cobi kuis punika sepisan malih."],
+ qs:[
+  {q:"Miturut papan ing gapura makamipun, Kyai Ageng Dermoyudo II mimpin Pasuruan ing taun…",o:["1617–1645","1645–1657","1657–1671","1686–1706"],why:"Papan makam nyathet 1645–1657. Sawetawis cathetan silsilah nyerat 1646 minangka taun wiwit mrentah."},
+  {q:"Minangka Tumenggung, Dermoyudo II kawentar setya dhateng kerajaan…",o:["Kasultanan Demak","Kerajaan Blambangan","Kasultanan Mataram","Kerajaan Buleleng"],why:"Dermoyudo II punika Tumenggung ingkang setya dhateng Kasultanan Mataram, sajaman kaliyan Sunan Amangkurat I."},
+  {q:"Ramanipun Mbah Darmoyudo II, Kyai Ageng Dermoyudo I, kawentar minangka…",o:["Senopati perangipun Sultan Agung","Raja Blambangan","Sudagar saking Madura","Residhen Walandi ing Pasuruan"],why:"Miturut buku silsilah kulawarga, Dermoyudo I punika senopati utawi panglima perangipun Sultan Agung saking Mataram."},
+  {q:"Leluhur kulawarga Dermoyudo oyotipun wonten ing Pegantenan. Tlatah punika wonten ing…",o:["Kediri, Jawa Timur","Pamekasan, Madura","Buleleng, Bali","Nganjuk, Jawa Timur"],why:"Eyangipun Dermoyudo II, Arya Pegantenan, miyos ing Pegantenan, Kabupaten Pamekasan, Pulo Madura."},
+  {q:"Wonten pundi Mbah Darmoyudo II kasarekaken?",o:["Sentono Betek, Kediri","Pesarean Mancilan, Pasuruan","Kampung Dermoyudo, Kelurahan Purworejo, Kutha Pasuruan","Desa Brebek, Nganjuk"],why:"Makamipun wonten ing Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo. Pesarean Mancilan punika makam ramanipun, Dermoyudo I."},
+  {q:"Ing jaman Airlangga, Pasuruan sampun kawentar minangka pelabuhan kanthi nami…",o:["Paravan","Gamda","Bangil","Porodeso"],why:"Wiwit jaman Airlangga (abad kaping-11), Pasuruan kawentar minangka pelabuhan ingkang nami Paravan."},
+  {q:"Kenging menapa Pasuruan ing abad kaping-17 dados rebutan kathah pihak?",o:["Amargi Pasuruan kutha prajanipun Kasultanan Mataram","Amargi Pasuruan pelabuhan strategis saha peken dagang antarpulo, satemah panguwasanipun ngendhaleni margi dagang ing pucuk wetan Jawi","Amargi Pasuruan gadhah tambang emas paling ageng ing Jawi","Amargi Pasuruan babar pisan boten gadhah pemimpin"],why:"Pasuruan punika pelabuhan transit saha peken dagang antarpulo, malah antarnegari. Nguwaosi Pasuruan ateges nguwaosi margi dagang ing Jawi wetan."},
+  {q:"Serangan saking kalih raja ing ngandhap punika kasil dipuntangkis Dermoyudo II saha kacathet minangka labuh labetipun dhateng Mataram, inggih punika…",o:["Raja Demak saha Raja Surabaya","Raja Blambangan saha Raja Buleleng","Raja Makassar saha Raja Bali","Sultan Agung saha Amangkurat I"],why:"Dermoyudo II nangkis serangan Raja Blambangan saking wetan saha Raja Buleleng saking Bali."},
+  {q:"Ing taun 1657 Dermoyudo II gugur nalika Pasuruan dipunserang saking arah…",o:["Blambangan ing wetan","Buleleng ing Bali","Surabaya ing kilen","Seganten Jawi ing lor"],why:"Ancaman kaping tiga rawuh saking kilen, inggih saking arah Surabaya ing taun 1657, saha ing serangan punika Dermoyudo II gugur."},
+  {q:"Pratelan ingkang paling leres babagan nami “Dermoyudo” inggih punika…",o:["Nami asli tiyang setunggal ingkang yuswanipun panjang sanget","Nami setunggal kerajaan ing Pasuruan","Gelar ingkang katurunaken; kacathet sakirangipun gangsal paraga saking Dermoyudo I ngantos V","Nami samaran kangge ngapusi VOC"],why:"Dermoyudo punika gelar ingkang katurunaken turun-tumurun. Kacathet sakirangipun gangsal paraga ingkang gelar Dermoyudo."},
+  {q:"Ing sebutan undhakan turun Jawi (Serat Piagem Sentana), turun undhakan kaping-10 dipunsebut…",o:["Wareng","Gantung siwur","Gropak senthe","Galih asem"],why:"Urutanipun: anak, putu, buyut, canggah, wareng, udeg-udeg, gantung siwur, gropak senthe, gedebog bosok, saha galih asem."},
+  {q:"Kalih putranipun Dermoyudo II, inggih punika Dermoyudo III saha Mangkuyudo, tumut ing perlawanan…",o:["Untung Suropati","Raden Trunojoyo","Pangeran Diponegoro","Karaeng Galesong"],why:"Kekalihipun tumut perlawanan Raden Trunojoyo (1676–1679) dhateng Mataram saha VOC, lajeng kasarekaken ing Sentono Betek, Kediri."},
+  {q:"Kyai Onggojoyo (Dermoyudo IV) sekuthon kaliyan bangsawan ingkang lumajeng sasampunipun kawon nglawan VOC. Piyambakipun asalipun saking…",o:["Bugis-Makassar","Blambangan","Mataram","Madura"],why:"Onggojoyo sekuthon kaliyan bangsawan Bugis-Makassar, ing antawisipun Karaeng Galesong. Ing taun 1678, nalika VOC nyerang, Kutha Pasuruan dipunobong."},
+  {q:"Sasampunipun dados panguwasa Pasuruan ing taun 1686, Untung Suropati kagungan gelar…",o:["Kiai Adipati Nitiadiningrat","Tumenggung Nitinegoro","Raden Adipati Wironegoro","Kanjeng Genteng"],why:"Untung Suropati mrentah Pasuruan ing taun 1686–1706 kanthi gelar Raden Adipati Wironegoro."},
+  {q:"Ki Dermoyudo V (Raden Ismail) ngagem nami samaran Kromowidjoyo. Menapa sababipun?",o:["Supados langkung gampil dipunangkat dados ratu Mataram","Amargi nami Dermoyudo sampun dipunagem sadherekipun","Kangge ngapusi VOC, amargi turunipun Dermoyudo dipunanggep pemberontak","Amargi dipunwajibaken Residhen Domis"],why:"Kulawarga Dermoyudo kathah ingkang nglawan VOC, satemah turunipun dipuncap pemberontak. Nami samaran dipunagem supados boten dipuntepangi."},
+  {q:"Wiwit taun 1743, sasampunipun Raden Ario Wironegoro dipunlengseraken patihipun, panguwaos ing Pasuruan dipuncekel…",o:["Kasultanan Mataram","Walandi","Kerajaan Blambangan","Turunipun Untung Suropati"],why:"Raden Ario Wironegoro dipunlengseraken patihipun amargi dipunbujuk Walandi. Wiwit punika Walandi nyekel panguwaos ing Pasuruan."},
+  {q:"Cathetan Residhen Domis nyebataken Pasuruan ngirim watawis 80.000 pikul kopi saha 17.000 pikul gendhis ing taun 1829. Menapa gegayutanipun kaliyan cariyos Darmoyudo?",o:["Mbuktekaken bilih Darmoyudo II ingkang gadhah pabrik gendhis","Nedahaken kasugihan tlatah ingkang rumiyin dipunjagi Darmoyudo, ingkang samangke mili dhateng pamarentah kolonial","Nedahaken bilih Pasuruan mlarat sasampunipun jaman Darmoyudo","Babar pisan boten wonten gegayutanipun"],why:"Data punika negesaken kenging menapa Pasuruan dados rebutan wiwit abad kaping-17. Kalih abad salajengipun, kasugihanipun dipunraosaken pamarentah kolonial."},
+  {q:"Kenging menapa pambijinipun Domis babagan watak masyarakat Pasuruan kedah dipunwaos kanthi ngatos-atos?",o:["Amargi Domis gesang sajaman kaliyan Darmoyudo II","Amargi cathetanipun kaserat ing basa Jawi kina","Amargi Domis pejabat kolonial, satemah pambijinipun boten netral saha boten kenging dipunwradinaken","Amargi Domis boten nate rawuh ing Pasuruan"],why:"Domis punika pejabat Walandi. Pambijinipun saged mboten adil, mila prayoginipun kaserat “miturut cathetan Domis”. Cathetanipun ugi nggambaraken taun 1830, sanes jaman sugengipun Darmoyudo."},
+  {q:"Darmoyudo II perang kangge njagi Pasuruan, sanes kangge ngasoraken tlatah sanes. Patuladhan ingkang paling jumbuh inggih punika…",o:["Ngangsa panguwaos","Tresna tentrem saha tanggel jawab njagi rakyat","Mentingaken dhiri piyambak","Remen males dendam"],why:"Panjenenganipun njagi, sanes nyerang wangsul. Sikep punika nggambaraken tresna tentrem saha tanggel jawab dhateng kawilujenganipun rakyat."},
+  {q:"Sawetawis sumber nyebat Mas Pekik minangka penyerang saking Surabaya, dene bagan silsilah nyebat putranipun Dermoyudo II. Sikep ingkang paling leres anggenipun nyerat sejarah inggih punika…",o:["Milih versi ingkang paling narik kawigatosan kangge dipuncariyosaken","Mbusak nami Mas Pekik saking cariyos","Nampilaken kalih versi saha ngentosi konfirmasi saking sumber ingkang saged dipunpitados","Ngarang versi enggal ingkang nggabungaken kekalihipun"],why:"Menawi sumberipun benten, ahli sejarah nampilaken kalih versi menapa wontenipun saha mriksa, upaminipun dhateng juru kunci makam utawi Dinas Kabudayan."}]},
+tour:{noVideo:"Video tour boten saged dipunputer. Priksanen file <b>tour-makam.mp4</b> wonten ing folder <b>aset</b>, lajeng bukak website ngagem Chrome, Edge, utawi Safari.",title:"Tour Makam",intro:"Tumutana video tour cekak ing salebeting cungkup Makam Darmoyudo, lajeng pirsani foto-foto rute kunjungan ing ngandhapipun.",route:"Rute tour",close:"Tutup",
+ caps:["Cungkup makam warni ijem kanthi papan kaligrafi Basmalah, syahadat, saha Ayat Kursi.","Maesan kajeng ukir saha jirat warni emas, kanthi cendhela kajeng kawat ing sisih tengen.","Papan kaligrafi Ayat Kursi saha cendhela kajeng kawat ing sisih kiwa cungkup.","Jirat keramik ijem kanthi maesan kajeng ukir saha rerenggan warni emas.","Cendhela kajeng kawat ingkang madhep plataran sakubengipun cungkup."],
+ locTitle:"Papan",loc:"Kampung Dermoyudo, Dukuh Porodeso, Kelurahan Purworejo, Kutha Pasuruan, Jawa Timur.",
+ etTitle:"Tata krama ziarah",et:["Sikep sopan saha njagi katenangan.","Ngagem busana ingkang rapi saha nutup aurat.","Nyuwun pamit dhateng juru kunci sakderengipun motret."]},
+kelas:{title:"Foto Sesarengan Kelas 9B",intro:"Pengetan tim kelas 9B nalika nggarap proyek sejarah Mbah Darmoyudo II.",caption:"Kelas 9B – Sinau Sejarah Mbah Darmoyudo II",hint:"Klik foto alit kangge nggentosi foto utama, utawi klik foto utama kangge nggedhekaken.",
+ alt:["Kelas 9B foto sesarengan ing ngajeng gedhung sekolah.","Kelas 9B gaya bingkai driji.","Kelas 9B kompak nuding ing tengah."]},
+concl:{title:"Dudutan & Pitutur",
+ summary:"Darmoyudo II punika Tumenggung ingkang setya dhateng Mataram ingkang njagi Pasuruan, kutha pelabuhan ingkang dados rebutan, saking serangan Blambangan saha Buleleng, lajeng gugur ing taun 1657. Asmanipun samangke dados nami kampung papan panjenenganipun kasarekaken: Kampung Dermoyudo, Kutha Pasuruan.",
+ moralTitle:"Piwulang luhur saking cariyos Mbah Darmoyudho",
+ morals:[["Leadership with Responsibility","Kepemimpinan ingkang tanggel jawab","Mbah Darmoyudho mulangaken bilih pemimpin sejati sanes ingkang madosi panguwaos, nanging ingkang purun manggul tanggel jawab ngayomi rakyatipun."],["Courage in Defending Truth","Kendel mbelani kaleresan","Kakendelanipun Mbah Darmoyudho ngadhepi serangan saking Blambangan, Buleleng, saha Mas Pekik nedahaken bilih kaleresan kedah dipunbelani, sanajan kebak bebaya."],["Loyalty to the Homeland","Setya dhateng tanah wutah rah","Mbah Darmoyudho setya njagi Pasuruan sanajan ngadhepi kathah ancaman. Bab punika mulangaken wigatosipun tresna saha setya dhateng tanah papan kita ngabdi."],["Justice Above Personal Interest","Kaadilan ing sanginggiling kepentingan pribadi","Panjenenganipun boten purun masrahaken Pasuruan kangge kepentingan pribadi utawi pangancam panguwasa sanes. Kaadilan saha kawilujenganipun rakyat dados prioritas utama."],["Perseverance and Never Giving Up","Tekun saha pantang nyerah","Sanajan serangan rawuh bola-bali, Mbah Darmoyudho boten nyerah. Sikep pantang nyerah punika wigati kangge ngadhepi pacoban gesang."],["Serving with Sincerity","Ngabdi kanthi tulus","Pangabdianipun Mbah Darmoyudho katindakaken kanthi tulus, sanes kangge pangalembana utawi panguwaos."],["Legacy of Good Deeds","Warisan kasaenan","Mbah Darmoyudho kaenget sanes amargi kasugihanipun, nanging amargi labuh labetipun. Punika mulangaken bilih kasaenan gesang langkung dangu tinimbang bandha."]],
+ reflect:"Saking cariyos Mbah Darmoyudho, kita sinau bilih kakendelan, kejujuran, saha pangabdian punika nilai luhur ingkang kedah dipunjagi dening saben generasi.",
+ msgTitle:"Pitutur kangge para siswa",
+ msgs:["Tuladhanen nilai-nilai Mbah Darmoyudo: tanggel jawab, kendel, setya, adil, pantang nyerah, tulus, saha remen tumindak sae.","Rumatana situs sejarah lokal: rawuh kanthi sopan, jagi resikipun, saha tepangaken dhateng kanca saha kulawarga.","Sikep kritis dhateng sumber sejarah: bentenaken kasunyatan kacathet saking tutur lisan, bandhingaken pinten-pinten sumber, saha nyuwun pirsa dhateng pihak ingkang wenang menawi wonten bentenipun."]},
+closing:{title:"Panutup",
+ paras:["Matur sembah nuwun dhumateng sedaya para rawuh ingkang sampun kersa njlajah website punika. Matur nuwun ugi kawula aturaken dhumateng bapak saha ibu guru pembimbing, saha dhumateng juru kunci tuwin para warga sakubengipun Makam Darmoyudo ingkang sampun nampi kawula kanthi grapyak.","Kawula rumaos bilih website punika taksih tebih saking sampurna. Nyuwun agunging samodra pangaksami menawi wonten kekirangan, saha kawula tansah nampi pamrayogi kangge ndandosi."],
+ bye:"Wassalamu’alaikum warahmatullahi wabarakatuh."},
+dev:{title:"Ingkang Damel Website",intro:"Website punika dipunrancang saha kasusun dening tigang siswa kelas 9B.",role:"Siswa Kelas 9B",email:"Email",phone:"Telpon",wa:"Chat WhatsApp",
+ footer:"© 2026 <b>Kelas 9B</b> • Website Pasinaon Sejarah Mbah Darmoyudo II, Kutha Pasuruan"}
+};
+
+/* ---------- ENGLISH ---------- */
+T.en = {
+meta:{title:"Mbah Darmoyudo II – History Learning Website by Class 9B"},
+nav:{banner:"Home",sambutan:"Welcome",sorotan:"Highlights",sejarah:"History",drama:"Drama",quiz:"Quiz",tour:"Tomb Tour",kelas:"Class 9B",simpulan:"Conclusion",penutupan:"Closing",pembuat:"Creators",menu:"Open menu",top:"Back to top",lang:"Choose language"},
+lbl:{sambutan:"Class 9B",sorotan:"Documentation",sejarah:"Historical Facts",drama:"On Stage",quiz:"Check Your Understanding",tour:"Visit",kelas:"Memories",simpulan:"Lessons",penutupan:"Thank You",pembuat:"Development Team"},
+hero:{eyebrow:"Historical Heritage • Pasuruan City",h1:"Mbah <span>Darmoyudo</span> II",desc:"Meet the loyal Tumenggung of Mataram who guarded the port city of Pasuruan against attacks from Blambangan and Buleleng, a project by Class 9B students.",alt:"Banner reading Mbah Dharmo Yudho, Pasoeroean",sub:"2nd Regent of Pasuruan • 1645–1657 • Dukuh Porodeso, Pasuruan City",start:"Start Learning",quiz:"Take the Quiz"},
+welcome:{title:"Welcome",
+ greet:"Assalamu’alaikum warahmatullahi wabarakatuh, and peace be upon us all.",
+ paras:[
+  "All praise is due to Allah SWT, by whose grace we, the students of Class 9B, have completed this history learning website as part of our STEM-based history lessons.",
+  "We made this website to introduce Mbah Darmoyudo II (Kyai Ageng Dermoyudo II), the 2nd Regent of Pasuruan who ruled from 1645 to 1657, as a local historical figure of Pasuruan City. We gathered information from the family genealogy book, the tomb sign, and historical records, then presented it as lessons, a drama, a quiz, and a tomb tour.",
+  "Our thanks go to our supervising teachers, who guided us with patience. Enjoy exploring. We hope this website adds to our knowledge and our love for our own local history."],
+ sign:"The creators, students of Class 9B"},
+slides:{title:"Highlights",intro:"Documentary photos from inside the tomb shelter and from Class 9B activities. Photos change every 5 seconds; hover over a photo to pause.",prev:"Previous photo",next:"Next photo",go:"Go to photo",fact:"Did you know?",
+ caps:["A green-toned tomb shelter with a calligraphy board of the Basmalah, the Shahada, and Ayat al-Kursi.","Carved wooden headstones and gold-coloured grave markers, with a wire-mesh wooden window on the right.","The Ayat al-Kursi calligraphy board and a wire-mesh wooden window on the left side of the shelter.","A green-tiled grave platform with carved wooden headstones and gold-coloured ornaments.","Wire-mesh wooden windows facing the yard around the shelter.","Class 9B together in front of the school building.","A finger-frame pose with classmates.","All pointing to the centre: Class 9B having fun."]},
+hist:{title:"History of Mbah Darmoyudo",
+ intro:"This section contains historical facts, not the drama script. The <span class=\"lbl fakta\">Recorded fact</span> label marks information from written records, while <span class=\"lbl tutur\">Oral tradition / dramatisation</span> marks stories passed down by word of mouth.",
+ badgeFact:"Recorded fact",badgeOral:"Oral tradition / dramatisation",
+ a:{tab:"Overview",title:"Overview",
+  paras:["Kyai Ageng Dermoyudo II led Pasuruan for about 12 years (1645–1657) as a Tumenggung loyal to the Sultanate of Mataram. At that time Pasuruan was a busy port city contested by many powers. He repelled attacks from Blambangan in the east and Buleleng in Bali, before falling when Pasuruan was attacked from the direction of Surabaya in 1657.","His name now lives on in a neighbourhood of Pasuruan City: Kampung Dermoyudo, where he is buried."],
+  head:["Fact","Details"],
+  rows:[["Name","Kyai Ageng Dermoyudo II"],["Also known as","Mbah Darmoyudho, Ki Gede Dermoyudo II"],["Position","Tumenggung and ruler of the Pasuruan region, 2nd Regent of Pasuruan"],["Reign","1645–1657 (some genealogy records give 1646–1657)"],["Contemporary of","Sunan Amangkurat I, king of Mataram (buried at Tegalarum)"],["Father","Kyai Ageng Dermoyudo I, a former war commander of Sultan Agung"],["Main achievement","Repelling the attacks of the King of Blambangan and the King of Buleleng (Bali)"],["Tomb","Kampung Dermoyudo, Dukuh Porodeso, Purworejo, Pasuruan City"]],
+  spell:"This website uses the main spelling <b>Darmoyudo</b>, as written on the tomb sign. Other spellings in use are Dermoyudo, Darmoyudho, and Dharmo Yudho."},
+ b:{tab:"Origins & Genealogy",title:"Origins and Genealogy",
+  intro:"According to the family genealogy book, Dermoyudo II came from the Menak Werdati lineage, with family roots in Madura. His grandfather was born in Pegantenan, Pamekasan; the family then served in Mataram and finally ruled in Pasuruan.",
+  treeTitle:"Family tree",
+  tree:[["Arya Pegantenan","Grandfather • born in Pegantenan, Pamekasan"],["Kyai Ageng Dermoyudo I","Father • war commander of Sultan Agung"],["Kyai Ageng Dermoyudo II","Main figure • Tumenggung of Pasuruan 1645–1657"],["Dermoyudo III (Mas Pekik)","Son • ruler of Pasuruan 1657–1671"],["Kyai Tumenggung Mangkuyudo","Son • Tumenggung under Amangkurat I"],["Kyai Onggojoyo (Dermoyudo IV)","Grandson • ruler of Pasuruan 1671–1686"]],
+  genHead:["Generation","Figure","Role and notes"],
+  genRows:[["Grandfather","Arya Pegantenan","Born in Pegantenan, Pamekasan Regency, Madura. Buried at Sentono Gribig, Malang."],["Father","Kyai Ageng Dermoyudo I","Senopati (war commander) of Sultan Agung of Mataram (1613–1646) with the title Raden Tumenggung. He defeated Ki Gede Kapulungan, the previous ruler of Pasuruan, and then ruled Pasuruan as Ki Gede Dermoyudo I. Buried at Pesarean Mancilan, Pasuruan."],["Main figure","Kyai Ageng Dermoyudo II","Tumenggung and ruler of Pasuruan (1645/1646–1657)."],["Son","Kyai Tumenggung Dermoyudo III (Mas Pekik)","Ruler of Pasuruan (1657–1671). Died in Kediri after joining the Trunojoyo resistance; buried at Sentono Betek, Kampung Pandean, Kediri City."],["Son","Kyai Tumenggung Mangkuyudo","Held the title Tumenggung under Amangkurat I. Died in 1677 while taking part in the Trunojoyo resistance; buried at Sentono Betek, Kediri."],["Grandson","Ki Dermoyudo IV (Kyai Onggojoyo)","Ruler of Pasuruan (1671–1686). Buried in Brebek Village, Nganjuk."]],
+  levelsTitle:"The 10 levels of descendants in Javanese culture",
+  levelsIntro:"The genealogy book follows the standard of the Kasunanan Surakarta, the Serat Piagem Sentana. Each generation below an ancestor (called the pancer) has its own name:",
+  levelsHead:["Level","Name"],
+  levels:["Anak (child)","Cucu (grandchild)","Buyut","Canggah","Wareng","Udeg-udeg","Gantung siwur","Gropak senthe","Gedebog bosok","Galih asem"],
+  levelsNote:"Under this system, Dermoyudo II is recorded as the 8th level (gropak senthe) from Menak Werdati, and the 1st level (child) of Kyai Ageng Dermoyudo I."},
+ c:{tab:"Reign & Struggle",title:"Reign and Struggle (1645–1657)",
+  intro:"Dermoyudo II became Tumenggung of Pasuruan after his father, in a position that, according to the genealogy book, was contemporary with Sunan Amangkurat I of Mataram. For 12 years he guarded Pasuruan against threats from three directions.",
+  whyTitle:"Why was Pasuruan contested?",
+  why:["Pasuruan had been known as a port since the time of Airlangga, under the name Paravan. It was strategically placed as a transit port and a trading market between islands, even between countries. Many nobles and wealthy merchants lived there, so whoever controlled Pasuruan controlled the trade routes at the eastern end of Java.","Pasuruan also had a long history with Blambangan. After being conquered by Sultan Trenggono of Demak in 1545, Pasuruan became an important Islamic power in eastern Java and fought Blambangan many times. In 1601, Pasuruan even captured the capital of Blambangan."],
+  threatsTitle:"The three threats",
+  threats:[["East","King of Blambangan","Repelled. Recorded as a service of Dermoyudo II to Mataram."],["Across the sea (Bali)","King of Buleleng","Repelled. Also recorded as a service to Mataram."],["West (1657)","Attack from the direction of Surabaya","Dermoyudo II fell. The next ruler, Mas Pekik, governed Pasuruan as Kiai Dermoyudo until his death in 1671."]],
+  pekikTitle:"Who was Mas Pekik? Two versions",
+  pekikIntro:"The sources disagree. This website shows both without choosing one.",
+  vA:["Version A: the drama script and the city history","Mas Pekik was a ruler of Surabaya who attacked Pasuruan in 1657, causing the death of Dermoyudo II."],
+  vB:["Version B: the family genealogy chart","Mas Pekik was the son of Dermoyudo II, with the title Kyai Tumenggung Dermoyudo III."],
+  endTitle:"Death",
+  end:"Dermoyudo II died in 1657 and was buried in the neighbourhood that now bears his name, Kampung Dermoyudo, Purworejo, Pasuruan City. The sign at his tomb gate reads: Makam Darmoyudo, Bupati Pasuruan ke-II, 1645–1657, Dukuh Porodeso."},
+ d:{tab:"Successors",title:"The Successors of the Dermoyudo Lineage",
+  intro:"After Dermoyudo II, the family’s title and struggle continued through several generations. Many of them resisted the VOC (the Dutch), and some even had to go into disguise.",
+  blocks:[
+   {h:"Dermoyudo III and Mangkuyudo: joining the Trunojoyo resistance",p:["Kyai Tumenggung Dermoyudo III (Mas Pekik) ruled Pasuruan from 1657 to 1671. He and his brother, Kyai Tumenggung Mangkuyudo, joined the resistance of Raden Trunojoyo (1676–1679) against Mataram and the VOC. Both died and were buried at Sentono Betek, Kediri; Mangkuyudo is recorded as dying in 1677."]},
+   {h:"Dermoyudo IV (Kyai Onggojoyo): Pasuruan burned",p:["Kyai Onggojoyo ruled Pasuruan from 1671 to 1686. He allied with Bugis-Makassar nobles who had fled after losing the war against the VOC in Makassar, among them Karaeng Galesong. In 1678, when the VOC attacked, the city of Pasuruan was burned to the ground.","To escape pursuit, Onggojoyo disguised himself as a village head (demang) in Seroja, in the Sidoarjo area. He later handed power over Pasuruan to Untung Suropati."]},
+   {h:"Untung Suropati: twenty years against the VOC",p:["Untung Suropati came from Bali and had once been a slave before turning against the Dutch. He became famous after killing Captain Tack in Kartasura. On 8 February 1686, on the orders of Pangeran Nerangkusuma with the blessing of the king of Mataram, he went to Pasuruan and became its adipati with the title Raden Adipati Wironegoro.","His rule (1686–1706) was full of battles against the VOC, yet it ran well and raised the people’s fighting spirit. The VOC eventually worked with Onggojoyo’s son to attack him. Untung Suropati was badly wounded and died in 1706. His son, Rakhmad, carried the struggle eastward and fell in 1707.","The location of Untung Suropati’s grave is not known for certain. However, in Pedukuhan Mancilan, Pasuruan City, there is a cave site believed to have been his hiding place."]}],
+  descTitle:"Dermoyudo V and the descendants in Surabaya",
+  descIntro:"Later generations spread to Surabaya, Malang, Mojokerto, and Lamongan. Some recorded figures:",
+  descHead:["Figure","Role"],
+  descRows:[["Ki Dermoyudo V (Raden Ismail)","Patih (chief minister) in Surabaya. Used the alias Kromowidjoyo to deceive the VOC, because Dermoyudo’s descendants were seen as rebels."],["Raden Tumenggung Kromodjoyodirono (Raden Bagus Glundung)","Regent of Surabaya 1819–1825, nicknamed Kanjeng Permen."],["Raden Bagus Anom Kromodjoyo Adinegoro II (Kanjeng Genteng)","Regent of Surabaya 1831–1859. Served as the permanent Friday prayer imam at the Sunan Ampel Mosque; died 1861."],["Raden Adipati Arya Kromodjoyo Adinegoro III (Raden Aersadan)","Regent of Lamongan 1863–1866, then Regent of Surabaya 1866–1894."]],
+  descNote:"The nickname Kanjeng Genteng comes from the location of the regent’s residence in the Genteng area of Surabaya. Its pendopo building is now a heritage site and a cultural centre of Surabaya."},
+ e:{tab:"Pasuruan Timeline",title:"Timeline of Pasuruan City",
+  intro:"Pasuruan has changed rulers many times over more than a thousand years, from the ancient port of Paravan to today’s Pasuruan City with 34 urban villages. The story of Darmoyudo II (highlighted in green) is just one chapter.",
+  rows:[["Time of Airlangga (11th century)","Pasuruan was known as a port called Paravan."],["Early 16th century","The area called Gembong or Gamda was led by Pate Supetak, named in the Babad Pasuruan as the founder of the capital of Pasuruan."],["1545","Conquered by Sultan Trenggono of Demak; became an Islamic power in eastern Java."],["1601","Pasuruan captured the capital of Blambangan."],["1617–1645","Era of Kyai Gede Dermoyudo I."],["1645–1657","Era of Kyai Ageng Dermoyudo II."],["1657–1671","Era of Mas Pekik (Kiai Dermoyudo III)."],["1671–1686","Era of Kyai Onggojoyo (Dermoyudo IV). Pasuruan was burned in 1678."],["1686–1706","Untung Suropati ruled as Raden Adipati Wironegoro."],["1707","Onggojoyo (the son) became Adipati of Pasuruan."],["1743","Raden Ario Wironegoro came to power, then was overthrown by his patih, Kiai Ngabai Wongsonegoro, at the urging of the Dutch. From then on the Dutch held power."],["Dutch period","Pasuruan became the capital of a residency covering Malang, Probolinggo, Lumajang, and Bangil. Wongsonegoro was made regent with the title Tumenggung Nitinegoro."],["27 July 1751","Raden Groedo, only 11 years old, became regent with the title Kiai Adipati Nitiadiningrat. He led for 48 years and founded the Al Anwar Grand Mosque together with Kiai Hasan Sanusi (Mbah Slagah)."],["28 February 1800","Raden Beji Notokoesoemo became regent with the title Tumenggung Nitiadiningrat II."],["1809","Raden Pandjie Brongtokoesoemo became Raden Adipati Nitiadiningrat III (died 30 January 1833, buried behind the Al Anwar Mosque)."],["Until 20 July 1887","Era of Raden Tumenggung Ario Nitiadiningrat IV. Nitiadiningrat I–IV are known locally as Mbah Surga-Surgi."],["1 January 1901","The Residency of Pasuruan was formed."],["20 June 1918","The Stads Gemeente van Pasoeroean (municipality) was formed under Staatsblad 1918 No. 320."],["14 August 1950","The Municipality of Pasuruan became an autonomous region."],["21 December 1982","The municipality was expanded to 3 districts."],["1999","Under Law No. 22 of 1999, the Municipality of Pasuruan was renamed Pasuruan City."],["12 January 2002","All villages became urban villages (Regional Regulation No. 10 of 2002), so Pasuruan City now has 34 urban villages."]]},
+ f:{tab:"Heritage Sites",title:"Sites You Can Visit",
+  intro:"Four sites linked to the Dermoyudo lineage are in Pasuruan City itself, making a one-day history trail.",
+  head:["Site","Location","Connection"],
+  rows:[["Darmoyudo Tomb","Kampung Dermoyudo, Dukuh Porodeso, Purworejo, Pasuruan City","Tomb of Kyai Ageng Dermoyudo II. Its gate bears the sign “Makam Darmoyudo, Bupati Pasuruan ke-II, 1645–1657”."],["Pesarean Mancilan","Mancilan, Pasuruan City","Tomb of Kyai Ageng Dermoyudo I, father of Dermoyudo II."],["Untung Suropati’s hideout","Pedukuhan Mancilan, Pasuruan City","A cave believed to be where Untung Suropati hid from the Dutch."],["Al Anwar Grand Mosque","Pasuruan city centre","Founded by Kiai Adipati Nitiadiningrat with Kiai Hasan Sanusi; Nitiadiningrat III is buried behind it."]],
+  outside:"Outside Pasuruan, traces of the family are found at Sentono Betek, Kediri (tombs of Dermoyudo III and Mangkuyudo), Brebek Village, Nganjuk (tomb of Dermoyudo IV), and Sentono Gribig, Malang (tomb of Arya Pegantenan).",
+  etiquette:"<strong>Visiting etiquette:</strong> be polite, dress neatly, and ask the caretaker (juru kunci) for permission before taking photos."},
+ g:{tab:"Domis’s Notes 1830",title:"Pasuruan After Darmoyudo: The Notes of Resident Domis (1830)",
+  intro:"About 173 years after Darmoyudo II died, the Dutch Resident H. J. Domis recorded the state of Pasuruan in 1830. These notes do not tell Darmoyudo’s story, but they show what became of the region he once defended: Pasuruan remained a centre of farming and trade, but was now fully under Dutch rule.",
+  warnTitle:"Note:",warn:"Domis was a colonial official, so his judgements about people’s character are not neutral and must not be generalised to all Javanese, Madurese, or people of Pasuruan. Everything below is therefore written as “according to Domis’s notes”.",
+  t1Title:"The land Darmoyudo defended, two centuries later",
+  t1Head:["According to Domis’s notes (1830)","Link to the Darmoyudo story"],
+  t1Rows:[["In 1829 Pasuruan exported about 80,000 pikul of coffee and 17,000 pikul of sugar, as well as tobacco. There were sugar mills owned by C. Vos and Han Kikko.","This confirms why Pasuruan had been contested since the 17th century. The wealth of the land Darmoyudo once guarded now flowed to the colonial government."],["Pasuruan was linked by roads and trade networks with Bangil and Malang; produce was shipped to many parts of the archipelago.","Pasuruan’s role as a trade hub, dating back to the port of Paravan, continued."],["Its people were diverse: Javanese, Madurese, Chinese, Arabs, Malays, Europeans, and the Tengger community.","This fits Pasuruan as a plural port city. The ancestors of the Darmoyudo lineage themselves came from Madura."],["Pasuruan was led by a Dutch Resident.","A contrast with Darmoyudo, who refused to submit to outside rulers. The Dutch had held power since 1743 (see the Timeline)."]],
+  t2Title:"Character values: Domis’s notes and Darmoyudo’s example",
+  t2Intro:"An analysis of Domis’s notes draws out praiseworthy and blameworthy values from the behaviour he described. These can be set beside the example of Darmoyudo for class discussion.",
+  t2Head:["Value","According to Domis’s notes (1830)","Example from the Darmoyudo story"],
+  t2Rows:[["Love of peace","The Javanese are described as disliking war.","He fought only to defend Pasuruan, not to conquer other lands."],["Obedience and loyalty","Described as traits seen in part of the community.","Loyal to his duty of protecting the people, and to Mataram."],["Hard work and diligence","People farmed, wove, and made crafts of gold, silver, clay, and stone.","He did not give up though attacked from the east, Bali, and the west."],["Revenge and cruelty (blameworthy)","Domis judged that revenge could lead to cruel acts.","In his story he defended rather than took revenge: “Pasuruan is not meant to be conquered, but to be protected.”"],["Gambling and theft (blameworthy)","Cockfighting, gambling, and cattle theft were noted as social problems.","He put the people’s safety above personal interest."]],
+  note:"Remember too: the 1830 notes describe Pasuruan two centuries after Darmoyudo, not conditions in his lifetime."},
+ h:{tab:"Did You Know?",title:"Did You Know?",intro:"Short facts to start a class discussion.",
+  facts:["Dermoyudo is not the name of one person but an inherited title. At least five figures bore it, from Dermoyudo I to Dermoyudo V.","Mbah Darmoyudo’s father was a war commander of Sultan Agung, Mataram’s greatest king.","The family’s ancestors came from Pegantenan, a district in Pamekasan on the island of Madura.","Two sons of Dermoyudo II joined the Trunojoyo resistance, one of the largest revolts against Mataram and the VOC in the 17th century.","His grandson, Kyai Onggojoyo, allied with Bugis-Makassar fighters who had fled Makassar after losing to the VOC.","One of his descendants had to change his name to Kromowidjoyo so the VOC would not recognise him as a descendant of the “rebel” Dermoyudo.","Regent Kiai Adipati Nitiadiningrat of Pasuruan was appointed at only 11 years old and led for 48 years.","The Javanese have names for 10 levels of descendants. The 10th is called galih asem.","In the time of Airlangga, Pasuruan was called Paravan."]},
+ i:{tab:"Sources & Versions",title:"Source Notes and Differing Versions",
+  intro:"There are four points where the sources disagree. All four should be checked with the tomb caretaker or the Pasuruan City Culture Office.",
+  head:["Topic","Version A","Version B","Website’s approach"],
+  rows:[["Who was Mas Pekik","Drama script and city history: a ruler of Surabaya who attacked Pasuruan, causing Dermoyudo II’s death (1657).","Genealogy chart: son of Dermoyudo II, titled Kyai Tumenggung Dermoyudo III.","Shows both versions without choosing one."],["Year his reign began","Tomb sign and city history: 1645.","Genealogy chart: 1646.","Uses 1645 (as on the official sign) with a small note."],["Who was Dermoyudo I","Genealogy chart: Sultan Agung’s commander who defeated Ki Gede Kapulungan; buried at Pesarean Mancilan, Pasuruan.","City history: Ki Gede Kapulungan himself bore the title Dermoyudo I, then fled and was buried at Bibis, Surabaya.","Written as “according to the family genealogy book” pending verification."],["Spelling of the name","Darmoyudo, Darmoyudho, Dharmo Yudho","Dermoyudo, Dermoyudho","Main spelling Darmoyudo (as on the tomb sign)."]],
+  oral:"The story of the three attacks (Blambangan, Buleleng, Mas Pekik) comes mostly from family records and oral tradition, so it carries the oral tradition label.",
+  pekik:"<strong>An extra clue about Mas Pekik:</strong> the famous Pangeran Pekik of Surabaya lived at the Mataram court from 1633 and was killed on the orders of Amangkurat I in 1659. Since he died in 1659, he could not have ruled Pasuruan until 1671. So the Mas Pekik who ruled Pasuruan was someone else. This makes the genealogy version more likely, but it still needs confirmation.",
+  srcTitle:"Sources used",
+  sources:["The book <i>Silsilah Keturunan dan Sejarah Kyai Ageng Dermoyudo II</i>, including the section “Sejarah Kota Pasuruan dan Perjuangan Untung Suropati dan Dermoyudo I dan II”.","The base genealogies cited by that book: compiled by R. Tumenggung Arya Notoadikoesoemo and the Yayasan Sentono Boto Putih Surabaya, R. Bagus Yasin (10 March 1960), and R. Panji Arya Makmoer (1 August 1966).","The sign at the gate of the Darmoyudo Tomb, Dukuh Porodeso.","The script <i>Bilingual Drama Mbah Darmoyudo</i> (for the drama and story sections).","Ratih Kirana Suryo Puteri and Dian Soni Amellia (translators), <i>Pasuruan 1830: Catatan H. J. Domis</i>, Perpusnas Press, 2019/2020."]}
+},
+drama:{title:"Drama & Storytelling",
+ note:"This section is a drama script based on oral tradition and family records, not an official historical record.",
+ roles:{narr:"Narrator",darmo:"Mbah Darmoyudo",rakyat:"The People",ub:"Envoy of Blambangan",ubl:"Envoy of Buleleng",ump:"Envoy of Mas Pekik",all:"All Cast"},
+ scenes:[
+  {t:"The Arrival and the Duty",s:"Scene 1 • Kedatangan & Amanah",lines:[["narr","In the 17th century, Pasuruan was a strategic region often targeted by enemies.\nA nobleman named Mbah Darmoyudo came and devoted his life to protecting this land."],["darmo","I did not come for personal glory,\nbut to fulfil a duty and protect the people of Pasuruan."]]},
+  {t:"The Leader of Pasuruan",s:"Scene 2 • Menjadi Tumenggung",lines:[["narr","Because of his wisdom and firmness,\nMbah Darmoyudo was appointed as the Tumenggung of Pasuruan,\nalso known as Ki Gede Darmoyudo."],["rakyat","We feel safe under your leadership, Mbah."]]},
+  {t:"The Attack from Blambangan",s:"Scene 3 • Serangan Raja Blambangan",lines:[["narr","The peace of Pasuruan was disturbed when the King of Blambangan attacked the region."],["ub","Surrender Pasuruan to the King of Blambangan!"],["darmo","Pasuruan is not meant to be conquered,\nbut to be protected."],["narr","With strategy and courage,\nMbah Darmoyudo successfully repelled the Blambangan attack."]]},
+  {t:"The Attack from Buleleng",s:"Scene 4 • Serangan Raja Buleleng",lines:[["narr","Another threat came from the east.\nThe King of Buleleng from Bali attempted to conquer Pasuruan."],["ubl","Pasuruan will become our territory!"],["darmo","As long as the people stand with me,\nPasuruan will not fall."],["narr","With strong leadership,\nMbah Darmoyudo once again repelled the Buleleng attack."]]},
+  {t:"The Attack from Mas Pekik of Surabaya",s:"Scene 5 • Serangan dari Mas Pekik (Surabaya)",lines:[["narr","The greatest threat came from the west.\nPasuruan was attacked by Mas Pekik of Surabaya,\na powerful ruler who sought to expand his territory."],["ump","Mas Pekik demands Pasuruan to submit to Surabaya!"],["darmo","I will never surrender Pasuruan,\nas long as I still breathe."],["narr","A great battle took place.\nIn this attack, Mbah Darmoyudo fought with all his strength\nto defend Pasuruan."]]},
+  {t:"The Legacy",s:"Scene 6 • Akhir Hayat & Warisan",lines:[["narr","After a long struggle to protect Pasuruan,\nMbah Darmoyudo passed away and was buried in\nKampung Dermoyudo, Purworejo, Pasuruan City.\nHis service is remembered forever."],["all","Mbah Darmoyudo, the guardian of Pasuruan.\nYour name lives on in history."]]}]},
+story:{title:"Storytelling: The Guardian of Pasuruan",
+ parts:[
+  ["p","Long ago, in the 17th century, there was a peaceful land known as Pasuruan. It was a place of beauty, hope, and life… but also a land constantly threatened by powerful kingdoms that wished to conquer it."],
+  ["p","In those uncertain times, when fear could have easily taken over, a man arrived. He was not a king. He was not a conqueror. He was something far greater. His name was Mbah Darmoyudo."],
+  ["p","He came with no desire for power or glory. Instead, he carried a simple purpose in his heart: to protect."],
+  ["q","“I do not come to rule,” he once said, “I come to serve and to guard this land.”"],
+  ["p","His wisdom, courage, and sincerity quickly earned the trust of the people. Before long, he was appointed as the leader of Pasuruan, known as Tumenggung, and people began to call him Ki Gede Darmoyudo."],
+  ["p","Under his leadership, Pasuruan flourished. The people felt safe. Hope grew stronger each day."],
+  ["p","But peace… never lasts forever."],
+  ["p","From the east came the first great threat—the powerful King of Blambangan. With confidence and ambition, he sent a message demanding Pasuruan to surrender. Fear spread among the people. But Mbah Darmoyudo stood calm and firm."],
+  ["q","“Pasuruan is not meant to be conquered,” he declared, “It is meant to be protected.”"],
+  ["p","With courage and careful strategy, he led his people into battle. And against all odds… they won. The threat was defeated."],
+  ["p","But not long after, another enemy rose—this time from Bali. The King of Buleleng launched an attack, determined to take Pasuruan for himself. Once again, the people trembled. And once again, Mbah Darmoyudo stood strong."],
+  ["q","“As long as we stand together,” he told them, “Pasuruan will never fall.”"],
+  ["p","The battle was fierce. But their unity and bravery brought them victory once more. Pasuruan stood undefeated."],
+  ["p","Yet the greatest challenge was still to come. From the west came a powerful ruler—Mas Pekik of Surabaya. He was known for his strength, his ambition, and his desire to expand his power. This time, the threat was greater than ever before."],
+  ["q","“Pasuruan must surrender,” Mas Pekik declared. But Mbah Darmoyudo did not hesitate. “I will never surrender this land,” he said, “as long as I still breathe.”"],
+  ["p","And so, the greatest battle began. It was not just a fight for land. It was a fight for freedom… for dignity… for the people he loved. Mbah Darmoyudo fought with all his strength. Not for himself—but for every life in Pasuruan."],
+  ["p","After years of struggle and sacrifice, his time finally came to an end. Mbah Darmoyudo passed away. But his story… did not. He was laid to rest in Dermoyudo Village, Pasuruan—the land he had protected with all his heart."],
+  ["p","Even though he is gone, his spirit lives on. Because Mbah Darmoyudo was more than just a leader. He was a symbol of courage. A symbol of loyalty. A symbol of true devotion."],
+  ["p","And his story reminds us of something important: A true hero is not someone who seeks power… but someone who chooses to protect others, no matter the cost."]],
+ end:"✨ His name may belong to the past… but his spirit lives on forever."},
+quiz:{title:"How well do you know Mbah Darmoyudo II?",
+ intro:"Twenty multiple-choice questions about Kyai Ageng Dermoyudo II, the Dermoyudo lineage, and the history of Pasuruan City. Choose one answer for each question; the explanation appears right away.",
+ answered:"Answered",of:"of",correct:"Correct",soal:"Question",kinds:{P:"Knowledge",U:"Understanding"},right:"Correct!",wrong:"Not quite. The answer is {x}.",retry:"Retake the quiz",
+ msgs:["Excellent! You understand the story of Mbah Darmoyudo II and the history of Pasuruan very well.","Well done! Your understanding is strong. Reread the parts you missed to make it even better.","Fairly good. Try rereading the Genealogy and Successors sections, then retake the quiz.","Explore the Mbah Darmoyudo II history section again, then try this quiz once more."],
+ qs:[
+  {q:"According to the sign at his tomb gate, Kyai Ageng Dermoyudo II led Pasuruan in the years…",o:["1617–1645","1645–1657","1657–1671","1686–1706"],why:"The tomb sign records 1645–1657. Some genealogy records give 1646 as the year his reign began."},
+  {q:"As a Tumenggung, Dermoyudo II was known to be loyal to the kingdom of…",o:["the Sultanate of Demak","the Kingdom of Blambangan","the Sultanate of Mataram","the Kingdom of Buleleng"],why:"Dermoyudo II was a Tumenggung loyal to the Sultanate of Mataram, a contemporary of Sunan Amangkurat I."},
+  {q:"Mbah Darmoyudo II’s father, Kyai Ageng Dermoyudo I, was known as…",o:["a war commander of Sultan Agung","the King of Blambangan","a merchant from Madura","the Dutch Resident in Pasuruan"],why:"According to the family genealogy book, Dermoyudo I was a senopati, or war commander, of Sultan Agung of Mataram."},
+  {q:"The ancestors of the Dermoyudo family had their roots in Pegantenan. This place is in…",o:["Kediri, East Java","Pamekasan, Madura","Buleleng, Bali","Nganjuk, East Java"],why:"The grandfather of Dermoyudo II, Arya Pegantenan, was born in Pegantenan, Pamekasan Regency, on the island of Madura."},
+  {q:"Where is Mbah Darmoyudo II buried?",o:["Sentono Betek, Kediri","Pesarean Mancilan, Pasuruan","Kampung Dermoyudo, Purworejo, Pasuruan City","Brebek Village, Nganjuk"],why:"His tomb is in Kampung Dermoyudo, Dukuh Porodeso, Purworejo. Pesarean Mancilan is the tomb of his father, Dermoyudo I."},
+  {q:"In the time of Airlangga, Pasuruan was already known as a port called…",o:["Paravan","Gamda","Bangil","Porodeso"],why:"Since the time of Airlangga (11th century), Pasuruan has been known as a port called Paravan."},
+  {q:"Why was Pasuruan contested by many powers in the 17th century?",o:["Because Pasuruan was the capital of the Sultanate of Mataram","Because Pasuruan was a strategic port and inter-island market, so its ruler controlled the trade routes at the eastern end of Java","Because Pasuruan had the largest gold mine in Java","Because Pasuruan had no leader at all"],why:"Pasuruan was a transit port and a trading market between islands, even between countries. Controlling Pasuruan meant controlling the trade routes of eastern Java."},
+  {q:"Attacks by which two kings were repelled by Dermoyudo II and recorded as his service to Mataram?",o:["The King of Demak and the King of Surabaya","The King of Blambangan and the King of Buleleng","The King of Makassar and the King of Bali","Sultan Agung and Amangkurat I"],why:"Dermoyudo II repelled the attacks of the King of Blambangan from the east and the King of Buleleng from Bali."},
+  {q:"In 1657 Dermoyudo II fell when Pasuruan was attacked from the direction of…",o:["Blambangan in the east","Buleleng in Bali","Surabaya in the west","the Java Sea in the north"],why:"The third threat came from the west, from the direction of Surabaya in 1657, and Dermoyudo II fell in that attack."},
+  {q:"The most accurate statement about the name “Dermoyudo” is…",o:["the real name of one person who lived a very long time","the name of a kingdom in Pasuruan","an inherited title; at least five figures from Dermoyudo I to V are recorded","an alias used to deceive the VOC"],why:"Dermoyudo is a title passed down through generations. At least five figures bearing the title are recorded."},
+  {q:"In the Javanese names for levels of descendants (Serat Piagem Sentana), the 10th level is called…",o:["Wareng","Gantung siwur","Gropak senthe","Galih asem"],why:"The order is: anak, cucu, buyut, canggah, wareng, udeg-udeg, gantung siwur, gropak senthe, gedebog bosok, and galih asem."},
+  {q:"Two sons of Dermoyudo II, Dermoyudo III and Mangkuyudo, took part in the resistance of…",o:["Untung Suropati","Raden Trunojoyo","Prince Diponegoro","Karaeng Galesong"],why:"Both joined the resistance of Raden Trunojoyo (1676–1679) against Mataram and the VOC, and were buried at Sentono Betek, Kediri."},
+  {q:"Kyai Onggojoyo (Dermoyudo IV) allied with nobles who had fled after losing to the VOC. They came from…",o:["Bugis-Makassar","Blambangan","Mataram","Madura"],why:"Onggojoyo allied with Bugis-Makassar nobles, among them Karaeng Galesong. In 1678, when the VOC attacked, the city of Pasuruan was burned."},
+  {q:"After becoming ruler of Pasuruan in 1686, Untung Suropati held the title…",o:["Kiai Adipati Nitiadiningrat","Tumenggung Nitinegoro","Raden Adipati Wironegoro","Kanjeng Genteng"],why:"Untung Suropati ruled Pasuruan from 1686 to 1706 with the title Raden Adipati Wironegoro."},
+  {q:"Ki Dermoyudo V (Raden Ismail) used the alias Kromowidjoyo. Why?",o:["To make it easier to become king of Mataram","Because his brother was already using the name Dermoyudo","To deceive the VOC, because Dermoyudo’s descendants were seen as rebels","Because Resident Domis required it"],why:"The Dermoyudo family often resisted the VOC, so its descendants were branded rebels. The alias was used to avoid being recognised."},
+  {q:"From 1743, after Raden Ario Wironegoro was overthrown by his patih, power in Pasuruan was held by…",o:["the Sultanate of Mataram","the Dutch","the Kingdom of Blambangan","Untung Suropati’s descendants"],why:"Raden Ario Wironegoro was overthrown by his patih at the urging of the Dutch. From then on the Dutch held power in Pasuruan."},
+  {q:"Resident Domis noted that Pasuruan exported about 80,000 pikul of coffee and 17,000 pikul of sugar in 1829. How is this linked to the Darmoyudo story?",o:["It proves that Darmoyudo II owned a sugar mill","It shows the wealth of the land Darmoyudo once guarded, which now flowed to the colonial government","It shows that Pasuruan became poor after Darmoyudo’s time","It has no link at all"],why:"The data confirms why Pasuruan had been contested since the 17th century. Two centuries later, its wealth was enjoyed by the colonial government."},
+  {q:"Why must Domis’s judgements about the character of Pasuruan’s people be read with care?",o:["Because Domis lived at the same time as Darmoyudo II","Because his notes were written in Old Javanese","Because Domis was a colonial official, so his judgements are not neutral and must not be generalised","Because Domis never came to Pasuruan"],why:"Domis was a Dutch official. His judgements could be one-sided, so they should be written as “according to Domis’s notes”. His notes also describe 1830, not Darmoyudo’s lifetime."},
+  {q:"Darmoyudo II fought to defend Pasuruan, not to conquer other lands. The most fitting value to follow is…",o:["Hunger for power","Love of peace and responsibility for protecting the people","Selfishness","Love of revenge"],why:"He defended rather than counter-attacked. This reflects a love of peace and responsibility for the people’s safety."},
+  {q:"Some sources call Mas Pekik an attacker from Surabaya, while the genealogy chart calls him the son of Dermoyudo II. The best approach when writing history is…",o:["Choosing the most exciting version to tell","Removing Mas Pekik’s name from the story","Showing both versions and waiting for confirmation from reliable sources","Inventing a new version that combines both"],why:"When sources differ, historians present both versions as they are and verify them, for example with the tomb caretaker or the Culture Office."}]},
+tour:{noVideo:"The tour video cannot be played. Make sure <b>tour-makam.mp4</b> is in the <b>aset</b> folder, then open the website in Chrome, Edge, or Safari.",title:"Tomb Tour",intro:"Watch the short tour video inside the Darmoyudo Tomb shelter, then look at the photos of the visiting route below.",route:"Tour route",close:"Close",
+ caps:["A green-toned tomb shelter with a calligraphy board of the Basmalah, the Shahada, and Ayat al-Kursi.","Carved wooden headstones and gold-coloured grave markers, with a wire-mesh wooden window on the right.","The Ayat al-Kursi calligraphy board and a wire-mesh wooden window on the left side of the shelter.","A green-tiled grave platform with carved wooden headstones and gold-coloured ornaments.","Wire-mesh wooden windows facing the yard around the shelter."],
+ locTitle:"Location",loc:"Kampung Dermoyudo, Dukuh Porodeso, Purworejo, Pasuruan City, East Java.",
+ etTitle:"Visiting etiquette",et:["Be polite and keep calm and quiet.","Dress neatly and modestly.","Ask the caretaker (juru kunci) for permission before taking photos."]},
+kelas:{title:"Class 9B Photos",intro:"Memories of the Class 9B team while working on the Mbah Darmoyudo II history project.",caption:"Class 9B – Learning the History of Mbah Darmoyudo II",hint:"Click a small photo to swap the main photo, or click the main photo to enlarge it.",
+ alt:["Class 9B together in front of the school building.","Class 9B posing with a finger-frame gesture.","Class 9B all pointing to the centre."]},
+concl:{title:"Conclusion & Message",
+ summary:"Darmoyudo II was a loyal Tumenggung of Mataram who guarded Pasuruan, a contested port city, against attacks from Blambangan and Buleleng, and fell in 1657. His name now belongs to the neighbourhood where he is buried: Kampung Dermoyudo, Pasuruan City.",
+ moralTitle:"Moral values from the story of Mbah Darmoyudho",
+ morals:[["Leadership with Responsibility","","Mbah Darmoyudho teaches us that a true leader does not seek power, but takes responsibility to protect the people."],["Courage in Defending Truth","","Mbah Darmoyudho’s courage in facing attacks from Blambangan, Buleleng, and Mas Pekik shows that truth must be defended, even when it is risky."],["Loyalty to the Homeland","","Mbah Darmoyudho remained loyal to Pasuruan despite many threats. This teaches us the importance of loving and being loyal to the land we serve."],["Justice Above Personal Interest","","He refused to surrender Pasuruan for personal interest or external pressure. Justice and the people’s safety were his top priorities."],["Perseverance and Never Giving Up","","Even when attacks came repeatedly, Mbah Darmoyudho never gave up. This perseverance is important in facing life’s challenges."],["Serving with Sincerity","","Mbah Darmoyudho served with sincerity, not for praise or authority."],["Legacy of Good Deeds","","Mbah Darmoyudho is remembered not for his wealth, but for his service. This teaches us that good deeds last longer than material wealth."]],
+ reflect:"From the story of Mbah Darmoyudho, we learn that courage, honesty, and dedication are noble values that must be upheld by every generation.",
+ msgTitle:"A message for students",
+ msgs:["Follow Mbah Darmoyudo’s example: be responsible, brave, loyal, fair, persistent, sincere, and keen to do good.","Look after local heritage sites: visit them politely, keep them clean, and introduce them to friends and family.","Be critical of historical sources: tell recorded facts apart from oral tradition, compare several sources, and ask the proper authorities when they differ."]},
+closing:{title:"Closing",
+ paras:["Thank you to every visitor who has explored this website. We also thank our supervising teachers, and the caretaker and residents around the Darmoyudo Tomb, who welcomed us warmly.","We know this website is far from perfect. We apologise for any shortcomings and welcome suggestions for improvement."],
+ bye:"Wassalamu’alaikum warahmatullahi wabarakatuh."},
+dev:{title:"Website Creators",intro:"This website was designed and put together by three students of Class 9B.",role:"Class 9B Student",email:"Email",phone:"Phone",wa:"Chat on WhatsApp",
+ footer:"© 2026 <b>Class 9B</b> • Mbah Darmoyudo II History Learning Website, Pasuruan City"}
+};
+
+/* ---------- العربية (أسماء الأعلام والأماكن مكتوبة بالحروف العربية) ---------- */
+T.ar = {
+meta:{title:"مباه دارمويودو الثاني – موقع تعليمي للتاريخ من الصف 9B"},
+nav:{banner:"الرئيسية",sambutan:"كلمة الترحيب",sorotan:"لقطات",sejarah:"التاريخ",drama:"المسرحية",quiz:"الاختبار",tour:"جولة الضريح",kelas:"الصف 9B",simpulan:"الخلاصة",penutupan:"الختام",pembuat:"المُعِدّون",menu:"فتح القائمة",top:"العودة إلى الأعلى",lang:"اختر اللغة"},
+lbl:{sambutan:"الصف 9B",sorotan:"توثيق",sejarah:"حقائق تاريخية",drama:"على المسرح",quiz:"اختبر فهمك",tour:"زيارة",kelas:"ذكريات",simpulan:"دروس",penutupan:"شكرًا",pembuat:"فريق التطوير"},
+hero:{eyebrow:"إرث تاريخي • مدينة باسوروان",h1:"مباه <span>دارمويودو</span> الثاني",desc:"تعرّف على التومنغونغ المخلص لماتارام الذي حمى مدينة ميناء باسوروان من هجمات بلامبانغان وبوليلينغ، من إعداد طلاب الصف 9B.",alt:"لافتة مكتوب عليها مباه دارمو يودو، باسوروان",sub:"الوالي الثاني لباسوروان • 1645–1657 • دوكوه بوروديسو، مدينة باسوروان",start:"ابدأ التعلّم",quiz:"أجب عن الاختبار"},
+welcome:{title:"كلمة الترحيب",
+ greet:"السلام عليكم ورحمة الله وبركاته، وتحية طيبة للجميع.",
+ paras:[
+  "الحمد لله رب العالمين، الذي بفضله تمكّنّا نحن طلاب الصف 9B من إتمام هذا الموقع التعليمي للتاريخ، جزءًا من تعلّم التاريخ القائم على منهج STEM.",
+  "أعددنا هذا الموقع للتعريف بمباه دارمويودو الثاني (كياي أجنغ ديرمويودو الثاني)، الوالي الثاني لباسوروان الذي حكم من سنة 1645 إلى 1657، بوصفه شخصية تاريخية محلية في مدينة باسوروان. جمعنا المعلومات من كتاب نسب الأسرة ولوحة الضريح والسجلات التاريخية، ثم قدّمناها في صورة دروس ومسرحية واختبار وجولة في الضريح.",
+  "نشكر معلّمينا المشرفين على إرشادهم لنا بصبر. نتمنى لكم جولة ممتعة، وعسى أن يزيد هذا الموقع معرفتنا وحبّنا لتاريخ بلدنا."],
+ sign:"فريق الإعداد، طلاب الصف 9B"},
+slides:{title:"لقطات",intro:"صور توثيقية من داخل قبّة الضريح ومن أنشطة الصف 9B. تتغيّر الصورة كل 5 ثوانٍ؛ ضع المؤشر على الصورة لإيقافها.",prev:"الصورة السابقة",next:"الصورة التالية",go:"انتقل إلى الصورة",fact:"هل تعلم؟",
+ caps:["قبّة الضريح ذات الطابع الأخضر مع لوحة خطّ عربي للبسملة والشهادتين وآية الكرسي.","شواهد قبور خشبية منقوشة وأطر ذهبية اللون، مع نافذة خشبية مشبّكة على اليمين.","لوحة آية الكرسي ونافذة خشبية مشبّكة في الجانب الأيسر من القبّة.","قبر مكسوّ بالبلاط الأخضر مع شواهد خشبية منقوشة وزخارف ذهبية.","نوافذ خشبية مشبّكة تطلّ على الساحة المحيطة بالقبّة.","الصف 9B في صورة جماعية أمام مبنى المدرسة.","وضعية «إطار الأصابع» مع زملاء الصف.","الجميع يشير إلى الوسط: بهجة الصف 9B."]},
+hist:{title:"معلومات تاريخية عن مباه دارمويودو",
+ intro:"يحتوي هذا القسم على حقائق تاريخية، لا على نص المسرحية. علامة <span class=\"lbl fakta\">حقيقة مدوّنة</span> تشير إلى معلومات من سجلات مكتوبة، وعلامة <span class=\"lbl tutur\">رواية شفهية / تمثيل درامي</span> تشير إلى قصص متوارثة شفهيًا.",
+ badgeFact:"حقيقة مدوّنة",badgeOral:"رواية شفهية / تمثيل درامي",
+ a:{tab:"لمحة",title:"لمحة عامة",
+  paras:["حكم كياي أجنغ ديرمويودو الثاني باسوروان نحو 12 سنة (1645–1657) بصفته «تومنغونغ» مخلصًا لسلطنة ماتارام. وكانت باسوروان آنذاك مدينة ميناء مزدحمة تتنازع عليها قوى كثيرة. صدّ هجمات بلامبانغان من الشرق وبوليلينغ من بالي، ثم استُشهد حين هوجمت باسوروان من جهة سورابايا سنة 1657.","واسمه اليوم يحمله حيّ في مدينة باسوروان: كامبونغ ديرمويودو، حيث دُفن."],
+  head:["الحقيقة","التفاصيل"],
+  rows:[["الاسم","كياي أجنغ ديرمويودو الثاني"],["يُعرف باسم","مباه دارمويودو، كي غيدي ديرمويودو الثاني"],["المنصب","تومنغونغ وحاكم منطقة باسوروان، الوالي الثاني لباسوروان"],["مدة الحكم","1645–1657 (بعض سجلات النسب تذكر 1646–1657)"],["معاصر لـ","سونان أمانغكورات الأول، ملك ماتارام (مدفون في تيغالاروم)"],["الأب","كياي أجنغ ديرمويودو الأول، قائد حربي سابق للسلطان أجونغ"],["أبرز إنجازاته","صدّ هجمات ملك بلامبانغان وملك بوليلينغ (بالي)"],["الضريح","كامبونغ ديرمويودو، دوكوه بوروديسو، حي بورووريجو، مدينة باسوروان"]],
+  spell:"يعتمد هذا الموقع الكتابة الرئيسية <b>دارمويودو</b> كما على لوحة الضريح. ومن الكتابات الأخرى المستعملة: ديرمويودو، ودارمويودهو، ودارمو يودو."},
+ b:{tab:"الأصل والنسب",title:"الأصل والنسب",
+  intro:"بحسب كتاب نسب الأسرة، ينتمي ديرمويودو الثاني إلى سلالة ميناك ويرداتي، وجذور الأسرة في جزيرة مادورا. وُلد جدّه في بيغانتينان بباميكاسان، ثم خدمت الأسرة في ماتارام، وحكمت أخيرًا في باسوروان.",
+  treeTitle:"شجرة العائلة",
+  tree:[["آريا بيغانتينان","الجد • وُلد في بيغانتينان، باميكاسان"],["كياي أجنغ ديرمويودو الأول","الأب • قائد حربي للسلطان أجونغ"],["كياي أجنغ ديرمويودو الثاني","الشخصية الرئيسية • تومنغونغ باسوروان 1645–1657"],["ديرمويودو الثالث (ماس بيكيك)","الابن • حاكم باسوروان 1657–1671"],["كياي تومنغونغ مانغكويودو","الابن • تومنغونغ في عهد أمانغكورات الأول"],["كياي أونغغوجويو (ديرمويودو الرابع)","الحفيد • حاكم باسوروان 1671–1686"]],
+  genHead:["الجيل","الشخصية","الدور والملاحظات"],
+  genRows:[["الجد","آريا بيغانتينان","وُلد في بيغانتينان، محافظة باميكاسان، مادورا. دُفن في سينتونو غريبيغ، مالانغ."],["الأب","كياي أجنغ ديرمويودو الأول","قائد حربي للسلطان أجونغ من ماتارام (1613–1646) بلقب «رادين تومنغونغ». هزم كي غيدي كابولونغان، حاكم باسوروان السابق، ثم حكم باسوروان بلقب كي غيدي ديرمويودو الأول. دُفن في مقبرة مانتشيلان، باسوروان."],["الشخصية الرئيسية","كياي أجنغ ديرمويودو الثاني","تومنغونغ وحاكم باسوروان (1645/1646–1657)."],["الابن","كياي تومنغونغ ديرمويودو الثالث (ماس بيكيك)","حاكم باسوروان (1657–1671). توفي في كيديري بعد مشاركته في مقاومة ترونوجويو، ودُفن في سينتونو بيتيك، كامبونغ بانديان، مدينة كيديري."],["الابن","كياي تومنغونغ مانغكويودو","حمل لقب تومنغونغ في عهد أمانغكورات الأول. توفي سنة 1677 أثناء مشاركته في مقاومة ترونوجويو، ودُفن في سينتونو بيتيك، كيديري."],["الحفيد","كي ديرمويودو الرابع (كياي أونغغوجويو)","حاكم باسوروان (1671–1686). دُفن في قرية بريبيك، نغانجوك."]],
+  levelsTitle:"مراتب الذرّية العشر في الثقافة الجاوية",
+  levelsIntro:"أُلّف كتاب النسب وفق قواعد سلطنة سوراكارتا، أي «سيرات بياغيم سينتانا». ولكل جيل تحت الجدّ الأعلى (ويُسمّى «بانتشير») اسم خاص:",
+  levelsHead:["المرتبة","التسمية"],
+  levels:["أناك (الابن)","تشوتشو (الحفيد)","بويوت","تشانغغاه","وارينغ","أوديغ أوديغ","غانتونغ سيوور","غروباك سينتي","غيديبوغ بوسوك","غاليه أسيم"],
+  levelsNote:"وبحسب هذا النظام، سُجّل ديرمويودو الثاني في المرتبة الثامنة (غروباك سينتي) من ميناك ويرداتي، وفي المرتبة الأولى (الابن) من كياي أجنغ ديرمويودو الأول."},
+ c:{tab:"مدة الحكم",title:"مدة الحكم والكفاح (1645–1657)",
+  intro:"تولّى ديرمويودو الثاني منصب تومنغونغ باسوروان خلفًا لأبيه، وكان ذلك بحسب كتاب النسب معاصرًا لسونان أمانغكورات الأول في ماتارام. وطوال 12 سنة حمى باسوروان من تهديدات جاءت من ثلاث جهات.",
+  whyTitle:"لماذا تنازعت القوى على باسوروان؟",
+  why:["عُرفت باسوروان ميناءً منذ عهد إيرلانغا باسم «بارافان». وكان موقعها استراتيجيًا بوصفها ميناء عبور وسوقًا تجارية بين الجزر، بل بين البلدان. وسكنها كثير من النبلاء والتجار الأثرياء، فمن سيطر على باسوروان سيطر على طرق التجارة في أقصى شرق جاوة.","وكان لباسوروان تاريخ طويل مع بلامبانغان. فبعد أن فتحها السلطان ترينغغونو من ديماك سنة 1545، صارت قوة إسلامية مهمة في شرق جاوة، وحاربت بلامبانغان مرارًا. بل استولت سنة 1601 على عاصمة بلامبانغان."],
+  threatsTitle:"التهديدات الثلاثة",
+  threats:[["الشرق","ملك بلامبانغان","صُدّ الهجوم. وسُجّل ذلك خدمةً من ديرمويودو الثاني لماتارام."],["عبر البحر (بالي)","ملك بوليلينغ","صُدّ الهجوم. وسُجّل أيضًا خدمةً لماتارام."],["الغرب (1657)","هجوم من جهة سورابايا","استُشهد ديرمويودو الثاني. وحكم بعده ماس بيكيك باسوروان بلقب «كياي ديرمويودو» حتى وفاته سنة 1671."]],
+  pekikTitle:"من هو ماس بيكيك؟ روايتان",
+  pekikIntro:"اختلفت المصادر في ذلك. ويعرض هذا الموقع الروايتين دون ترجيح إحداهما.",
+  vA:["الرواية (أ): نص المسرحية وتاريخ المدينة","ماس بيكيك حاكم من سورابايا هاجم باسوروان سنة 1657، فاستُشهد ديرمويودو الثاني."],
+  vB:["الرواية (ب): شجرة نسب الأسرة","ماس بيكيك هو ابن ديرمويودو الثاني، ولقبه كياي تومنغونغ ديرمويودو الثالث."],
+  endTitle:"نهاية حياته",
+  end:"توفي ديرمويودو الثاني سنة 1657 ودُفن في الحي الذي يحمل اسمه اليوم، كامبونغ ديرمويودو، حي بورووريجو، مدينة باسوروان. وكُتب على لوحة بوابة ضريحه: ضريح دارمويودو، الوالي الثاني لباسوروان، 1645–1657، دوكوه بوروديسو."},
+ d:{tab:"الخلفاء",title:"خلفاء سلالة ديرمويودو",
+  intro:"بعد ديرمويودو الثاني، استمر لقب الأسرة وكفاحها عبر أجيال عدّة. وقاوم كثير منهم سلطة شركة الهند الشرقية الهولندية (VOC)، واضطر بعضهم إلى التخفّي.",
+  blocks:[
+   {h:"ديرمويودو الثالث ومانغكويودو: المشاركة في مقاومة ترونوجويو",p:["حكم كياي تومنغونغ ديرمويودو الثالث (ماس بيكيك) باسوروان من 1657 إلى 1671. وشارك هو وأخوه كياي تومنغونغ مانغكويودو في مقاومة رادين ترونوجويو (1676–1679) ضد ماتارام والشركة الهولندية. وتوفي كلاهما ودُفنا في سينتونو بيتيك، كيديري؛ وسُجّلت وفاة مانغكويودو سنة 1677."]},
+   {h:"ديرمويودو الرابع (كياي أونغغوجويو): إحراق باسوروان",p:["حكم كياي أونغغوجويو باسوروان من 1671 إلى 1686. وتحالف مع نبلاء من بوغيس وماكاسار فرّوا بعد هزيمتهم أمام الشركة الهولندية في ماكاسار، ومنهم كارينغ غاليسونغ. وفي سنة 1678، حين هاجمت الشركة الهولندية، أُحرقت مدينة باسوروان.","وتفاديًا للمطاردة، تنكّر أونغغوجويو في صورة رئيس قرية (ديمانغ) في سيروجا بمنطقة سيدوارجو. ثم سلّم حكم باسوروان إلى أونتونغ سوروباتي."]},
+   {h:"أونتونغ سوروباتي: عشرون سنة في مقاومة الهولنديين",p:["كان أونتونغ سوروباتي من بالي، وكان عبدًا ثم انقلب على الهولنديين. واشتهر بعد قتله القبطان تاك في كارتاسورا. وفي 8 فبراير 1686، بأمر من الأمير نيرانغكوسوما وبمباركة ملك ماتارام، توجّه إلى باسوروان وصار حاكمًا عليها بلقب رادين أديباتي ويرونيغورو.","امتلأ عهده (1686–1706) بالمعارك ضد الشركة الهولندية، لكنه سار سيرًا حسنًا وأشعل روح الكفاح لدى الشعب. ثم تعاونت الشركة الهولندية مع ابن أونغغوجويو لمهاجمته. فجُرح أونتونغ سوروباتي جرحًا بليغًا وتوفي سنة 1706. وواصل ابنه رحمت الكفاح نحو الشرق واستُشهد سنة 1707.","ولا يُعرف موضع قبر أونتونغ سوروباتي على وجه اليقين. غير أن في بيدوكوهان مانتشيلان بمدينة باسوروان كهفًا يُعتقد أنه كان مخبأه."]}],
+  descTitle:"ديرمويودو الخامس والذرّية في سورابايا",
+  descIntro:"انتشرت الأجيال اللاحقة في سورابايا ومالانغ وموجوكيرتو ولامونغان. ومن الشخصيات المسجّلة:",
+  descHead:["الشخصية","الدور"],
+  descRows:[["كي ديرمويودو الخامس (رادين إسماعيل)","وزير (باتيه) في سورابايا. اتخذ اسمًا مستعارًا هو كروموويجويو لخداع الشركة الهولندية، لأن ذرّية ديرمويودو كانت تُعدّ متمرّدة."],["رادين تومنغونغ كروموجويوديرونو (رادين باغوس غلوندونغ)","والي سورابايا 1819–1825، ولُقّب بـ«كانجينغ بيرمين»."],["رادين باغوس أنوم كروموجويو أدينيغورو الثاني (كانجينغ غينتينغ)","والي سورابايا 1831–1859. كان الإمام الدائم لصلاة الجمعة في مسجد سونان أمبيل، وتوفي سنة 1861."],["رادين أديباتي آريا كروموجويو أدينيغورو الثالث (رادين أيرسادان)","والي لامونغان 1863–1866، ثم والي سورابايا 1866–1894."]],
+  descNote:"يرجع لقب «كانجينغ غينتينغ» إلى موقع مقرّ الوالي في منطقة غينتينغ بسورابايا. وصار مبنى «البندوبو» التابع للمحافظة اليوم موقعًا تراثيًا ومركزًا ثقافيًا لسورابايا."},
+ e:{tab:"تاريخ باسوروان",title:"الخط الزمني لتاريخ مدينة باسوروان",
+  intro:"تعاقب على باسوروان حكّام كثيرون على مدى أكثر من ألف سنة، من ميناء «بارافان» القديم إلى مدينة باسوروان اليوم بأحيائها الأربعة والثلاثين. وقصة دارمويودو الثاني (المظلّلة بالأخضر) فصل واحد منها.",
+  rows:[["عهد إيرلانغا (القرن الحادي عشر)","عُرفت باسوروان ميناءً باسم «بارافان»."],["أوائل القرن السادس عشر","حكم المنطقة المسمّاة «غيمبونغ» أو «غامدا» باتي سوبيتاك، الذي يذكره «باباد باسوروان» مؤسسًا لعاصمة باسوروان."],["1545","فتحها السلطان ترينغغونو من ديماك، فصارت قوة إسلامية في شرق جاوة."],["1601","استولت باسوروان على عاصمة بلامبانغان."],["1617–1645","عهد كياي غيدي ديرمويودو الأول."],["1645–1657","عهد كياي أجنغ ديرمويودو الثاني."],["1657–1671","عهد ماس بيكيك (كياي ديرمويودو الثالث)."],["1671–1686","عهد كياي أونغغوجويو (ديرمويودو الرابع). وأُحرقت باسوروان سنة 1678."],["1686–1706","حكم أونتونغ سوروباتي بلقب رادين أديباتي ويرونيغورو."],["1707","صار أونغغوجويو (الابن) حاكمًا (أديباتي) لباسوروان."],["1743","تولّى رادين أريو ويرونيغورو الحكم، ثم أطاح به وزيره كياي نغاباي وونغسونيغورو بإغراء من الهولنديين. ومنذ ذلك الحين صارت السلطة بيد الهولنديين."],["العهد الهولندي","صارت باسوروان عاصمة إقامة (ريزيدنسي) تشمل مالانغ وبروبولينغغو ولوماجانغ وبانغيل. وعُيّن وونغسونيغورو واليًا بلقب تومنغونغ نيتينيغورو."],["27 يوليو 1751","صار رادين غرودو، ولم يتجاوز الحادية عشرة، واليًا بلقب كياي أديباتي نيتيأدينينغرات. وحكم 48 سنة وأسّس المسجد الجامع «الأنوار» مع كياي حسن السنوسي (مباه سلاغاه)."],["28 فبراير 1800","صار رادين بيجي نوتوكوسومو واليًا بلقب تومنغونغ نيتيأدينينغرات الثاني."],["1809","صار رادين بانجي برونغتوكوسومو رادين أديباتي نيتيأدينينغرات الثالث (توفي في 30 يناير 1833، ودُفن خلف مسجد الأنوار)."],["حتى 20 يوليو 1887","عهد رادين تومنغونغ أريو نيتيأدينينغرات الرابع. ويُعرف نيتيأدينينغرات من الأول إلى الرابع عند الناس باسم «مباه سورغا سورغي»."],["1 يناير 1901","تأسيس إقامة باسوروان."],["20 يونيو 1918","تأسيس بلدية باسوروان (Stads Gemeente van Pasoeroean) بموجب الجريدة الرسمية لسنة 1918 رقم 320."],["14 أغسطس 1950","صارت بلدية باسوروان منطقة ذاتية الحكم."],["21 ديسمبر 1982","وُسّعت البلدية لتضمّ 3 نواحٍ."],["1999","بموجب القانون رقم 22 لسنة 1999، تغيّر اسم «بلدية باسوروان» إلى «مدينة باسوروان»."],["12 يناير 2002","تحوّلت جميع القرى إلى أحياء حضرية (اللائحة الإقليمية رقم 10 لسنة 2002)، فصارت مدينة باسوروان تضم 34 حيًّا."]]},
+ f:{tab:"آثار للزيارة",title:"آثار يمكن زيارتها",
+  intro:"توجد أربعة مواقع مرتبطة بسلالة ديرمويودو في مدينة باسوروان نفسها، فيمكن أن تكون مسار جولة تاريخية في يوم واحد.",
+  head:["الموقع","المكان","الصلة"],
+  rows:[["ضريح دارمويودو","كامبونغ ديرمويودو، دوكوه بوروديسو، حي بورووريجو، مدينة باسوروان","ضريح كياي أجنغ ديرمويودو الثاني. وعلى بوابته لوحة: «ضريح دارمويودو، الوالي الثاني لباسوروان، 1645–1657»."],["مقبرة مانتشيلان","مانتشيلان، مدينة باسوروان","ضريح كياي أجنغ ديرمويودو الأول، والد ديرمويودو الثاني."],["مخبأ أونتونغ سوروباتي","بيدوكوهان مانتشيلان، مدينة باسوروان","كهف يُعتقد أن أونتونغ سوروباتي اختبأ فيه من مطاردة الهولنديين."],["المسجد الجامع الأنوار","وسط مدينة باسوروان","أسّسه كياي أديباتي نيتيأدينينغرات مع كياي حسن السنوسي؛ ودُفن خلفه نيتيأدينينغرات الثالث."]],
+  outside:"وخارج باسوروان توجد آثار الأسرة أيضًا في سينتونو بيتيك بكيديري (ضريحا ديرمويودو الثالث ومانغكويودو)، وقرية بريبيك بنغانجوك (ضريح ديرمويودو الرابع)، وسينتونو غريبيغ بمالانغ (ضريح آريا بيغانتينان).",
+  etiquette:"<strong>آداب الزيارة:</strong> التزم الأدب، والبس لباسًا محتشمًا مرتّبًا، واستأذن حارس الضريح قبل التصوير."},
+ g:{tab:"مذكرات دوميس 1830",title:"باسوروان بعد عهد دارمويودو: مذكرات المقيم دوميس (1830)",
+  intro:"بعد نحو 173 سنة من وفاة دارمويودو الثاني، دوّن المقيم الهولندي هـ. ج. دوميس أحوال باسوروان سنة 1830. ولا تروي هذه المذكرات قصة دارمويودو، لكنها تبيّن ما آلت إليه الأرض التي دافع عنها: بقيت باسوروان مركزًا للزراعة والتجارة، لكنها صارت كلّها تحت الحكم الهولندي.",
+  warnTitle:"تنبيه:",warn:"كان دوميس موظفًا استعماريًا، فأحكامه على طباع الناس ليست محايدة، ولا يجوز تعميمها على جميع أهل جاوة أو مادورا أو باسوروان. لذلك كُتب كل ما يلي بعبارة «بحسب مذكرات دوميس».",
+  t1Title:"الأرض التي دافع عنها دارمويودو بعد قرنين",
+  t1Head:["بحسب مذكرات دوميس (1830)","الصلة بقصة دارمويودو"],
+  t1Rows:[["في سنة 1829 صدّرت باسوروان نحو 80,000 «بيكول» من البن و17,000 «بيكول» من السكر، إضافة إلى التبغ. وكانت هناك مصانع سكر يملكها سي. فوس وهان كيكو.","يؤكد ذلك سبب التنازع على باسوروان منذ القرن السابع عشر. فثروة الأرض التي حماها دارمويودو صارت تتدفق إلى الحكومة الاستعمارية."],["ارتبطت باسوروان بالطرق وشبكات التجارة مع بانغيل ومالانغ، وكانت المحاصيل تُشحن إلى أنحاء الأرخبيل.","استمر دور باسوروان مركزًا تجاريًا، وهو دور قائم منذ عهد ميناء «بارافان»."],["كان سكانها متنوّعين: جاويون ومادوريون وصينيون وعرب ومَلايو وأوروبيون، إضافة إلى مجتمع تينغير.","يتّفق ذلك مع كون باسوروان مدينة ميناء متعددة الأعراق. وأجداد سلالة دارمويودو أنفسهم من مادورا."],["كان يحكم باسوروان مقيم هولندي.","وهذا على النقيض من دارمويودو الذي رفض الخضوع لحاكم أجنبي. وكانت السلطة بيد الهولنديين منذ 1743 (انظر الخط الزمني)."]],
+  t2Title:"قيم الأخلاق: مذكرات دوميس وقدوة دارمويودو",
+  t2Intro:"يستخلص تحليل مذكرات دوميس قيمًا محمودة وأخرى مذمومة من السلوك الذي وصفه. ويمكن مقارنتها بقدوة دارمويودو لتكون مادة نقاش في الصف.",
+  t2Head:["القيمة","بحسب مذكرات دوميس (1830)","القدوة من قصة دارمويودو"],
+  t2Rows:[["حبّ السلام","وُصف أهل جاوة بأنهم لا يحبون الحرب.","حارب للدفاع عن باسوروان فقط، لا لغزو أراضٍ أخرى."],["الطاعة والوفاء","ذُكرت صفةً ظاهرة لدى بعض الناس.","وفيّ للأمانة في حماية الشعب ولماتارام."],["الجدّ والمثابرة","كان الناس مجتهدين في الزراعة والنسيج وصناعة الحِرف من الذهب والفضة والطين والحجر.","لم يستسلم رغم الهجمات من الشرق وبالي والغرب."],["الحقد والقسوة (مذموم)","رأى دوميس أن الحقد قد يدفع إلى أفعال قاسية.","في قصته دافع ولم ينتقم: «باسوروان ليست لتُغزى، بل لتُحمى»."],["القمار والسرقة (مذموم)","سُجّلت مصارعة الديكة والقمار وسرقة المواشي مشكلاتٍ اجتماعية.","قدّم سلامة الشعب على المصلحة الشخصية."]],
+  note:"وتذكّر أيضًا: مذكرات 1830 تصف باسوروان بعد قرنين من دارمويودو، لا أحوالها في حياته."},
+ h:{tab:"هل تعلم؟",title:"هل تعلم؟",intro:"حقائق قصيرة لفتح النقاش في الصف.",
+  facts:["«ديرمويودو» ليس اسم شخص واحد، بل لقب متوارث. وسُجّل خمسة أشخاص على الأقل حملوه، من ديرمويودو الأول إلى الخامس.","كان والد مباه دارمويودو قائدًا حربيًا للسلطان أجونغ، أعظم ملوك ماتارام.","يعود أجداد هذه الأسرة إلى بيغانتينان، وهي ناحية في باميكاسان بجزيرة مادورا.","شارك ابنا ديرمويودو الثاني في مقاومة ترونوجويو، إحدى أكبر الثورات على ماتارام والشركة الهولندية في القرن السابع عشر.","تحالف حفيده كياي أونغغوجويو مع مقاتلين من بوغيس وماكاسار فرّوا من ماكاسار بعد هزيمتهم أمام الشركة الهولندية.","اضطر أحد أحفاده إلى تغيير اسمه إلى كروموويجويو حتى لا تعرفه الشركة الهولندية بوصفه من ذرّية «المتمرّد» ديرمويودو.","عُيّن والي باسوروان كياي أديباتي نيتيأدينينغرات وعمره 11 سنة فقط، وحكم 48 سنة.","للجاويين أسماء لعشر مراتب من الذرّية، والمرتبة العاشرة تُسمّى «غاليه أسيم».","في عهد إيرلانغا كانت باسوروان تُسمّى «بارافان»."]},
+ i:{tab:"المصادر والروايات",title:"ملاحظات المصادر واختلاف الروايات",
+  intro:"هناك أربع مسائل اختلفت فيها المصادر. وينبغي التحقق منها جميعًا لدى حارس الضريح أو مكتب الثقافة في مدينة باسوروان.",
+  head:["المسألة","الرواية (أ)","الرواية (ب)","موقف الموقع"],
+  rows:[["من هو ماس بيكيك","نص المسرحية وتاريخ المدينة: حاكم من سورابايا هاجم باسوروان فاستُشهد ديرمويودو الثاني (1657).","شجرة النسب: ابن ديرمويودو الثاني، ولقبه كياي تومنغونغ ديرمويودو الثالث.","يعرض الروايتين دون ترجيح."],["سنة بدء الحكم","لوحة الضريح وتاريخ المدينة: 1645.","شجرة النسب: 1646.","يعتمد 1645 (كما في اللوحة الرسمية) مع ملاحظة صغيرة."],["من هو ديرمويودو الأول","شجرة النسب: قائد السلطان أجونغ الذي هزم كي غيدي كابولونغان، ودُفن في مقبرة مانتشيلان بباسوروان.","تاريخ المدينة: كي غيدي كابولونغان نفسه حمل لقب ديرمويودو الأول، ثم فرّ ودُفن في بيبيس بسورابايا.","يُكتب «بحسب كتاب نسب الأسرة» إلى حين التحقق."],["كتابة الاسم","دارمويودو، دارمويودهو، دارمو يودو","ديرمويودو، ديرمويودهو","الكتابة الرئيسية «دارمويودو» (كما على لوحة الضريح)."]],
+  oral:"قصة الهجمات الثلاث (بلامبانغان، بوليلينغ، ماس بيكيك) مصدرها في الغالب سجلات الأسرة والرواية الشفهية، لذلك وُضعت عليها علامة الرواية الشفهية.",
+  pekik:"<strong>قرينة إضافية عن ماس بيكيك:</strong> عاش الأمير بيكيك المشهور من سورابايا في بلاط ماتارام منذ 1633، وقُتل بأمر أمانغكورات الأول سنة 1659. وبما أنه توفي سنة 1659، فلا يمكن أن يكون قد حكم باسوروان حتى 1671. إذن فماس بيكيك حاكم باسوروان شخص آخر. وهذا يجعل رواية النسب أقرب إلى الصواب، لكنها ما زالت تحتاج إلى تأكيد.",
+  srcTitle:"المصادر المستخدمة",
+  sources:["كتاب <i>Silsilah Keturunan dan Sejarah Kyai Ageng Dermoyudo II</i> (نسب وتاريخ كياي أجنغ ديرمويودو الثاني)، بما فيه فصل تاريخ مدينة باسوروان وكفاح أونتونغ سوروباتي وديرمويودو الأول والثاني.","أنساب أصلية يرجع إليها الكتاب: من إعداد ر. تومنغونغ آريا نوتوأديكوسومو ومؤسسة سينتونو بوتو بوتيه بسورابايا، ور. باغوس ياسين (10 مارس 1960)، ور. بانجي آريا معمور (1 أغسطس 1966).","اللوحة على بوابة ضريح دارمويودو، دوكوه بوروديسو.","نص <i>Bilingual Drama Mbah Darmoyudo</i> (لقسمي المسرحية والقصة).","راتيه كيرانا سوريو بوتري وديان سوني أميليا (ترجمة)، <i>Pasuruan 1830: Catatan H. J. Domis</i>، دار نشر المكتبة الوطنية الإندونيسية، 2019/2020."]}
+},
+drama:{title:"المسرحية والحكاية",
+ note:"هذا القسم نصّ مسرحي مبني على الرواية الشفهية وسجلات الأسرة، وليس سجلًا تاريخيًا رسميًا.",
+ roles:{narr:"الراوي",darmo:"مباه دارمويودو",rakyat:"الشعب",ub:"رسول بلامبانغان",ubl:"رسول بوليلينغ",ump:"رسول ماس بيكيك",all:"جميع الممثلين"},
+ scenes:[
+  {t:"القدوم والأمانة",s:"المشهد 1 • The Arrival and the Duty",lines:[["narr","في القرن السابع عشر، كانت باسوروان منطقة استراتيجية كثيرًا ما يطمع فيها الأعداء.\nفجاء نبيل اسمه مباه دارمويودو، ونذر نفسه لحماية باسوروان."],["darmo","لم آتِ طلبًا للمجد الشخصي،\nبل لأؤدي الأمانة وأحمي أهل باسوروان."]]},
+  {t:"تولّي منصب تومنغونغ",s:"المشهد 2 • The Leader of Pasuruan",lines:[["narr","لحكمته وحزمه،\nوُثق بمباه دارمويودو فصار تومنغونغ باسوروان،\nوعُرف أيضًا باسم كي غيدي دارمويودو."],["rakyat","نشعر بالأمان في ظل قيادتك يا مباه."]]},
+  {t:"هجوم ملك بلامبانغان",s:"المشهد 3 • The Attack from Blambangan",lines:[["narr","تعكّر سلام باسوروان حين حاول ملك بلامبانغان مهاجمة المنطقة."],["ub","سلّموا باسوروان لملك بلامبانغان!"],["darmo","باسوروان ليست لتُغزى،\nبل لتُحمى."],["narr","بالحكمة والشجاعة،\nنجح مباه دارمويودو في صدّ هجوم ملك بلامبانغان."]]},
+  {t:"هجوم ملك بوليلينغ",s:"المشهد 4 • The Attack from Buleleng",lines:[["narr","وعاد الخطر من الشرق مرة أخرى.\nحاول ملك بوليلينغ من بالي إخضاع باسوروان."],["ubl","ستصبح باسوروان أرضًا لنا!"],["darmo","ما دام الشعب واقفًا معي،\nفلن تسقط باسوروان."],["narr","بقيادة قوية،\nصدّ مباه دارمويودو هجوم ملك بوليلينغ مرة أخرى."]]},
+  {t:"هجوم ماس بيكيك (سورابايا)",s:"المشهد 5 • The Attack from Mas Pekik of Surabaya",lines:[["narr","جاء أعظم الأخطار من الغرب.\nهاجم باسوروانَ ماس بيكيك من سورابايا،\nحاكمٌ قوي أراد توسيع سلطانه."],["ump","ماس بيكيك يطالب باسوروان بالخضوع لسورابايا!"],["darmo","لن أسلّم باسوروان\nما دام في جسدي نَفَس."],["narr","فاندلعت حرب عظيمة.\nوفي هذا الهجوم قاتل مباه دارمويودو بكل قوته\nدفاعًا عن باسوروان."]]},
+  {t:"نهاية الحياة والإرث",s:"المشهد 6 • The Legacy",lines:[["narr","بعد كفاح طويل في حماية باسوروان،\nتوفي مباه دارمويودو ودُفن في\nكامبونغ ديرمويودو، حي بورووريجو، مدينة باسوروان.\nوستبقى مآثره مذكورة على مرّ الزمان."],["all","مباه دارمويودو، حارس باسوروان.\nاسمك حيّ في التاريخ."]]}]},
+story:{title:"الحكاية: حارس باسوروان",
+ parts:[
+  ["p","منذ زمن بعيد، في القرن السابع عشر، كانت هناك أرض آمنة تُدعى باسوروان. كانت مكانًا للجمال والأمل والحياة… لكنها كانت أيضًا أرضًا تهدّدها دائمًا ممالك قوية تريد غزوها."],
+  ["p","في تلك الأيام المضطربة، حين كان الخوف قادرًا على أن يسيطر بسهولة، جاء رجل. لم يكن ملكًا. ولم يكن غازيًا. بل كان شيئًا أعظم بكثير. كان اسمه مباه دارمويودو."],
+  ["p","جاء بلا رغبة في سلطة أو مجد، بل حمل في قلبه غاية بسيطة: أن يحمي."],
+  ["q","قال ذات مرة: «لم آتِ لأحكم، بل جئت لأخدم وأحرس هذه الأرض.»"],
+  ["p","وسرعان ما كسبت حكمته وشجاعته وإخلاصه ثقة الناس. وبعد قليل عُيّن قائدًا لباسوروان بلقب «تومنغونغ»، وصار الناس يدعونه كي غيدي دارمويودو."],
+  ["p","وفي ظل قيادته ازدهرت باسوروان. شعر الناس بالأمان. وكبر الأمل يومًا بعد يوم."],
+  ["p","لكن السلام… لا يدوم إلى الأبد."],
+  ["p","من الشرق جاء أول خطر كبير: ملك بلامبانغان القوي. أرسل بثقة وطموح رسالة يطالب فيها باسوروان بالاستسلام. فانتشر الخوف بين الناس. لكن مباه دارمويودو بقي هادئًا ثابتًا."],
+  ["q","أعلن قائلًا: «باسوروان ليست لتُغزى، بل لتُحمى.»"],
+  ["p","وبالشجاعة والتخطيط المحكم قاد شعبه إلى المعركة. ورغم كل الصعاب… انتصروا، وهُزم الخطر."],
+  ["p","لكن بعد وقت قصير ظهر عدوّ آخر، هذه المرة من بالي. شنّ ملك بوليلينغ هجومًا عازمًا على أخذ باسوروان لنفسه. ومرة أخرى ارتجف الناس. ومرة أخرى وقف مباه دارمويودو صامدًا."],
+  ["q","قال لهم: «ما دمنا متّحدين، فلن تسقط باسوروان أبدًا.»"],
+  ["p","كانت المعركة شرسة، لكن وحدتهم وشجاعتهم جلبت لهم النصر مرة أخرى. وبقيت باسوروان غير مهزومة."],
+  ["p","غير أن التحدّي الأكبر كان لا يزال قادمًا. فمن الغرب جاء حاكم قوي: ماس بيكيك من سورابايا، المعروف بقوته وطموحه ورغبته في توسيع سلطانه. وكان الخطر هذه المرة أعظم من أي وقت مضى."],
+  ["q","أعلن ماس بيكيك: «يجب أن تستسلم باسوروان.» لكن مباه دارمويودو لم يتردد، وقال: «لن أسلّم هذه الأرض أبدًا ما دمت أتنفّس.»"],
+  ["p","وهكذا بدأت المعركة الكبرى. لم تكن مجرد صراع على أرض، بل كانت كفاحًا من أجل الحرية… ومن أجل الكرامة… ومن أجل الشعب الذي أحبّه. قاتل مباه دارمويودو بكل قوته، لا من أجل نفسه، بل من أجل كل روح في باسوروان."],
+  ["p","وبعد سنوات من الكفاح والتضحية، حان أجله. توفي مباه دارمويودو. لكن قصته… لم تنتهِ. دُفن في كامبونغ ديرمويودو بباسوروان، الأرض التي حماها بكل قلبه."],
+  ["p","ومع أنه رحل، فإن روحه باقية. لأن مباه دارمويودو كان أكثر من مجرد قائد. كان رمزًا للشجاعة. ورمزًا للوفاء. ورمزًا للتفاني الحقيقي."],
+  ["p","وقصته تذكّرنا بأمر مهم: البطل الحقيقي ليس من يطلب السلطة… بل من يختار أن يحمي الآخرين مهما كان الثمن."]],
+ end:"✨ قد ينتمي اسمه إلى الماضي… لكن روحه تبقى حيّة إلى الأبد."},
+quiz:{title:"ما مدى معرفتك بمباه دارمويودو الثاني؟",
+ intro:"عشرون سؤالًا من نوع الاختيار من متعدد عن كياي أجنغ ديرمويودو الثاني وسلالة ديرمويودو وتاريخ مدينة باسوروان. اختر إجابة واحدة لكل سؤال، وسيظهر الشرح فورًا.",
+ answered:"تمت الإجابة عن",of:"من",correct:"الصحيح",soal:"السؤال",kinds:{P:"معرفة",U:"فهم"},right:"إجابة صحيحة!",wrong:"ليست صحيحة. الإجابة هي {x}.",retry:"أعد الاختبار",
+ msgs:["رائع! لقد فهمت قصة مباه دارمويودو الثاني وتاريخ باسوروان فهمًا ممتازًا.","أحسنت! فهمك قوي. اقرأ مرة أخرى الأجزاء التي أخطأت فيها ليزداد رسوخًا.","جيد. حاول أن تعيد قراءة قسمي النسب وخلفاء سلالة ديرمويودو، ثم أعد الاختبار.","تجوّل مرة أخرى في قسم تاريخ مباه دارمويودو الثاني، ثم جرّب هذا الاختبار من جديد."],
+ qs:[
+  {q:"بحسب اللوحة على بوابة ضريحه، حكم كياي أجنغ ديرمويودو الثاني باسوروان في السنوات…",o:["1617–1645","1645–1657","1657–1671","1686–1706"],why:"تسجّل لوحة الضريح 1645–1657. وتذكر بعض سجلات النسب سنة 1646 بداية لحكمه."},
+  {q:"بصفته تومنغونغ، عُرف ديرمويودو الثاني بالإخلاص لمملكة…",o:["سلطنة ديماك","مملكة بلامبانغان","سلطنة ماتارام","مملكة بوليلينغ"],why:"كان ديرمويودو الثاني تومنغونغ مخلصًا لسلطنة ماتارام، ومعاصرًا لسونان أمانغكورات الأول."},
+  {q:"عُرف والد مباه دارمويودو الثاني، كياي أجنغ ديرمويودو الأول، بأنه…",o:["قائد حربي للسلطان أجونغ","ملك بلامبانغان","تاجر من مادورا","المقيم الهولندي في باسوروان"],why:"بحسب كتاب نسب الأسرة، كان ديرمويودو الأول قائدًا حربيًا للسلطان أجونغ من ماتارام."},
+  {q:"تعود جذور أسرة ديرمويودو إلى بيغانتينان. وتقع هذه المنطقة في…",o:["كيديري، جاوة الشرقية","باميكاسان، مادورا","بوليلينغ، بالي","نغانجوك، جاوة الشرقية"],why:"وُلد جدّ ديرمويودو الثاني، آريا بيغانتينان، في بيغانتينان بمحافظة باميكاسان في جزيرة مادورا."},
+  {q:"أين دُفن مباه دارمويودو الثاني؟",o:["سينتونو بيتيك، كيديري","مقبرة مانتشيلان، باسوروان","كامبونغ ديرمويودو، حي بورووريجو، مدينة باسوروان","قرية بريبيك، نغانجوك"],why:"ضريحه في كامبونغ ديرمويودو، دوكوه بوروديسو، حي بورووريجو. أما مقبرة مانتشيلان فهي ضريح أبيه ديرمويودو الأول."},
+  {q:"في عهد إيرلانغا، كانت باسوروان معروفة ميناءً باسم…",o:["بارافان","غامدا","بانغيل","بوروديسو"],why:"منذ عهد إيرلانغا (القرن الحادي عشر) عُرفت باسوروان ميناءً باسم «بارافان»."},
+  {q:"لماذا تنازعت قوى كثيرة على باسوروان في القرن السابع عشر؟",o:["لأن باسوروان كانت عاصمة سلطنة ماتارام","لأن باسوروان ميناء استراتيجي وسوق تجارية بين الجزر، فمن حكمها تحكّم في طرق التجارة في أقصى شرق جاوة","لأن في باسوروان أكبر منجم ذهب في جاوة","لأن باسوروان لم يكن لها قائد على الإطلاق"],why:"كانت باسوروان ميناء عبور وسوقًا تجارية بين الجزر، بل بين البلدان. والسيطرة عليها تعني السيطرة على طرق التجارة في شرق جاوة."},
+  {q:"هجمات أيّ ملكين صدّها ديرمويودو الثاني وسُجّلت خدمةً منه لماتارام؟",o:["ملك ديماك وملك سورابايا","ملك بلامبانغان وملك بوليلينغ","ملك ماكاسار وملك بالي","السلطان أجونغ وأمانغكورات الأول"],why:"صدّ ديرمويودو الثاني هجوم ملك بلامبانغان من الشرق وملك بوليلينغ من بالي."},
+  {q:"في سنة 1657 استُشهد ديرمويودو الثاني حين هوجمت باسوروان من جهة…",o:["بلامبانغان في الشرق","بوليلينغ في بالي","سورابايا في الغرب","بحر جاوة في الشمال"],why:"جاء التهديد الثالث من الغرب، من جهة سورابايا سنة 1657، وفي ذلك الهجوم استُشهد ديرمويودو الثاني."},
+  {q:"أدقّ عبارة عن اسم «ديرمويودو» هي…",o:["الاسم الحقيقي لشخص واحد عاش عمرًا طويلًا جدًا","اسم مملكة في باسوروان","لقب متوارث؛ سُجّل خمسة أشخاص على الأقل من ديرمويودو الأول إلى الخامس","اسم مستعار لخداع الشركة الهولندية"],why:"ديرمويودو لقب يُتوارث جيلًا بعد جيل، وسُجّل خمسة أشخاص على الأقل حملوه."},
+  {q:"في تسميات مراتب الذرّية الجاوية (سيرات بياغيم سينتانا)، تُسمّى المرتبة العاشرة…",o:["وارينغ","غانتونغ سيوور","غروباك سينتي","غاليه أسيم"],why:"الترتيب: أناك، تشوتشو، بويوت، تشانغغاه، وارينغ، أوديغ أوديغ، غانتونغ سيوور، غروباك سينتي، غيديبوغ بوسوك، غاليه أسيم."},
+  {q:"شارك ابنا ديرمويودو الثاني، ديرمويودو الثالث ومانغكويودو، في مقاومة…",o:["أونتونغ سوروباتي","رادين ترونوجويو","الأمير ديبونيغورو","كارينغ غاليسونغ"],why:"شارك كلاهما في مقاومة رادين ترونوجويو (1676–1679) ضد ماتارام والشركة الهولندية، ودُفنا في سينتونو بيتيك، كيديري."},
+  {q:"تحالف كياي أونغغوجويو (ديرمويودو الرابع) مع نبلاء فرّوا بعد هزيمتهم أمام الشركة الهولندية. وكانوا من…",o:["بوغيس وماكاسار","بلامبانغان","ماتارام","مادورا"],why:"تحالف أونغغوجويو مع نبلاء من بوغيس وماكاسار، منهم كارينغ غاليسونغ. وفي سنة 1678، حين هاجمت الشركة الهولندية، أُحرقت مدينة باسوروان."},
+  {q:"بعد أن صار أونتونغ سوروباتي حاكمًا لباسوروان سنة 1686، حمل لقب…",o:["كياي أديباتي نيتيأدينينغرات","تومنغونغ نيتينيغورو","رادين أديباتي ويرونيغورو","كانجينغ غينتينغ"],why:"حكم أونتونغ سوروباتي باسوروان من 1686 إلى 1706 بلقب رادين أديباتي ويرونيغورو."},
+  {q:"اتخذ كي ديرمويودو الخامس (رادين إسماعيل) اسمًا مستعارًا هو كروموويجويو. لماذا؟",o:["ليسهل تعيينه ملكًا على ماتارام","لأن أخاه كان يستعمل اسم ديرمويودو","لخداع الشركة الهولندية، لأن ذرّية ديرمويودو كانت تُعدّ متمرّدة","لأن المقيم دوميس فرض عليه ذلك"],why:"قاومت أسرة ديرمويودو الشركة الهولندية كثيرًا، فوُصمت ذرّيتها بالتمرّد. واستُعمل الاسم المستعار حتى لا يُعرف."},
+  {q:"منذ سنة 1743، بعد أن أطاح وزيره برادين أريو ويرونيغورو، صارت السلطة في باسوروان بيد…",o:["سلطنة ماتارام","الهولنديين","مملكة بلامبانغان","ذرّية أونتونغ سوروباتي"],why:"أطاح الوزير برادين أريو ويرونيغورو بإغراء من الهولنديين، ومنذ ذلك الحين صارت السلطة في باسوروان بيد الهولنديين."},
+  {q:"ذكرت مذكرات المقيم دوميس أن باسوروان صدّرت نحو 80,000 «بيكول» من البن و17,000 «بيكول» من السكر سنة 1829. ما صلة ذلك بقصة دارمويودو؟",o:["يثبت أن دارمويودو الثاني كان يملك مصنع سكر","يبيّن ثروة الأرض التي حماها دارمويودو، والتي صارت تتدفق إلى الحكومة الاستعمارية","يبيّن أن باسوروان افتقرت بعد عهد دارمويودو","لا صلة له على الإطلاق"],why:"تؤكد هذه البيانات سبب التنازع على باسوروان منذ القرن السابع عشر. وبعد قرنين صارت ثروتها تنتفع بها الحكومة الاستعمارية."},
+  {q:"لماذا يجب قراءة أحكام دوميس على طباع أهل باسوروان بحذر؟",o:["لأن دوميس عاش في زمن دارمويودو الثاني","لأن مذكراته كُتبت بالجاوية القديمة","لأن دوميس موظف استعماري، فأحكامه غير محايدة ولا يجوز تعميمها","لأن دوميس لم يأتِ إلى باسوروان قط"],why:"كان دوميس موظفًا هولنديًا، وقد تكون أحكامه منحازة، فالأولى أن يُكتب «بحسب مذكرات دوميس». كما أن مذكراته تصف سنة 1830 لا زمن حياة دارمويودو."},
+  {q:"حارب دارمويودو الثاني للدفاع عن باسوروان لا لغزو أراضٍ أخرى. فأنسب قيمة يُقتدى بها هي…",o:["حبّ السلطة","حبّ السلام وتحمّل مسؤولية حماية الشعب","الأنانية","حبّ الانتقام"],why:"دافع ولم يهاجم انتقامًا. وهذا يعكس حبّ السلام وتحمّل المسؤولية عن سلامة الشعب."},
+  {q:"تصف بعض المصادر ماس بيكيك بأنه مهاجم من سورابايا، بينما تجعله شجرة النسب ابنًا لديرمويودو الثاني. فما الموقف الأصح عند كتابة التاريخ؟",o:["اختيار الرواية الأكثر تشويقًا","حذف اسم ماس بيكيك من القصة","عرض الروايتين وانتظار التأكيد من مصادر موثوقة","تأليف رواية جديدة تجمع بينهما"],why:"إذا اختلفت المصادر، يعرض المؤرخ الروايتين كما هما ويتحقق منهما، مثلًا لدى حارس الضريح أو مكتب الثقافة."}]},
+tour:{noVideo:"لا يمكن تشغيل مقطع الجولة. تأكد من وجود الملف <b>tour-makam.mp4</b> في مجلد <b>aset</b>، ثم افتح الموقع في متصفح كروم أو إيدج أو سفاري.",title:"جولة الضريح",intro:"شاهد مقطع الجولة القصير داخل قبّة ضريح دارمويودو، ثم تصفّح صور مسار الزيارة أدناه.",route:"مسار الجولة",close:"إغلاق",
+ caps:["قبّة الضريح ذات الطابع الأخضر مع لوحة خطّ عربي للبسملة والشهادتين وآية الكرسي.","شواهد قبور خشبية منقوشة وأطر ذهبية اللون، مع نافذة خشبية مشبّكة على اليمين.","لوحة آية الكرسي ونافذة خشبية مشبّكة في الجانب الأيسر من القبّة.","قبر مكسوّ بالبلاط الأخضر مع شواهد خشبية منقوشة وزخارف ذهبية.","نوافذ خشبية مشبّكة تطلّ على الساحة المحيطة بالقبّة."],
+ locTitle:"الموقع",loc:"كامبونغ ديرمويودو، دوكوه بوروديسو، حي بورووريجو، مدينة باسوروان، جاوة الشرقية.",
+ etTitle:"آداب الزيارة",et:["التزم الأدب والهدوء.","البس لباسًا مرتّبًا ساترًا.","استأذن حارس الضريح قبل التصوير."]},
+kelas:{title:"صور الصف 9B",intro:"ذكريات فريق الصف 9B أثناء العمل على مشروع تاريخ مباه دارمويودو الثاني.",caption:"الصف 9B – نتعلّم تاريخ مباه دارمويودو الثاني",hint:"انقر على صورة صغيرة لتبديل الصورة الرئيسية، أو انقر على الصورة الرئيسية لتكبيرها.",
+ alt:["الصف 9B في صورة جماعية أمام مبنى المدرسة.","الصف 9B في وضعية «إطار الأصابع».","الصف 9B يشير الجميع إلى الوسط."]},
+concl:{title:"الخلاصة والرسالة",
+ summary:"كان دارمويودو الثاني تومنغونغ مخلصًا لماتارام، حمى باسوروان، مدينة الميناء المتنازع عليها، من هجمات بلامبانغان وبوليلينغ، ثم استُشهد سنة 1657. واسمه اليوم اسم الحي الذي دُفن فيه: كامبونغ ديرمويودو، مدينة باسوروان.",
+ moralTitle:"القيم الأخلاقية من قصة مباه دارمويودو",
+ morals:[["القيادة المسؤولة","Leadership with Responsibility","يعلّمنا مباه دارمويودو أن القائد الحقيقي لا يطلب السلطة، بل يتحمّل مسؤولية حماية شعبه."],["الشجاعة في الدفاع عن الحق","Courage in Defending Truth","تُظهر شجاعة مباه دارمويودو في مواجهة هجمات بلامبانغان وبوليلينغ وماس بيكيك أن الحق يجب الدفاع عنه ولو كان محفوفًا بالمخاطر."],["الوفاء للوطن","Loyalty to the Homeland","ظلّ مباه دارمويودو وفيًّا في حماية باسوروان رغم التهديدات الكثيرة. وهذا يعلّمنا أهمية حبّ الأرض التي نخدمها والوفاء لها."],["العدل فوق المصلحة الشخصية","Justice Above Personal Interest","رفض تسليم باسوروان من أجل مصلحة شخصية أو تحت ضغط حاكم آخر. وكان العدل وسلامة الشعب أولويته الكبرى."],["المثابرة وعدم الاستسلام","Perseverance and Never Giving Up","رغم توالي الهجمات، لم يستسلم مباه دارمويودو. وهذه المثابرة مهمة لمواجهة تحدّيات الحياة."],["الخدمة بإخلاص","Serving with Sincerity","كانت خدمة مباه دارمويودو بإخلاص، لا طلبًا للمديح أو السلطة."],["إرث العمل الصالح","Legacy of Good Deeds","يُذكر مباه دارمويودو لا لثروته بل لمآثره. وهذا يعلّمنا أن الخير يبقى أطول من المال."]],
+ reflect:"من قصة مباه دارمويودو نتعلّم أن الشجاعة والصدق والتفاني قيم نبيلة يجب أن يحافظ عليها كل جيل.",
+ msgTitle:"رسالة إلى الطلاب",
+ msgs:["اقتدوا بقيم مباه دارمويودو: المسؤولية والشجاعة والوفاء والعدل والمثابرة والإخلاص وحبّ فعل الخير.","حافظوا على المواقع التاريخية المحلية: زوروها بأدب، واحرصوا على نظافتها، وعرّفوا بها أصدقاءكم وأسركم.","كونوا ناقدين للمصادر التاريخية: ميّزوا الحقائق المدوّنة من الروايات الشفهية، وقارنوا بين عدة مصادر، واسألوا الجهات المختصة عند الاختلاف."]},
+closing:{title:"الختام",
+ paras:["شكرًا لكل زائر تجوّل في هذا الموقع. ونتقدّم بالشكر أيضًا لمعلّمينا المشرفين، ولحارس ضريح دارمويودو وسكّان المنطقة المحيطة به الذين استقبلونا بلطف.","ندرك أن هذا الموقع ما زال بعيدًا عن الكمال. نعتذر عن كل تقصير، ونرحّب بالاقتراحات لتحسينه."],
+ bye:"والسلام عليكم ورحمة الله وبركاته."},
+dev:{title:"مُعِدّو الموقع",intro:"صمّم هذا الموقع وأعدّه ثلاثة من طلاب الصف 9B.",role:"طالب في الصف 9B",email:"البريد الإلكتروني",phone:"الهاتف",wa:"محادثة واتساب",
+ footer:"© 2026 <b>الصف 9B</b> • موقع تعليمي لتاريخ مباه دارمويودو الثاني، مدينة باسوروان"}
+};
+
+
+/* =========================================================
+   B. DATA TETAP (sama di semua bahasa)
+   ========================================================= */
+// Urutan foto slideshow: makam-1..5 lalu kelas9b-1..3
+const FOTO_SOROTAN = ["data:image/jpeg;base64,BASE64_DIHAPUS","data:image/jpeg;base64,BASE64_DIHAPUS","data:image/jpeg;base64,BASE64_DIHAPUS","data:image/jpeg;base64,BASE64_DIHAPUS","data:image/jpeg;base64,BASE64_DIHAPUS","data:image/jpeg;base64,BASE64_DIHAPUS","data:image/jpeg;base64,BASE64_DIHAPUS","data:image/jpeg;base64,BASE64_DIHAPUS"];
+const FOTO_MAKAM = FOTO_SOROTAN.slice(0,5);
+const FOTO_KELAS = FOTO_SOROTAN.slice(5);
+// Jawaban benar kuis (0=A,1=B,2=C,3=D) dan jenis soal (P=Pengetahuan, U=Pemahaman)
+const KUNCI = [1,2,0,1,2,0,1,1,2,2,3,1,0,2,2,1,1,2,1,2];
+const JENIS = ["P","P","P","P","P","P","U","P","P","U","P","P","P","P","U","P","U","U","U","U"];
+// Peran tiap baris dialog drama (warna label tokoh)
+const WARNA_TOKOH = {narr:"t-narr",darmo:"t-darmo",rakyat:"t-rakyat",ub:"t-ub",ubl:"t-ubl",ump:"t-ump",all:"t-all"};
+// Data pembuat website
+const PEMBUAT = [
+  {nama:"Akmal Atilla Khilmy",ini:"AK",warna:"#1F5E3B",email:"akmalattila0202@gmail.com",tel:"+6285161101911",telTampil:"+62 851-6110-1911",wa:"https://wa.me/6285161101911"},
+  {nama:"Muhammad Ilham Adi Wicaksana",ini:"MI",warna:"#8E2F2A",email:"iilhamadi@gmail.com",tel:"+6282337824417",telTampil:"+62 823-3782-4417",wa:"https://wa.me/6282337824417"},
+  {nama:"Javier Althaf Putra Hermawan",ini:"JA",warna:"#2F5D8A",email:"javialtaf12@gmail.com",tel:"+628132578803",telTampil:"+62 813-2578-803",wa:"https://wa.me/628132578803"}
+];
+
+/* =========================================================
+   C. PENGATUR BAHASA
+   ========================================================= */
+let bahasa = "id";
+const L = () => T[bahasa];
+function ambil(kunci){ return kunci.split(".").reduce((o,k)=>o==null?o:o[k], L()); }
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function gantiBahasa(kode){
+  bahasa = kode;
+  document.documentElement.lang = kode==="jw" ? "jv" : kode;
+  document.documentElement.dir = kode==="ar" ? "rtl" : "ltr";
+  document.body.classList.toggle("ar", kode==="ar");
+  document.title = L().meta.title;
+  document.querySelectorAll(".bahasa button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===kode));
+  document.querySelectorAll("[data-i18n]").forEach(e=>{ const v=ambil(e.dataset.i18n); if(v!=null) e.innerHTML=v; });
+  document.querySelectorAll("[data-i18n-alt]").forEach(e=>{ const v=ambil(e.dataset.i18nAlt); if(v!=null) e.alt=v; });
+  document.querySelectorAll("[data-i18n-aria]").forEach(e=>{ const v=ambil(e.dataset.i18nAria); if(v!=null) e.setAttribute("aria-label",v); });
+  // bagian yang dibuat ulang sesuai bahasa
+  warnaiJudul(); isiSambutan(); isiSlideTeks(); isiSejarah(); isiDrama(); isiKuis(); isiTour(); isiKelas(); isiSimpulan(); isiPenutup(); isiPembuat();
+}
+document.querySelectorAll(".bahasa button").forEach(b=>b.addEventListener("click",()=>gantiBahasa(b.dataset.lang)));
+
+/* =========================================================
+   D. NAVIGASI: hamburger, tautan aktif, tombol ke atas
+   ========================================================= */
+const burger=document.getElementById("burger"), navLinks=document.getElementById("nav-links");
+burger.addEventListener("click",()=>{ const b=navLinks.classList.toggle("buka"); burger.setAttribute("aria-expanded",b); });
+navLinks.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{ navLinks.classList.remove("buka"); burger.setAttribute("aria-expanded",false); }));
+const keAtas=document.getElementById("ke-atas");
+keAtas.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+window.addEventListener("scroll",()=>keAtas.classList.toggle("tampil", scrollY>600),{passive:true});
+const pengamatNav=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ navLinks.querySelectorAll("a").forEach(a=>a.classList.toggle("aktif", a.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main > header, main > section").forEach(s=>pengamatNav.observe(s));
+// animasi muncul saat di-scroll
+// PERBAIKAN: dulu memakai threshold .08 (8% bagian harus terlihat). Bagian Quiz sangat panjang,
+// sehingga 8%-nya lebih tinggi dari layar dan Quiz TIDAK PERNAH muncul (tetap transparan).
+// Sekarang bagian langsung muncul begitu tepi atasnya masuk layar.
+if("IntersectionObserver" in window){
+  const pengamatMuncul=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("tampil"); pengamatMuncul.unobserve(e.target);} }),{threshold:0,rootMargin:"0px 0px -60px 0px"});
+  document.querySelectorAll(".muncul").forEach(s=>pengamatMuncul.observe(s));
+} else {
+  document.querySelectorAll(".muncul").forEach(s=>s.classList.add("tampil"));
+}
+// Pengaman tambahan: bagian yang sudah dilewati atau sedang terlihat pasti ditampilkan
+function pastikanMuncul(){ document.querySelectorAll(".muncul:not(.tampil)").forEach(s=>{ if(s.getBoundingClientRect().top < innerHeight) s.classList.add("tampil"); }); }
+addEventListener("scroll", pastikanMuncul, {passive:true});
+addEventListener("load", pastikanMuncul);
+setTimeout(pastikanMuncul, 1500);
+
+/* =========================================================
+   E. [2] SAMBUTAN
+   ========================================================= */
+function isiSambutan(){
+  const s=L().welcome, box=document.getElementById("sambutan-isi");
+  box.innerHTML='<p class="salam">'+s.greet+'</p>'+s.paras.map(p=>"<p>"+p+"</p>").join("")+'<p class="ttd">'+s.sign+'</p>';
+}
+
+/* =========================================================
+   F. [3] SOROTAN — slideshow berganti tepat setiap 5000 ms
+   ========================================================= */
+const JEDA = 5000;
+const slider=document.getElementById("slider"), titik=document.getElementById("titik");
+let slideKe=0, timer=null;
+FOTO_SOROTAN.forEach((src,i)=>{
+  const s=el("div","slide"+(i===0?" aktif":""));
+  s.innerHTML='<div class="blur" style="background-image:url(\''+src+'\')"></div><img src="'+src+'" alt="" '+(i>1?'loading="lazy"':'')+'><div class="slide-info"><small></small><span></span></div>';
+  slider.insertBefore(s, document.getElementById("slide-prev"));
+  const d=el("button"); d.type="button"; d.addEventListener("click",()=>{ keSlide(i); mulai(); }); titik.appendChild(d);
+});
+const slides=[...slider.querySelectorAll(".slide")];
+function isiSlideTeks(){
+  const sl=L().slides, facts=L().hist.h.facts;
+  slides.forEach((s,i)=>{
+    s.querySelector("img").alt=sl.caps[i];
+    s.querySelector("small").textContent=(i+1)+" / "+slides.length;
+    s.querySelector(".slide-info span").textContent=sl.caps[i];
+  });
+  [...titik.children].forEach((d,i)=>d.setAttribute("aria-label", sl.go+" "+(i+1)));
+  document.getElementById("fakta-teks").textContent=facts[slideKe % facts.length];
+}
+function keSlide(i){
+  slideKe=(i+slides.length)%slides.length;
+  slides.forEach((s,j)=>s.classList.toggle("aktif", j===slideKe));
+  [...titik.children].forEach((d,j)=>d.setAttribute("aria-current", j===slideKe));
+  const facts=L().hist.h.facts;
+  document.getElementById("fakta-teks").textContent=facts[slideKe % facts.length];
+}
+function mulai(){ clearInterval(timer); timer=setInterval(()=>keSlide(slideKe+1), JEDA); }
+function berhenti(){ clearInterval(timer); timer=null; }
+document.getElementById("slide-prev").addEventListener("click",()=>{ keSlide(slideKe-1); mulai(); });
+document.getElementById("slide-next").addEventListener("click",()=>{ keSlide(slideKe+1); mulai(); });
+// berhenti saat kursor di atas foto, lanjut lagi 5 detik setelah kursor pergi
+slider.addEventListener("mouseenter", berhenti);
+slider.addEventListener("mouseleave", mulai);
+
+/* =========================================================
+   G. [4] INFORMASI SEJARAH — tab a sampai i
+   ========================================================= */
+let tabAktif=0;
+const LBL = k => '<span class="lbl '+k+'">'+(k==="fakta"?L().hist.badgeFact:L().hist.badgeOral)+'</span>';
+function tabel(head, rows){
+  return '<div class="tabel"><table><thead><tr>'+head.map(h=>"<th>"+h+"</th>").join("")+'</tr></thead><tbody>'+
+    rows.map(r=>"<tr>"+r.map(c=>"<td>"+c+"</td>").join("")+"</tr>").join("")+'</tbody></table></div>';
+}
+const ISI_TAB = {
+  a(h){ const s=h.a; return LBL("fakta")+'<h3>'+s.title+'</h3>'+s.paras.map(p=>"<p>"+p+"</p>").join("")+tabel(s.head,s.rows)+'<p class="lead" style="margin:12px 0 0">'+s.spell+'</p>'; },
+  b(h){ const s=h.b, n=s.tree;
+    const simpul=(x,cls)=>'<div class="simpul '+(cls||"")+'"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';
+    return LBL("fakta")+'<h3>'+s.title+'</h3><p>'+s.intro+'</p><h4>'+s.treeTitle+'</h4>'+
+      '<div class="pohon" role="img" aria-label="'+esc(s.treeTitle)+'">'+simpul(n[0])+'<div class="garis-v"></div>'+simpul(n[1])+'<div class="garis-v"></div>'+simpul(n[2],"utama")+'<div class="garis-v"></div>'+
+      '<div class="cabang"><div>'+simpul(n[3])+'<div class="garis-v"></div>'+simpul(n[5])+'</div><div>'+simpul(n[4])+'</div></div></div>'+
+      tabel(s.genHead,s.genRows)+'<h4>'+s.levelsTitle+'</h4><p>'+s.levelsIntro+'</p>'+tabel(s.levelsHead,s.levels.map((x,i)=>[i+1,x]))+'<p>'+s.levelsNote+'</p>'; },
+  c(h){ const s=h.c;
+    return '<h3>'+s.title+'</h3><p>'+s.intro+'</p><h4>'+s.whyTitle+'</h4>'+LBL("fakta")+s.why.map(p=>"<p>"+p+"</p>").join("")+
+      '<h4>'+s.threatsTitle+'</h4>'+LBL("tutur")+'<div class="ancaman">'+s.threats.map(t=>'<article><div class="arah">'+t[0]+'</div><h5>'+t[1]+'</h5><p>'+t[2]+'</p></article>').join("")+'</div>'+
+      '<h4>'+s.pekikTitle+'</h4><p>'+s.pekikIntro+'</p><div class="dua-versi"><div><b>'+s.vA[0]+'</b>'+s.vA[1]+'</div><div><b>'+s.vB[0]+'</b>'+s.vB[1]+'</div></div>'+
+      '<h4>'+s.endTitle+'</h4>'+LBL("fakta")+'<p>'+s.end+'</p>'; },
+  d(h){ const s=h.d;
+    return LBL("fakta")+'<h3>'+s.title+'</h3><p>'+s.intro+'</p>'+s.blocks.map(b=>'<h4>'+b.h+'</h4>'+b.p.map(p=>"<p>"+p+"</p>").join("")).join("")+
+      '<h4>'+s.descTitle+'</h4><p>'+s.descIntro+'</p>'+tabel(s.descHead,s.descRows)+'<p>'+s.descNote+'</p>'; },
+  e(h){ const s=h.e;
+    return LBL("fakta")+'<h3>'+s.title+'</h3><p>'+s.intro+'</p><ol class="linimasa">'+s.rows.map((r,i)=>'<li'+(i===5?' class="sorot"':'')+'><div class="waktu">'+r[0]+'</div><p>'+r[1]+'</p></li>').join("")+'</ol>'; },
+  f(h){ const s=h.f;
+    return LBL("fakta")+'<h3>'+s.title+'</h3><p>'+s.intro+'</p>'+tabel(s.head,s.rows)+'<p>'+s.outside+'</p><div class="peringatan"><span>🤲</span><div>'+s.etiquette+'</div></div>'; },
+  g(h){ const s=h.g;
+    return LBL("fakta")+'<h3>'+s.title+'</h3><p>'+s.intro+'</p><div class="peringatan"><span>⚠️</span><div><strong>'+s.warnTitle+'</strong> '+s.warn+'</div></div>'+
+      '<h4>'+s.t1Title+'</h4>'+tabel(s.t1Head,s.t1Rows)+'<h4>'+s.t2Title+'</h4><p>'+s.t2Intro+'</p>'+tabel(s.t2Head,s.t2Rows)+'<p>'+s.note+'</p>'; },
+  h(h){ const s=h.h;
+    return '<h3>'+s.title+'</h3><p>'+s.intro+'</p><div class="fakta-grid">'+s.facts.map(f=>"<div>"+f+"</div>").join("")+'</div>'; },
+  i(h){ const s=h.i;
+    return '<h3>'+s.title+'</h3><p>'+s.intro+'</p>'+tabel(s.head,s.rows)+'<p>'+s.oral+'</p><div class="peringatan"><span>🔎</span><div>'+s.pekik+'</div></div><h4>'+s.srcTitle+'</h4><ul class="sumber-list">'+s.sources.map(x=>"<li>"+x+"</li>").join("")+'</ul>'; }
+};
+const KUNCI_TAB = ["a","b","c","d","e","f","g","h","i"];
+function isiSejarah(){
+  const h=L().hist;
+  document.getElementById("hist-intro").innerHTML=h.intro;
+  const daftar=document.getElementById("tab-daftar"); daftar.innerHTML="";
+  KUNCI_TAB.forEach((k,i)=>{
+    const b=el("button",null,h[k].tab); b.type="button"; b.setAttribute("role","tab"); b.id="tab-"+k;
+    b.setAttribute("aria-selected", i===tabAktif); b.setAttribute("aria-controls","tab-panel");
+    b.addEventListener("click",()=>{ tabAktif=i; isiSejarah(); document.getElementById("tab-"+k).focus(); });
+    daftar.appendChild(b);
+  });
+  const panel=document.getElementById("tab-panel");
+  panel.setAttribute("aria-labelledby","tab-"+KUNCI_TAB[tabAktif]);
+  panel.innerHTML=ISI_TAB[KUNCI_TAB[tabAktif]](h);
+}
+
+/* =========================================================
+   H. [5] DRAMA & STORYTELLING
+   ========================================================= */
+function isiDrama(){
+  const d=L().drama;
+  document.getElementById("pemeran").innerHTML=Object.keys(WARNA_TOKOH).map(k=>'<span class="tokoh '+WARNA_TOKOH[k]+'">'+d.roles[k]+'</span>').join("");
+  const box=document.getElementById("babak-daftar"); 
+  const terbuka=[...box.querySelectorAll("details")].map(x=>x.open);
+  box.innerHTML="";
+  d.scenes.forEach((sc,i)=>{
+    const det=el("details","babak"); if(terbuka.length? terbuka[i] : i===0) det.open=true;
+    det.innerHTML='<summary><span class="no">'+(i+1)+'</span><span class="jdl"><b>'+sc.t+'</b><small>'+sc.s+'</small></span><span class="tanda" aria-hidden="true">+</span></summary><div class="isi">'+
+      sc.lines.map(l=>'<div class="dialog'+(l[0]==="narr"?" narr":"")+'"><div><span class="tokoh '+WARNA_TOKOH[l[0]]+'">'+d.roles[l[0]]+'</span></div><p>'+l[1]+'</p></div>').join("")+'</div>';
+    box.appendChild(det);
+  });
+  const st=L().story;
+  document.getElementById("cerita").innerHTML='<h3>'+st.title+'</h3>'+
+    st.parts.map(p=>p[0]==="q"?'<blockquote>'+p[1]+'</blockquote>':'<p>'+p[1]+'</p>').join("")+'<p class="akhir">'+st.end+'</p>';
+}
+
+/* =========================================================
+   I. [6] QUIZ — logika sama seperti kuis-darmoyudo.html
+      jawaban disimpan di variabel (bukan localStorage),
+      jadi tetap ada saat bahasa diganti.
+   ========================================================= */
+const HURUF=["A","B","C","D"];
+let jawaban = new Array(KUNCI.length).fill(null);
+let sudahGulir=false;
+function isiKuis(){
+  const q=L().quiz, daftar=document.getElementById("daftar-soal");
+  document.getElementById("jml-soal").textContent=KUNCI.length;
+  daftar.innerHTML="";
+  q.qs.forEach((s,i)=>{
+    const kartu=el("article","soal"); kartu.id="soal-"+i;
+    kartu.innerHTML='<div class="soal-meta"><span class="soal-no">'+q.soal+' '+(i+1)+'</span><span class="jenis">'+q.kinds[JENIS[i]]+'</span></div><p class="soal-tanya" id="tanya-'+i+'"></p><div class="pilihan" role="group" aria-labelledby="tanya-'+i+'"></div>';
+    kartu.querySelector(".soal-tanya").textContent=s.q;
+    const wadah=kartu.querySelector(".pilihan");
+    s.o.forEach((teks,j)=>{
+      const b=el("button"); b.type="button";
+      b.innerHTML='<span class="huruf">'+HURUF[j]+'</span><span></span>'; b.lastChild.textContent=teks;
+      b.addEventListener("click",()=>jawabSoal(i,j));
+      wadah.appendChild(b);
+    });
+    daftar.appendChild(kartu);
+    if(jawaban[i]!==null) tandaiKartu(i);
+  });
+  perbaruiSkor();
+  if(jawaban.every(x=>x!==null)) tampilHasil(false); else document.getElementById("hasil").classList.remove("tampil");
+}
+// Saat siswa memilih jawaban: hanya kartu soal itu yang diubah (layar tidak melompat)
+function jawabSoal(i,j){
+  if(jawaban[i]!==null) return;
+  jawaban[i]=j; tandaiKartu(i); perbaruiSkor();
+  if(jawaban.every(x=>x!==null)) tampilHasil(true);
+}
+function tandaiKartu(i){
+  const q=L().quiz, kartu=document.getElementById("soal-"+i), pilih=jawaban[i], ok=pilih===KUNCI[i];
+  kartu.querySelectorAll(".pilihan button").forEach((b,j)=>{ b.disabled=true; b.classList.add(j===KUNCI[i]?"tepat":(j===pilih?"keliru":"redup")); });
+  kartu.classList.add(ok?"benar":"salah");
+  if(!kartu.querySelector(".umpan")){
+    const u=el("div","umpan "+(ok?"ok":"no")); u.setAttribute("role","status");
+    u.innerHTML="<b>"+(ok?q.right:q.wrong.replace("{x}",HURUF[KUNCI[i]]))+"</b><span></span>"; u.lastChild.textContent=q.qs[i].why;
+    kartu.appendChild(u);
+  }
+}
+function perbaruiSkor(){
+  const terjawab=jawaban.filter(x=>x!==null).length, benar=jawaban.filter((x,i)=>x===KUNCI[i]).length;
+  document.getElementById("jml-jawab").textContent=terjawab;
+  document.getElementById("jml-benar").textContent=benar;
+  document.getElementById("bilah-isi").style.width=(terjawab/KUNCI.length*100)+"%";
+}
+function tampilHasil(gulir){
+  const q=L().quiz, n=KUNCI.length, benar=jawaban.filter((x,i)=>x===KUNCI[i]).length, p=benar/n;
+  document.getElementById("hasil-angka").textContent=benar+"/"+n;
+  document.getElementById("hasil-pesan").textContent= p>=.9?q.msgs[0]: p>=.7?q.msgs[1]: p>=.5?q.msgs[2]: q.msgs[3];
+  const h=document.getElementById("hasil"); h.classList.add("tampil");
+  if(gulir) h.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+}
+document.getElementById("btn-ulang").addEventListener("click",()=>{ jawaban=new Array(KUNCI.length).fill(null); isiKuis(); document.getElementById("quiz").scrollIntoView(); });
+
+/* =========================================================
+   J. LIGHTBOX (dipakai Tour Makam & Kelas 9B)
+   ========================================================= */
+const lb=document.getElementById("lightbox"); let lbDaftar=[], lbKe=0, lbAsal=null;
+function bukaLightbox(daftar,i){ lbDaftar=daftar; lbKe=i; lbAsal=document.activeElement; tampilLb(); lb.classList.add("buka"); document.getElementById("lb-tutup").focus(); }
+function tampilLb(){ const x=lbDaftar[lbKe]; document.getElementById("lb-img").src=x.src; document.getElementById("lb-img").alt=x.cap; document.getElementById("lb-cap").textContent=x.cap; }
+function tutupLb(){ lb.classList.remove("buka"); if(lbAsal) lbAsal.focus(); }
+function geserLb(n){ lbKe=(lbKe+n+lbDaftar.length)%lbDaftar.length; tampilLb(); }
+document.getElementById("lb-tutup").addEventListener("click",tutupLb);
+document.getElementById("lb-prev").addEventListener("click",()=>geserLb(-1));
+document.getElementById("lb-next").addEventListener("click",()=>geserLb(1));
+lb.addEventListener("click",e=>{ if(e.target===lb) tutupLb(); });
+document.addEventListener("keydown",e=>{
+  if(!lb.classList.contains("buka")) return;
+  const rtl=bahasa==="ar";
+  if(e.key==="Escape") tutupLb();
+  if(e.key==="ArrowRight") geserLb(rtl?-1:1);
+  if(e.key==="ArrowLeft") geserLb(rtl?1:-1);
+});
+
+/* =========================================================
+   K. [7] TOUR MAKAM
+   ========================================================= */
+function isiTour(){
+  const t=L().tour, rute=document.getElementById("rute"); rute.innerHTML="";
+  const daftar=FOTO_MAKAM.map((src,i)=>({src,cap:t.caps[i]})).filter(x=>!(typeof FOTO_HILANG!=="undefined"&&FOTO_HILANG.has(x.src)));
+  document.getElementById("rute").hidden=daftar.length===0;
+  daftar.forEach((x,i)=>{ const b=el("button"); b.type="button"; b.innerHTML='<img src="'+x.src+'" alt="'+esc(x.cap)+'" loading="lazy"><span>'+x.cap+'</span>'; b.addEventListener("click",()=>bukaLightbox(daftar,i)); rute.appendChild(b); });
+  document.getElementById("etika").innerHTML=t.et.map(x=>"<li>"+x+"</li>").join("");
+}
+
+/* =========================================================
+   L. [8] FOTO BERSAMA KELAS 9B
+   ========================================================= */
+let kelasKe=0;
+function isiKelas(){
+  const k=L().kelas;
+  document.getElementById("foto-utama").alt=k.alt[kelasKe];
+  document.querySelectorAll("#foto-kecil button").forEach((b,i)=>{ b.querySelector("img").alt=k.alt[i]; b.setAttribute("aria-label",k.alt[i]); });
+}
+document.querySelectorAll("#foto-kecil button").forEach(b=>b.addEventListener("click",()=>{
+  kelasKe=+b.dataset.i; document.getElementById("foto-utama").src=FOTO_KELAS[kelasKe];
+  document.querySelectorAll("#foto-kecil button").forEach(x=>x.setAttribute("aria-pressed", x===b)); isiKelas();
+}));
+document.getElementById("foto-utama-btn").addEventListener("click",()=>(()=>{const d=FOTO_KELAS.map((src,i)=>({src,cap:L().kelas.alt[i],i})).filter(x=>!FOTO_HILANG.has(x.src)); bukaLightbox(d, Math.max(0,d.findIndex(x=>x.i===kelasKe)));})());
+
+/* =========================================================
+   M. [9] SIMPULAN, [10] PENUTUPAN, [11] PEMBUAT
+   ========================================================= */
+function isiSimpulan(){
+  const c=L().concl;
+  document.getElementById("moral").innerHTML=c.morals.map(m=>'<article><h4>'+m[0]+'</h4>'+(m[1]?'<small>'+m[1]+'</small>':'')+'<p>'+m[2]+'</p></article>').join("");
+  document.getElementById("pesan").innerHTML=c.msgs.map(x=>"<li><span>"+x+"</span></li>").join("");
+}
+function isiPenutup(){ const c=L().closing; document.getElementById("penutup-isi").innerHTML=c.paras.map(p=>"<p>"+p+"</p>").join("")+'<p class="salam" style="margin-top:22px">'+c.bye+'</p>'; }
+function isiPembuat(){
+  const d=L().dev;
+  document.getElementById("dev").innerHTML=PEMBUAT.map(p=>'<article><div class="avatar" style="background:'+p.warna+'" aria-hidden="true">'+p.ini+'</div><h3 dir="ltr">'+p.nama+'</h3><p class="peran">'+d.role+'</p><ul>'+
+    '<li>'+d.email+': <a href="mailto:'+p.email+'" dir="ltr">'+p.email+'</a></li><li>'+d.phone+': <a href="tel:'+p.tel+'" dir="ltr">'+p.telTampil+'</a></li></ul>'+
+    '<a class="btn wa" href="'+p.wa+'" target="_blank" rel="noopener">'+d.wa+'</a></article>').join("");
+}
+
+
+/* =========================================================
+   N. JUDUL: kata terakhir judul bagian diberi warna emas
+   ========================================================= */
+function warnaiJudul(){
+  document.querySelectorAll("h2[data-i18n]").forEach(h=>{
+    const teks=h.textContent.trim(), i=teks.lastIndexOf(" ");
+    if(i>0) h.innerHTML=esc(teks.slice(0,i))+" <span>"+esc(teks.slice(i+1))+"</span>";
+  });
+}
+
+/* =========================================================
+   O. JIKA FILE KOSONG / TIDAK DITEMUKAN
+      Foto atau video yang gagal dimuat tidak ditampilkan,
+      atau diganti dengan foto lain yang tersedia.
+   ========================================================= */
+const FOTO_ADA = new Set();     // foto yang berhasil dimuat
+const FOTO_HILANG = new Set();  // foto yang gagal dimuat
+function cekFoto(src){
+  return new Promise(ok=>{ const im=new Image(); im.onload=()=>{FOTO_ADA.add(src);ok(true);}; im.onerror=()=>{FOTO_HILANG.add(src);ok(false);}; im.src=src; });
+}
+async function rapikanAset(){
+  const semua=["data:image/jpeg;base64,BASE64_DIHAPUS",...FOTO_SOROTAN];
+  await Promise.all(semua.map(cekFoto));
+  // [1] Hero: kalau makam-1 hilang, pakai foto makam lain; kalau semua hilang, latar gelap saja
+  if(FOTO_HILANG.has("data:image/jpeg;base64,BASE64_DIHAPUS")){
+    const ganti=FOTO_MAKAM.find(s=>FOTO_ADA.has(s));
+    document.querySelector(".hero").style.backgroundImage=ganti?'linear-gradient(90deg,rgba(10,11,9,.96),rgba(10,11,9,.5)),url("'+ganti+'")':"none";
+    const v=document.querySelector("#video-bingkai video"); if(v) v.poster=ganti||"";
+  }
+  // [2] Sambutan: banner hilang -> sembunyikan gambar, teks melebar
+  if(FOTO_HILANG.has("data:image/jpeg;base64,BASE64_DIHAPUS")){ document.getElementById("sambutan").classList.remove("latar-banner"); }
+  // [3] Sorotan: buang slide yang fotonya hilang
+  slides.forEach((s,i)=>{ if(FOTO_HILANG.has(FOTO_SOROTAN[i])){ s.remove(); titik.children[i].hidden=true; } });
+  const sisa=slides.filter((s,i)=>!FOTO_HILANG.has(FOTO_SOROTAN[i]));
+  if(sisa.length===0){ document.getElementById("slider").hidden=true; document.getElementById("titik").hidden=true; berhenti(); }
+  else { slidesAktif=sisa.map(s=>slides.indexOf(s)); keSlide(slidesAktif[0]); mulai(); }
+  // [7] Tour & [8] Kelas: dibuat ulang tanpa foto yang hilang
+  isiTour(); siapkanKelas();
+}
+let slidesAktif=null;
+// keSlide hanya berpindah di antara slide yang fotonya ada
+const keSlideAsli=keSlide;
+keSlide=function(i){
+  if(!slidesAktif || slidesAktif.includes(i)) return keSlideAsli(slidesAktif && !slidesAktif.includes(i) ? slidesAktif[0] : i);
+  const pos=slidesAktif.indexOf(slideKe), arah = i>slideKe ? 1 : -1;
+  keSlideAsli(slidesAktif[(pos+arah+slidesAktif.length)%slidesAktif.length]);
+};
+// Video: kalau file tidak ada, kotak video diganti keterangan singkat
+(function(){
+  const v=document.querySelector("#video-bingkai video"), src=v.querySelector("source");
+  const gagal=()=>{ const box=document.getElementById("video-bingkai"); if(!box) return; const p=el("div","kosong-info"); p.id="video-kosong"; p.dataset.i18n="tour.noVideo"; p.innerHTML=ambil("tour.noVideo"); box.replaceWith(p); };
+  src.addEventListener("error",gagal); v.addEventListener("error",gagal);
+})();
+// Kelas 9B: foto kecil & foto utama hanya dari foto yang ada
+function siapkanKelas(){
+  const ada=FOTO_KELAS.map((s,i)=>i).filter(i=>!FOTO_HILANG.has(FOTO_KELAS[i]));
+  const sek=document.getElementById("kelas9b");
+  if(ada.length===0){ sek.hidden=true; document.querySelector('a[href="#kelas9b"]').parentElement.hidden=true; return; }
+  document.querySelectorAll("#foto-kecil button").forEach(b=>{ if(!ada.includes(+b.dataset.i)) b.remove(); });
+  if(ada.length===1) document.getElementById("foto-kecil").remove();
+  if(!ada.includes(kelasKe)){ kelasKe=ada[0]; document.getElementById("foto-utama").src=FOTO_KELAS[kelasKe]; }
+  const kecil=document.getElementById("foto-kecil"); if(!kecil) document.querySelector(".kelas-grid").style.gridTemplateColumns="1fr";
+}
+// Banner di sambutan bisa diperbesar
+
+
+/* Mulai website dalam Bahasa Indonesia */
+gantiBahasa("id");
+keSlide(0);
+mulai();
+rapikanAset();
+</script>
+</body>
+</html>
+
